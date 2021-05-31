@@ -19,7 +19,7 @@
 #   Node mit Debian als Basis einschl. GNU C/C++
 # ==============================================================================
 
-FROM node:16.0.0-buster AS builder
+FROM node:16.2.0-buster AS builder
 
 # Arbeitsverzeichnis setzen und implizit erstellen
 WORKDIR /webapp
@@ -29,9 +29,10 @@ COPY package.json package-lock.json .npmrc tsconfig*.json angular.json ngsw-conf
 COPY src ./src
 
 # npm, dependencies (NICHT: devDependencies) und TypeScript fuer die Uebersetzung installieren
-RUN npm i -g npm@7.11.2 && \
-    npm i --prod --no-audit --no-fund && \
-    npm i -D typescript @angular-devkit/build-angular@next @angular/cli@next @angular/compiler-cli@next @angular/language-service@next && \
+ENV NPM_VERSION 7.15.0
+RUN npm i -g npm@$NPM_VERSION && \
+    npm i --prod --no-audit --no-fund --force && \
+    npm i -D typescript @angular-devkit/build-angular@12.1.0-next.3 @angular/cli@12.1.0-next.3 @angular/compiler-cli@12.1.0-next.3 @angular/language-service@12.1.0-next.3 --force && \
     npm exec ng build --configuration=development
 
 # ==============================================================================
@@ -40,7 +41,7 @@ RUN npm i -g npm@7.11.2 && \
 #   nginx als Basis (mit ash)
 #   eigener, uebersetzter JS- bzw. Angular-Code
 # ==============================================================================
-FROM nginx:1.20.0-alpine
+FROM nginx:1.21.0-alpine
 
 COPY config/nginx.conf /etc/nginx/
 
