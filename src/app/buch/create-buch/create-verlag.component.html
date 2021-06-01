@@ -16,25 +16,26 @@
 -->
 
 <div class="row">
-  <label class="col col-2 col-form-label gy-3">Verlag *</label>
+  <label class="col col-2 col-form-label gy-3">GeschlechtType *</label>
   <div class="col col-10 gy-3" [formGroup]="form">
     <div class="input-group">
       <select
         class="form-select"
-        formControlName="verlag"
+        formControlName="geschlechtType"
         required
-        [class.is-invalid]="verlag.invalid && verlag.touched"
-        [class.is-valid]="verlag.valid && verlag.touched"
+        [class.is-invalid]="geschlechtType.invalid && geschlechtType.touched"
+        [class.is-valid]="geschlechtType.valid && geschlechtType.touched"
       >
-        <option value="">Einen Verlag ausw&auml;hlen</option>
-        <option value="FOO_VERLAG">Foo Verlag</option>
-        <option value="BAR_VERLAG">Bar Verlag</option>
+        <option value="">Einen GeschlechtType ausw&auml;hlen</option>
+        <option value="MAENNLICH">M GeschlechtType</option>
+        <option value="WEIBLICH">W GeschlechtType</option>
+        <option value="DIVERS">D GeschlechtType</option>
       </select>
 
-      <div *ngIf="verlag.invalid && verlag.touched" class="invalid-feedback">
-        <div *ngIf="verlag.errors && verlag.errors.required">
+      <div *ngIf="geschlechtType.invalid && geschlechtType.touched" class="invalid-feedback">
+        <div *ngIf="geschlechtType.errors && geschlechtType.errors.required">
           <i class="material-icons">error</i>
-          <span class="ms-1"> Ein Verlag ist erforderlich. </span>
+          <span class="ms-1"> Ein GeschlechtType ist erforderlich. </span>
         </div>
       </div>
     </div>

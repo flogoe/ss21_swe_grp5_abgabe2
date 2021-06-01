@@ -19,10 +19,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
-import { SucheArtModule } from './suche-art.module';
+import { SucheFamilienstandModule } from './suche-familienstand.module';
 import { SucheSchlagwoerterModule } from './suche-schlagwoerter.module';
-import { SucheTitelModule } from './suche-titel.module';
-import { SucheVerlagModule } from './suche-verlag.module';
+import { SucheNachnameModule } from './suche-nachname.module';
+import { SucheGeschlechtTypeModule } from './suche-geschlechtType.module';
 import { SuchformularComponent } from './suchformular.component';
 
 // Ein Modul enthaelt logisch zusammengehoerige Funktionalitaet.
@@ -35,10 +35,10 @@ import { SuchformularComponent } from './suchformular.component';
     imports: [
         FormsModule,
         HttpClientModule,
-        SucheArtModule,
+        SucheFamilienstandModule,
         SucheSchlagwoerterModule,
-        SucheTitelModule,
-        SucheVerlagModule,
+        SucheNachnameModule,
+        SucheGeschlechtTypeModule,
     ],
 })
 export class SuchformularModule {}

@@ -17,23 +17,23 @@
 
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateArtModule } from './update-art.module';
+import { UpdateFamilienstandModule } from './update-familienstand.module';
 import { UpdateIsbnModule } from './update-isbn.module';
 import { UpdateRatingModule } from './update-rating.module';
 import { UpdateStammdatenComponent } from './update-stammdaten.component';
-import { UpdateTitelModule } from './update-titel.module';
-import { UpdateVerlagModule } from './update-verlag.module';
+import { UpdateNachnameModule } from './update-nachname.module';
+import { UpdateGeschlechtTypeModule } from './update-geschlechtType.module';
 
 @NgModule({
     declarations: [UpdateStammdatenComponent],
     exports: [UpdateStammdatenComponent],
     imports: [
         ReactiveFormsModule,
-        UpdateArtModule,
+        UpdateFamilienstandModule,
         UpdateIsbnModule,
         UpdateRatingModule,
-        UpdateTitelModule,
-        UpdateVerlagModule,
+        UpdateNachnameModule,
+        UpdateGeschlechtTypeModule,
     ],
 })
 export class UpdateStammdatenModule {}

@@ -22,22 +22,22 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-lieferbar&gt;, um das Erfassungsformular
+ * Komponente mit dem Tag &lt;hs-create-familienstand&gt;, um das Erfassungsformular
  * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
-    selector: 'hs-create-lieferbar',
-    templateUrl: './create-lieferbar.component.html',
+    selector: 'hs-create-familienstand',
+    templateUrl: './create-familienstand.component.html',
 })
-export class CreateLieferbarComponent implements OnInit {
+export class CreateFamilienstandComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly lieferbar = new FormControl(false);
+    readonly familienstand = new FormControl('DRUCKAUSGABE');
 
     ngOnInit() {
-        log.debug('CreateLieferbarComponent.ngOnInit');
+        log.debug('CreateFamilienstandComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('lieferbar', this.lieferbar);
+        this.form.addControl('familienstand', this.familienstand);
     }
 }

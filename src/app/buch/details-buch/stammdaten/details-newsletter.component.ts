@@ -16,36 +16,21 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import type { BuchArt } from '../../shared/buch';
-import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-art</code>
+ * Komponente f&uuml;r das Tag <code>hs-details-newsletter</code>
  */
 @Component({
-    selector: 'hs-update-art',
-    templateUrl: './update-art.component.html',
+    selector: 'hs-details-newsletter',
+    templateUrl: './details-newsletter.component.html',
 })
-export class UpdateArtComponent implements OnInit {
-    // <hs-update-art [form]="form" [currentValue]="...">
+export class DetailsNewsletterComponent implements OnInit {
     @Input()
-    form!: FormGroup;
-
-    @Input()
-    currentValue!: BuchArt;
-
-    art!: FormControl;
+    newsletter: boolean | undefined;
 
     ngOnInit() {
-        log.debug(
-            'UpdateArtComponent.ngOnInit(): currentValue=',
-            this.currentValue,
-        );
-        // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.art = new FormControl(this.currentValue, Validators.required);
-        this.form.addControl('art', this.art);
+        log.debug(`DetailsNewsletterComponent.newsletter=${this.newsletter}`);
     }
 }

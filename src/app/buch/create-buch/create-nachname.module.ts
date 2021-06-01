@@ -16,14 +16,13 @@
  */
 
 import { CommonModule } from '@angular/common';
+import { CreateNachnameComponent } from './create-nachname.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { UpdateTitelComponent } from './update-titel.component';
-
 @NgModule({
-    declarations: [UpdateTitelComponent],
-    exports: [UpdateTitelComponent],
+    declarations: [CreateNachnameComponent],
+    exports: [CreateNachnameComponent],
     imports: [CommonModule, ReactiveFormsModule],
 })
-export class UpdateTitelModule {}
+export class CreateNachnameModule {}

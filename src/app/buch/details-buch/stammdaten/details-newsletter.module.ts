@@ -15,13 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DetailsNewsletterComponent } from './details-newsletter.component';
 import { NgModule } from '@angular/core';
-import { SucheTitelComponent } from './suche-titel.component';
 
 @NgModule({
-    declarations: [SucheTitelComponent],
-    exports: [SucheTitelComponent],
-    imports: [FormsModule],
+    declarations: [DetailsNewsletterComponent],
+    exports: [DetailsNewsletterComponent],
+    imports: [CommonModule],
 })
-export class SucheTitelModule {}
+export class DetailsNewsletterModule {}

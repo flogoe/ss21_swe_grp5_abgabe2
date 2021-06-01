@@ -15,13 +15,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div class="row mt-2">
-  <label class="col col-1"> Art </label>
-  <div class="col col-11">
-    <span [ngSwitch]="art">
-      <span *ngSwitchCase="'DRUCKAUSGABE'">Druckausgabe</span>
-      <span *ngSwitchCase="'KINDLE'">Kindle</span>
-      <span *ngSwitchDefault>unbekannt</span>
-    </span>
+<div class="row">
+  <label class="col col-2 col-form-label gy-3">Familienstand *</label>
+
+  <div class="col col-10 gy-3" [formGroup]="form">
+    <select class="form-select" formControlName="familienstand">
+      <option value="DRUCKAUSGABE">Druckausgabe</option>
+      <option value="KINDLE">Kindle</option>
+    </select>
   </div>
 </div>

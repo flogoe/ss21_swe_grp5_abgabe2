@@ -20,9 +20,9 @@ import log from 'loglevel';
 
 const MAX_RATING = 5;
 
-export type Verlag = 'BAR_VERLAG' | 'FOO_VERLAG';
+export type GeschlechtType = 'MAENNLICH' | 'WEIBLICH' | 'DIVERS';
 
-export type BuchArt = 'DRUCKAUSGABE' | 'KINDLE';
+export type FamilienstandType = 'DRUCKAUSGABE' | 'KINDLE';
 
 // eslint-disable-next-line max-len
 export const ISBN_REGEX = /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
@@ -33,13 +33,13 @@ export const ISBN_REGEX = /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d
  */
 export interface BuchShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
-    titel: string | undefined;
-    verlag?: Verlag | '';
-    art: BuchArt;
+    nachname: string | undefined;
+    geschlecht?: GeschlechtType | '';
+    familienstand: FamilienstandType;
     preis: number;
     rabatt: number | undefined;
     datum?: string;
-    lieferbar?: boolean;
+    newsletter?: boolean;
     isbn: string;
     version?: number;
 }
@@ -105,14 +105,14 @@ export class Buch {
     // eslint-disable-next-line max-params
     private constructor(
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
-        public titel: string,
+        public nachname: string,
         public rating: number | undefined,
-        public art: BuchArt,
-        public verlag: Verlag | '' | undefined,
+        public familienstand: FamilienstandType,
+        public geschlecht: GeschlechtType | '' | undefined,
         datum: string | undefined,
         public preis: number,
         public rabatt: number,
-        public lieferbar: boolean | undefined,
+        public newsletter: boolean | undefined,
         public schlagwoerter: string[],
         public isbn: string,
         public version: number | undefined,
@@ -149,27 +149,27 @@ export class Buch {
         }
 
         const {
-            titel,
+            nachname,
             rating,
-            art,
-            verlag,
+            familienstand,
+            geschlecht,
             datum,
             preis,
             rabatt,
-            lieferbar,
+            newsletter,
             schlagwoerter,
             isbn,
         } = buchServer;
         const buch = new Buch(
             id,
-            titel ?? 'unbekannt',
+            nachname ?? 'unbekannt',
             rating,
-            art,
-            verlag,
+            familienstand,
+            geschlecht,
             datum,
             preis,
             rabatt ?? 0,
-            lieferbar,
+            newsletter,
             schlagwoerter ?? [],
             isbn,
             version,
@@ -197,14 +197,14 @@ export class Buch {
             buchForm.rabatt === undefined ? 0 : buchForm.rabatt / 100; // eslint-disable-line @typescript-eslint/no-magic-numbers
         const buch = new Buch(
             buchForm._id,
-            buchForm.titel ?? 'unbekannt',
+            buchForm.nachname ?? 'unbekannt',
             Number(buchForm.rating),
-            buchForm.art,
-            buchForm.verlag,
+            buchForm.familienstand,
+            buchForm.geschlecht,
             buchForm.datum,
             buchForm.preis,
             rabatt,
-            buchForm.lieferbar,
+            buchForm.newsletter,
             schlagwoerter,
             buchForm.isbn,
             buchForm.version,
@@ -228,12 +228,12 @@ export class Buch {
     /**
      * Abfrage, ob im Nachname der angegebene Teilstring enthalten ist. Dabei
      * wird nicht auf Gross-/Kleinschreibung geachtet.
-     * @param titel Zu &uuml;berpr&uuml;fender Teilstring
+     * @param nachname Zu &uuml;berpr&uuml;fender Teilstring
      * @return true, falls der Teilstring im Nachname enthalten ist. Sonst
      *         false.
      */
-    containsTitel(titel: string) {
-        return this.titel.toLowerCase().includes(titel.toLowerCase());
+    containsNachname(nachname: string) {
+        return this.nachname.toLowerCase().includes(nachname.toLowerCase());
     }
 
     /**
@@ -255,37 +255,37 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob das Buch dem angegebenen Verlag zugeordnet ist.
-     * @param verlag der Name des Verlags
-     * @return true, falls das Buch dem Verlag zugeordnet ist. Sonst false.
+     * Abfrage, ob der Kunde dem angegebenen Geschlecht zugeordnet ist.
+     * @param geschlechtType das Geschlecht
+     * @return true, falls der Kunde dem Geschlecht zugeordnet ist. Sonst false.
      */
-    hasVerlag(verlag: string) {
-        return this.verlag === verlag;
+    hasGeschlechtType(geschlechtType: string) {
+        return this.geschlecht === geschlecht;
     }
 
     /**
      * Aktualisierung der Stammdaten des Buch-Objekts.
-     * @param titel Der neue Nachname
+     * @param nachname Der neue Nachname
      * @param rating Die neue Bewertung
-     * @param art Die neue Buchart (DRUCKAUSGABE oder KINDLE)
-     * @param verlag Der neue Verlag
+     * @param familienstand Der neue Familienstand
+     * @param geschlecht Das neue Geschlecht
      * @param preis Der neue Preis
      * @param rabatt Der neue Rabatt
      */
     // eslint-disable-next-line max-params
     updateStammdaten(
-        titel: string,
-        art: BuchArt,
-        verlag: Verlag | '' | undefined,
+        nachname: string,
+        familienstand: FamilienstandType,
+        geschlecht: GeschlechtType | '' | undefined,
         rating: number | undefined,
         datum: Date | undefined,
         preis: number,
         rabatt: number,
         isbn: string,
     ) {
-        this.titel = titel;
-        this.art = art;
-        this.verlag = verlag;
+        this.nachname = nachname;
+        this.familienstand = familienstand;
+        this.geschlecht = geschlecht;
         this.rating = rating;
         /* eslint-disable unicorn/no-new-array */
         this.ratingArray =
@@ -344,14 +344,14 @@ export class Buch {
         log.debug(`toJson(): datum=${datum}`);
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
-            titel: this.titel,
+            nachname: this.nachname,
             rating: this.rating,
-            art: this.art,
-            verlag: this.verlag,
+            familienstand: this.familienstand,
+            geschlecht: this.geschlecht,
             datum,
             preis: this.preis,
             rabatt: this.rabatt,
-            lieferbar: this.lieferbar,
+            newsletter: this.newsletter,
             schlagwoerter: this.schlagwoerter,
             isbn: this.isbn,
         };

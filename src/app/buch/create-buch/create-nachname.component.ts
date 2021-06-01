@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,35 +22,35 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-titel</code>
+ * Komponente mit dem Tag &lt;hs-create-nachname&gt;, um das Erfassungsformular
+ * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
-    selector: 'hs-update-titel',
-    templateUrl: './update-titel.component.html',
+    // moduleId: module.id,
+    selector: 'hs-create-nachname',
+    templateUrl: './create-nachname.component.html',
 })
-export class UpdateTitelComponent implements OnInit {
+export class CreateNachnameComponent implements OnInit {
     private static readonly MIN_LENGTH = 2;
 
-    // <hs-update-titel [form]="form" [currentValue]="...">
     @Input()
     form!: FormGroup;
 
-    @Input()
-    currentValue!: string;
-
-    titel!: FormControl;
+    // Keine Vorbelegung bzw. der leere String, da es Placeholder gibt
+    // Varianten fuer Validierung:
+    //    serverseitig mittels Request/Response
+    //    clientseitig bei den Ereignissen keyup, change, blur, ...
+    // Ein Endbenutzer bewirkt staendig einen neuen Fehlerstatus
+    readonly nachname = new FormControl(undefined, [
+        Validators.required,
+        Validators.minLength(CreateNachnameComponent.MIN_LENGTH),
+        Validators.pattern(/^\w/u),
+    ]);
+    // readonly nachnameGroup = new FormGroup({ nachname: this.nachname })
 
     ngOnInit() {
-        log.debug(
-            'UpdateTitelComponent.ngOnInit(): currentValue=',
-            this.currentValue,
-        );
+        log.debug('CreateNachnameComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.titel = new FormControl(this.currentValue, [
-            Validators.required,
-            Validators.minLength(UpdateTitelComponent.MIN_LENGTH),
-            Validators.pattern(/^\w/u),
-        ]);
-        this.form.addControl('titel', this.titel);
+        this.form.addControl('nachname', this.nachname);
     }
 }

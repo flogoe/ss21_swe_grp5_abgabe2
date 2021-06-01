@@ -17,11 +17,11 @@
 
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { SucheArtComponent } from './suche-art.component';
+import { SucheNachnameComponent } from './suche-nachname.component';
 
 @NgModule({
-    declarations: [SucheArtComponent],
-    exports: [SucheArtComponent],
+    declarations: [SucheNachnameComponent],
+    exports: [SucheNachnameComponent],
     imports: [FormsModule],
 })
-export class SucheArtModule {}
+export class SucheNachnameModule {}

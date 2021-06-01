@@ -16,22 +16,28 @@
  */
 
 import { Component, Input } from '@angular/core';
-import type { BuchArt } from '../../shared/buch';
+import { FormControl } from '@angular/forms';
+import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-art</code>
+ * Komponente mit dem Tag &lt;hs-create-newsletter&gt;, um das Erfassungsformular
+ * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
-    selector: 'hs-details-art',
-    templateUrl: './details-art.component.html',
+    selector: 'hs-create-newsletter',
+    templateUrl: './create-newsletter.component.html',
 })
-export class DetailsArtComponent implements OnInit {
+export class CreateNewsletterComponent implements OnInit {
     @Input()
-    art!: BuchArt;
+    form!: FormGroup;
+
+    readonly newsletter = new FormControl(false);
 
     ngOnInit() {
-        log.debug(`DetailsArtComponent.art=${this.art}`);
+        log.debug('CreateNewsletterComponent.ngOnInit');
+        // siehe formControlName innerhalb @Component({templateUrl: ...})
+        this.form.addControl('newsletter', this.newsletter);
     }
 }

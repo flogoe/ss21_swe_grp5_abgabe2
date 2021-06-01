@@ -15,22 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
-import type { OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-titel</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-nachname</code>
  */
 @Component({
-    selector: 'hs-details-titel',
-    templateUrl: './details-titel.component.html',
+    selector: 'hs-suche-nachname',
+    templateUrl: './suche-nachname.component.html',
 })
-export class DetailsTitelComponent implements OnInit {
-    @Input()
-    titel!: string;
+export class SucheNachnameComponent {
+    nachname = '';
 
-    ngOnInit() {
-        log.debug(`DetailsTitelComponent.titel=${this.titel}`);
+    // title = undefined;
+    // title: string | undefined = undefined;
+
+    constructor() {
+        log.debug('SucheNachnameComponent.constructor()');
     }
 }

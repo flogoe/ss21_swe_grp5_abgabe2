@@ -19,33 +19,33 @@ import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
-import type { Verlag } from '../../shared/buch';
+import type { GeschlechtType } from '../../shared/buch';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-verlag</code>
+ * Komponente f&uuml;r das Tag <code>hs-update-geschlechtType</code>
  */
 @Component({
-    selector: 'hs-update-verlag',
-    templateUrl: './update-verlag.component.html',
+    selector: 'hs-update-geschlechtType',
+    templateUrl: './update-geschlechtType.component.html',
 })
-export class UpdateVerlagComponent implements OnInit {
-    // <hs-update-verlag [form]="form" [currentValue]="...">
+export class UpdateGeschlechtTypeComponent implements OnInit {
+    // <hs-update-geschlechtType [form]="form" [currentValue]="...">
     @Input()
     form!: FormGroup;
 
     @Input()
-    currentValue: Verlag | '' | undefined;
+    currentValue: GeschlechtType | '' | undefined;
 
-    verlag!: FormControl;
+    geschlechtType!: FormControl;
 
     ngOnInit() {
         log.debug(
-            'UpdateVerlagComponent.ngOnInit(): currentValue=',
+            'UpdateGeschlechtTypeComponent.ngOnInit(): currentValue=',
             this.currentValue,
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.verlag = new FormControl(this.currentValue);
-        this.form.addControl('verlag', this.verlag);
+        this.geschlechtType = new FormControl(this.currentValue);
+        this.form.addControl('geschlechtType', this.geschlechtType);
     }
 }

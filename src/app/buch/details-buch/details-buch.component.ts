@@ -101,8 +101,8 @@ export class DetailsBuchComponent implements OnInit {
         this.buch = result;
         this.errorMsg = undefined;
 
-        const titel = `Details ${this.buch._id}`;
-        this.titleService.setTitle(titel);
+        const nachname = `Details ${this.buch._id}`;
+        this.titleService.setTitle(nachname);
     }
 
     private handleError(err: FindError) {

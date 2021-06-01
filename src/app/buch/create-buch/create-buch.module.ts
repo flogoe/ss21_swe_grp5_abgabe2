@@ -16,17 +16,17 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { CreateArtModule } from './create-art.module';
+import { CreateFamilienstandModule } from './create-familienstand.module';
 import { CreateBuchComponent } from './create-buch.component';
 import { CreateDatumModule } from './create-datum.module';
 import { CreateIsbnModule } from './create-isbn.module';
-import { CreateLieferbarModule } from './create-lieferbar.module';
+import { CreateNewsletterModule } from './create-newsletter.module';
 import { CreatePreisModule } from './create-preis.module';
 import { CreateRabattModule } from './create-rabatt.module';
 import { CreateRatingModule } from './create-rating.module';
 import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
-import { CreateTitelModule } from './create-titel.module';
-import { CreateVerlagModule } from './create-verlag.module';
+import { CreateNachnameModule } from './create-nachname.module';
+import { CreateGeschlechtTypeModule } from './create-geschlechtType.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -42,16 +42,16 @@ import { Title } from '@angular/platform-browser';
     exports: [CreateBuchComponent],
     imports: [
         CommonModule,
-        CreateArtModule,
+        CreateFamilienstandModule,
         CreateDatumModule,
         CreateIsbnModule,
-        CreateLieferbarModule,
+        CreateNewsletterModule,
         CreatePreisModule,
         CreateRabattModule,
         CreateRatingModule,
         CreateSchlagwoerterModule,
-        CreateTitelModule,
-        CreateVerlagModule,
+        CreateNachnameModule,
+        CreateGeschlechtTypeModule,
         ErrorMessageModule,
         HttpClientModule,
         ReactiveFormsModule,

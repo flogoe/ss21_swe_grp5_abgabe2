@@ -16,28 +16,36 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import type { FamilienstandType } from '../../shared/buch';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-art&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Buch zu realisieren.
+ * Komponente f&uuml;r das Tag <code>hs-update-familienstand</code>
  */
 @Component({
-    selector: 'hs-create-art',
-    templateUrl: './create-art.component.html',
+    selector: 'hs-update-familienstand',
+    templateUrl: './update-familienstand.component.html',
 })
-export class CreateArtComponent implements OnInit {
+export class UpdateFamilienstandComponent implements OnInit {
+    // <hs-update-familienstand [form]="form" [currentValue]="...">
     @Input()
     form!: FormGroup;
 
-    readonly art = new FormControl('DRUCKAUSGABE');
+    @Input()
+    currentValue!: FamilienstandType;
+
+    familienstand!: FormControl;
 
     ngOnInit() {
-        log.debug('CreateArtComponent.ngOnInit');
+        log.debug(
+            'UpdateFamilienstandComponent.ngOnInit(): currentValue=',
+            this.currentValue,
+        );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('art', this.art);
+        this.familienstand = new FormControl(this.currentValue, Validators.required);
+        this.form.addControl('familienstand', this.familienstand);
     }
 }
