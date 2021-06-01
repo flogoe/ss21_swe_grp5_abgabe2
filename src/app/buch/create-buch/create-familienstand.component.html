@@ -1,5 +1,5 @@
 <!--
-    Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+    Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,19 +14,19 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
+
 <div class="row">
-  <label class="col col-2 col-form-label gy-3">Art</label>
-  <div class="col col-10 gy-3">
+  <label class="col col-2 col-form-label gy-3">Familienstand *</label>
+  <div class="col col-10 gy-3" [formGroup]="form">
     <div class="form-check">
       <input
         type="radio"
         class="form-check-input"
         id="druckausgabeInput"
-        [(ngModel)]="art"
-        name="art"
+        formControlName="familienstand"
+        name="familienstand"
         value="DRUCKAUSGABE"
       />
-      <!-- margin left -->
       <label class="radio-inline ms-1" for="druckausgabeInput">
         Druckausgabe
       </label>
@@ -37,8 +37,8 @@
         type="radio"
         class="form-check-input"
         id="kindleInput"
-        [(ngModel)]="art"
-        name="art"
+        formControlName="familienstand"
+        name="familienstand"
         value="KINDLE"
       />
       <label class="radio-inline ms-1" for="kindleInput"> Kindle </label>

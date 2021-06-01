@@ -16,7 +16,7 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { CreateArtModule } from './create-art.module';
+import { CreateFamilienstandModule } from './create-familienstand.module';
 import { CreateBuchComponent } from './create-buch.component';
 import { CreateDatumModule } from './create-datum.module';
 import { CreateIsbnModule } from './create-isbn.module';
@@ -42,7 +42,7 @@ import { Title } from '@angular/platform-browser';
     exports: [CreateBuchComponent],
     imports: [
         CommonModule,
-        CreateArtModule,
+        CreateFamilienstandModule,
         CreateDatumModule,
         CreateIsbnModule,
         CreateNewsletterModule,

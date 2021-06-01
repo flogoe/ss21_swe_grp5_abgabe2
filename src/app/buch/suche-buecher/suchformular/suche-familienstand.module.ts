@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,23 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
-import type { BuchArt } from '../../shared/buch';
-import type { OnInit } from '@angular/core';
-import log from 'loglevel';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { SucheFamilienstandComponent } from './suche-familienstand.component';
 
-/**
- * Komponente f&uuml;r das Tag <code>hs-details-art</code>
- */
-@Component({
-    selector: 'hs-details-art',
-    templateUrl: './details-art.component.html',
+@NgModule({
+    declarations: [SucheFamilienstandComponent],
+    exports: [SucheFamilienstandComponent],
+    imports: [FormsModule],
 })
-export class DetailsArtComponent implements OnInit {
-    @Input()
-    art!: BuchArt;
-
-    ngOnInit() {
-        log.debug(`DetailsArtComponent.art=${this.art}`);
-    }
-}
+export class SucheFamilienstandModule {}

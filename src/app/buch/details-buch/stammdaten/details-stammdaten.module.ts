@@ -16,7 +16,7 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { DetailsArtModule } from './details-art.module';
+import { DetailsFamilienstandModule } from './details-familienstand.module';
 import { DetailsBewertungModule } from './details-bewertung.module';
 import { DetailsDatumModule } from './details-datum.module';
 import { DetailsIsbnModule } from './details-isbn.module';
@@ -33,7 +33,7 @@ import { NgModule } from '@angular/core';
     exports: [DetailsStammdatenComponent],
     imports: [
         CommonModule,
-        DetailsArtModule,
+        DetailsFamilienstandModule,
         DetailsBewertungModule,
         DetailsDatumModule,
         DetailsIsbnModule,

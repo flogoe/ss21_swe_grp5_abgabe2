@@ -110,7 +110,7 @@ export class SucheBuecherComponent implements OnInit {
         this.suchkriterien = {
             nachname: '',
             geschlechtType: '',
-            art: '',
+            familienstand: '',
             schlagwoerter: { javascript: false, typescript: false },
         };
         this.buecher = [];

@@ -11,27 +11,27 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy oSf the GNU General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import type { BuchArt } from '../../shared/buch';
-import { Component } from '@angular/core';
-import { fadeIn } from '../../../shared';
+import { Component, Input } from '@angular/core';
+import type { FamilienstandType } from '../../shared/buch';
+import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-art</code>
+ * Komponente f&uuml;r das Tag <code>hs-details-familienstand</code>
  */
 @Component({
-    selector: 'hs-suche-art',
-    templateUrl: './suche-art.component.html',
-    animations: [fadeIn],
+    selector: 'hs-details-familienstand',
+    templateUrl: './details-familienstand.component.html',
 })
-export class SucheArtComponent {
-    art: BuchArt | '' = '';
+export class DetailsFamilienstandComponent implements OnInit {
+    @Input()
+    familienstand!: FamilienstandType;
 
-    constructor() {
-        log.debug('SucheArtComponent.constructor()');
+    ngOnInit() {
+        log.debug(`DetailsFamilienstandComponent.familienstand=${this.familienstand}`);
     }
 }

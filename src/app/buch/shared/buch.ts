@@ -22,7 +22,7 @@ const MAX_RATING = 5;
 
 export type GeschlechtType = 'MAENNLICH' | 'WEIBLICH' | 'DIVERS';
 
-export type BuchArt = 'DRUCKAUSGABE' | 'KINDLE';
+export type FamilienstandType = 'DRUCKAUSGABE' | 'KINDLE';
 
 // eslint-disable-next-line max-len
 export const ISBN_REGEX = /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
@@ -35,7 +35,7 @@ export interface BuchShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     nachname: string | undefined;
     geschlecht?: GeschlechtType | '';
-    art: BuchArt;
+    familienstand: FamilienstandType;
     preis: number;
     rabatt: number | undefined;
     datum?: string;
@@ -107,7 +107,7 @@ export class Buch {
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
         public nachname: string,
         public rating: number | undefined,
-        public art: BuchArt,
+        public familienstand: FamilienstandType,
         public geschlecht: GeschlechtType | '' | undefined,
         datum: string | undefined,
         public preis: number,
@@ -151,7 +151,7 @@ export class Buch {
         const {
             nachname,
             rating,
-            art,
+            familienstand,
             geschlecht,
             datum,
             preis,
@@ -164,7 +164,7 @@ export class Buch {
             id,
             nachname ?? 'unbekannt',
             rating,
-            art,
+            familienstand,
             geschlecht,
             datum,
             preis,
@@ -199,7 +199,7 @@ export class Buch {
             buchForm._id,
             buchForm.nachname ?? 'unbekannt',
             Number(buchForm.rating),
-            buchForm.art,
+            buchForm.familienstand,
             buchForm.geschlecht,
             buchForm.datum,
             buchForm.preis,
@@ -267,7 +267,7 @@ export class Buch {
      * Aktualisierung der Stammdaten des Buch-Objekts.
      * @param nachname Der neue Nachname
      * @param rating Die neue Bewertung
-     * @param art Die neue Buchart (DRUCKAUSGABE oder KINDLE)
+     * @param familienstand Der neue Familienstand
      * @param geschlecht Das neue Geschlecht
      * @param preis Der neue Preis
      * @param rabatt Der neue Rabatt
@@ -275,7 +275,7 @@ export class Buch {
     // eslint-disable-next-line max-params
     updateStammdaten(
         nachname: string,
-        art: BuchArt,
+        familienstand: FamilienstandType,
         geschlecht: GeschlechtType | '' | undefined,
         rating: number | undefined,
         datum: Date | undefined,
@@ -284,7 +284,7 @@ export class Buch {
         isbn: string,
     ) {
         this.nachname = nachname;
-        this.art = art;
+        this.familienstand = familienstand;
         this.geschlecht = geschlecht;
         this.rating = rating;
         /* eslint-disable unicorn/no-new-array */
@@ -346,7 +346,7 @@ export class Buch {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             nachname: this.nachname,
             rating: this.rating,
-            art: this.art,
+            familienstand: this.familienstand,
             geschlecht: this.geschlecht,
             datum,
             preis: this.preis,

@@ -17,7 +17,7 @@
  */
 
 import { BASE_PATH_REST, BUECHER_PATH_REST } from '../../shared';
-import type { BuchArt, BuchServer, GeschlechtType } from './buch';
+import type { FamilienstandType, BuchServer, GeschlechtType } from './buch';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
@@ -37,7 +37,7 @@ import { of } from 'rxjs';
 export interface Suchkriterien {
     nachname: string;
     geschlechtType: GeschlechtType | '';
-    art: BuchArt | '';
+    familienstand: FamilienstandType | '';
     schlagwoerter: { javascript: boolean; typescript: boolean };
 }
 
@@ -361,14 +361,14 @@ export class BuchService {
             return httpParams;
         }
 
-        const { nachname, geschlechtType, art, schlagwoerter } = suchkriterien;
+        const { nachname, geschlechtType, familienstand, schlagwoerter } = suchkriterien;
         const { javascript, typescript } = schlagwoerter;
 
         if (nachname !== '') {
             httpParams = httpParams.set('nachname', nachname);
         }
-        if (art !== '') {
-            httpParams = httpParams.set('art', art);
+        if (familienstand !== '') {
+            httpParams = httpParams.set('familienstand', familienstand);
         }
         if (geschlechtType !== '') {
             httpParams = httpParams.set('geschlechtType', geschlechtType);

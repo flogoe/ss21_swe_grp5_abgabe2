@@ -17,7 +17,7 @@
 
 import { Component, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
-import { SucheArtComponent } from './suche-art.component';
+import { SucheFamilienstandComponent } from './suche-familienstand.component';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
 import { SucheNachnameComponent } from './suche-nachname.component';
 import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
@@ -53,8 +53,8 @@ export class SuchformularComponent {
     @ViewChild(SucheGeschlechtTypeComponent, { static: true })
     private readonly sucheGeschlechtTypeComponent!: SucheGeschlechtTypeComponent;
 
-    @ViewChild(SucheArtComponent, { static: true })
-    private readonly sucheArtComponent!: SucheArtComponent;
+    @ViewChild(SucheFamilienstandComponent, { static: true })
+    private readonly sucheFamilienstandComponent!: SucheFamilienstandComponent;
 
     @ViewChild(SucheSchlagwoerterComponent, { static: true })
     private readonly sucheSchlagwoerterComponent!: SucheSchlagwoerterComponent;
@@ -73,17 +73,17 @@ export class SuchformularComponent {
     onSubmit() {
         const { nachname } = this.sucheNachnameComponent;
         const { geschlechtType } = this.sucheGeschlechtTypeComponent;
-        const { art } = this.sucheArtComponent;
+        const { familienstand } = this.sucheFamilienstandComponent;
         const { javascript } = this.sucheSchlagwoerterComponent;
         const { typescript } = this.sucheSchlagwoerterComponent;
         log.debug(
-            `SuchformularComponent.onFind(): nachname=${nachname}, geschlechtType=${geschlechtType}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
+            `SuchformularComponent.onFind(): nachname=${nachname}, geschlechtType=${geschlechtType}, familienstand=${familienstand}, javascript=${javascript}, typescript=${typescript}`,
         );
 
         this.suchkriterien$.next({
             nachname,
             geschlechtType,
-            art,
+            familienstand,
             schlagwoerter: { javascript, typescript },
         });
 
