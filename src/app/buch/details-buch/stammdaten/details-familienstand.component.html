@@ -19,8 +19,10 @@
   <label class="col col-1"> Familienstand </label>
   <div class="col col-11">
     <span [ngSwitch]="familienstand">
-      <span *ngSwitchCase="'DRUCKAUSGABE'">Druckausgabe</span>
-      <span *ngSwitchCase="'KINDLE'">Kindle</span>
+      <span *ngSwitchCase="'LEDIG'">Ledig</span>
+      <span *ngSwitchCase="'VERHEIRATET'">Verheiratet</span>
+      <span *ngSwitchCase="'GESCHIEDEN'">Geschieden</span>
+      <span *ngSwitchCase="'VERWITWET'">Verwitwet</span>
       <span *ngSwitchDefault>unbekannt</span>
     </span>
   </div>

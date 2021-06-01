@@ -31,7 +31,10 @@
         [class.is-valid]="nachname.valid && nachname.touched"
       />
 
-      <div *ngIf="nachname.invalid && nachname.touched" class="invalid-feedback">
+      <div
+        *ngIf="nachname.invalid && nachname.touched"
+        class="invalid-feedback"
+      >
         <i class="material-icons">error</i>
         <span class="ms-1" *ngIf="nachname.errors && nachname.errors.required">
           Ein Nachname muss eingegeben werden.

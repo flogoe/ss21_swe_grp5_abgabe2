@@ -17,7 +17,7 @@
 
 import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import type { FamilienstandType } from '../../shared/buch';
+import type { FamilienstandType } from '../../shared/kunde';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
@@ -45,7 +45,10 @@ export class UpdateFamilienstandComponent implements OnInit {
             this.currentValue,
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.familienstand = new FormControl(this.currentValue, Validators.required);
+        this.familienstand = new FormControl(
+            this.currentValue,
+            Validators.required,
+        );
         this.form.addControl('familienstand', this.familienstand);
     }
 }
