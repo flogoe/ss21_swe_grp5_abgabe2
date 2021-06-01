@@ -39,7 +39,7 @@ export interface BuchShared {
     preis: number;
     rabatt: number | undefined;
     datum?: string;
-    lieferbar?: boolean;
+    newsletter?: boolean;
     isbn: string;
     version?: number;
 }
@@ -112,7 +112,7 @@ export class Buch {
         datum: string | undefined,
         public preis: number,
         public rabatt: number,
-        public lieferbar: boolean | undefined,
+        public newsletter: boolean | undefined,
         public schlagwoerter: string[],
         public isbn: string,
         public version: number | undefined,
@@ -156,7 +156,7 @@ export class Buch {
             datum,
             preis,
             rabatt,
-            lieferbar,
+            newsletter,
             schlagwoerter,
             isbn,
         } = buchServer;
@@ -169,7 +169,7 @@ export class Buch {
             datum,
             preis,
             rabatt ?? 0,
-            lieferbar,
+            newsletter,
             schlagwoerter ?? [],
             isbn,
             version,
@@ -204,7 +204,7 @@ export class Buch {
             buchForm.datum,
             buchForm.preis,
             rabatt,
-            buchForm.lieferbar,
+            buchForm.newsletter,
             schlagwoerter,
             buchForm.isbn,
             buchForm.version,
@@ -232,7 +232,7 @@ export class Buch {
      * @return true, falls der Teilstring im Nachname enthalten ist. Sonst
      *         false.
      */
-    containsTitel(nachname: string) {
+    containsNachname(nachname: string) {
         return this.nachname.toLowerCase().includes(nachname.toLowerCase());
     }
 
@@ -351,7 +351,7 @@ export class Buch {
             datum,
             preis: this.preis,
             rabatt: this.rabatt,
-            lieferbar: this.lieferbar,
+            newsletter: this.newsletter,
             schlagwoerter: this.schlagwoerter,
             isbn: this.isbn,
         };

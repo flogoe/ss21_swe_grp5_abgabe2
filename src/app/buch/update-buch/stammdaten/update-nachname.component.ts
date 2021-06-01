@@ -28,7 +28,7 @@ import log from 'loglevel';
     selector: 'hs-update-nachname',
     templateUrl: './update-nachname.component.html',
 })
-export class UpdateTitelComponent implements OnInit {
+export class UpdateNachnameComponent implements OnInit {
     private static readonly MIN_LENGTH = 2;
 
     // <hs-update-nachname [form]="form" [currentValue]="...">
@@ -42,13 +42,13 @@ export class UpdateTitelComponent implements OnInit {
 
     ngOnInit() {
         log.debug(
-            'UpdateTitelComponent.ngOnInit(): currentValue=',
+            'UpdateNachnameComponent.ngOnInit(): currentValue=',
             this.currentValue,
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
         this.nachname = new FormControl(this.currentValue, [
             Validators.required,
-            Validators.minLength(UpdateTitelComponent.MIN_LENGTH),
+            Validators.minLength(UpdateNachnameComponent.MIN_LENGTH),
             Validators.pattern(/^\w/u),
         ]);
         this.form.addControl('nachname', this.nachname);

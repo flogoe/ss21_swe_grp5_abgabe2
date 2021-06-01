@@ -15,13 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CreateLieferbarComponent } from './create-lieferbar.component';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { UpdateNachnameComponent } from './update-nachname.component';
+
 @NgModule({
-    declarations: [CreateLieferbarComponent],
-    exports: [CreateLieferbarComponent],
-    imports: [ReactiveFormsModule],
+    declarations: [UpdateNachnameComponent],
+    exports: [UpdateNachnameComponent],
+    imports: [CommonModule, ReactiveFormsModule],
 })
-export class CreateLieferbarModule {}
+export class UpdateNachnameModule {}

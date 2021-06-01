@@ -20,12 +20,12 @@ import { CreateArtModule } from './create-art.module';
 import { CreateBuchComponent } from './create-buch.component';
 import { CreateDatumModule } from './create-datum.module';
 import { CreateIsbnModule } from './create-isbn.module';
-import { CreateLieferbarModule } from './create-lieferbar.module';
+import { CreateNewsletterModule } from './create-newsletter.module';
 import { CreatePreisModule } from './create-preis.module';
 import { CreateRabattModule } from './create-rabatt.module';
 import { CreateRatingModule } from './create-rating.module';
 import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
-import { CreateTitelModule } from './create-nachname.module';
+import { CreateNachnameModule } from './create-nachname.module';
 import { CreateVerlagModule } from './create-verlag.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -45,12 +45,12 @@ import { Title } from '@angular/platform-browser';
         CreateArtModule,
         CreateDatumModule,
         CreateIsbnModule,
-        CreateLieferbarModule,
+        CreateNewsletterModule,
         CreatePreisModule,
         CreateRabattModule,
         CreateRatingModule,
         CreateSchlagwoerterModule,
-        CreateTitelModule,
+        CreateNachnameModule,
         CreateVerlagModule,
         ErrorMessageModule,
         HttpClientModule,

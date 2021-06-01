@@ -20,11 +20,11 @@ import { DetailsArtModule } from './details-art.module';
 import { DetailsBewertungModule } from './details-bewertung.module';
 import { DetailsDatumModule } from './details-datum.module';
 import { DetailsIsbnModule } from './details-isbn.module';
-import { DetailsLieferbarModule } from './details-lieferbar.module';
+import { DetailsNewsletterModule } from './details-newsletter.module';
 import { DetailsPreisModule } from './details-preis.module';
 import { DetailsRabattModule } from './details-rabatt.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
-import { DetailsTitelModule } from './details-nachname.module';
+import { DetailsNachnameModule } from './details-nachname.module';
 import { DetailsVerlagModule } from './details-verlag.module';
 import { NgModule } from '@angular/core';
 
@@ -37,10 +37,10 @@ import { NgModule } from '@angular/core';
         DetailsBewertungModule,
         DetailsDatumModule,
         DetailsIsbnModule,
-        DetailsLieferbarModule,
+        DetailsNewsletterModule,
         DetailsPreisModule,
         DetailsRabattModule,
-        DetailsTitelModule,
+        DetailsNachnameModule,
         DetailsVerlagModule,
     ],
 })

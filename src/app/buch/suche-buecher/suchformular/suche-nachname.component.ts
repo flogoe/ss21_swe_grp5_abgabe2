@@ -15,29 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import type { FormGroup } from '@angular/forms';
-import type { OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-lieferbar&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Buch zu realisieren.
+ * Komponente f&uuml;r das Tag <code>hs-suche-nachname</code>
  */
 @Component({
-    selector: 'hs-create-lieferbar',
-    templateUrl: './create-lieferbar.component.html',
+    selector: 'hs-suche-nachname',
+    templateUrl: './suche-nachname.component.html',
 })
-export class CreateLieferbarComponent implements OnInit {
-    @Input()
-    form!: FormGroup;
+export class SucheNachnameComponent {
+    nachname = '';
 
-    readonly lieferbar = new FormControl(false);
+    // title = undefined;
+    // title: string | undefined = undefined;
 
-    ngOnInit() {
-        log.debug('CreateLieferbarComponent.ngOnInit');
-        // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('lieferbar', this.lieferbar);
+    constructor() {
+        log.debug('SucheNachnameComponent.constructor()');
     }
 }

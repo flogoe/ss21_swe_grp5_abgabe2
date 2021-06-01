@@ -21,7 +21,7 @@ import { UpdateArtModule } from './update-art.module';
 import { UpdateIsbnModule } from './update-isbn.module';
 import { UpdateRatingModule } from './update-rating.module';
 import { UpdateStammdatenComponent } from './update-stammdaten.component';
-import { UpdateTitelModule } from './update-nachname.module';
+import { UpdateNachnameModule } from './update-nachname.module';
 import { UpdateVerlagModule } from './update-verlag.module';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { UpdateVerlagModule } from './update-verlag.module';
         UpdateArtModule,
         UpdateIsbnModule,
         UpdateRatingModule,
-        UpdateTitelModule,
+        UpdateNachnameModule,
         UpdateVerlagModule,
     ],
 })

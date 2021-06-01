@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,23 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component } from '@angular/core';
-import log from 'loglevel';
+import { CreateNewsletterComponent } from './create-newsletter.component';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
-/**
- * Komponente f&uuml;r das Tag <code>hs-suche-nachname</code>
- */
-@Component({
-    selector: 'hs-suche-nachname',
-    templateUrl: './suche-nachname.component.html',
+@NgModule({
+    declarations: [CreateNewsletterComponent],
+    exports: [CreateNewsletterComponent],
+    imports: [ReactiveFormsModule],
 })
-export class SucheTitelComponent {
-    nachname = '';
-
-    // title = undefined;
-    // title: string | undefined = undefined;
-
-    constructor() {
-        log.debug('SucheTitelComponent.constructor()');
-    }
-}
+export class CreateNewsletterModule {}

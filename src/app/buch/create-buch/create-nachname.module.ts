@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,22 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
-import type { OnInit } from '@angular/core';
-import log from 'loglevel';
+import { CommonModule } from '@angular/common';
+import { CreateNachnameComponent } from './create-nachname.component';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
-/**
- * Komponente f&uuml;r das Tag <code>hs-details-nachname</code>
- */
-@Component({
-    selector: 'hs-details-nachname',
-    templateUrl: './details-nachname.component.html',
+@NgModule({
+    declarations: [CreateNachnameComponent],
+    exports: [CreateNachnameComponent],
+    imports: [CommonModule, ReactiveFormsModule],
 })
-export class DetailsTitelComponent implements OnInit {
-    @Input()
-    nachname!: string;
-
-    ngOnInit() {
-        log.debug(`DetailsTitelComponent.nachname=${this.nachname}`);
-    }
-}
+export class CreateNachnameModule {}

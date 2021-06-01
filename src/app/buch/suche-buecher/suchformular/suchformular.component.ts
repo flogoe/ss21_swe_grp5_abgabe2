@@ -19,7 +19,7 @@ import { Component, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SucheArtComponent } from './suche-art.component';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
-import { SucheTitelComponent } from './suche-nachname.component';
+import { SucheNachnameComponent } from './suche-nachname.component';
 import { SucheVerlagComponent } from './suche-verlag.component';
 import type { Suchkriterien } from '../../shared';
 import { fadeIn } from '../../../shared';
@@ -44,11 +44,11 @@ export class SuchformularComponent {
     readonly suchkriterien$ = new Subject<Suchkriterien>();
 
     // DI der Child-Komponente, um auf deren Attribut (hier: "nachname") zuzugreifen
-    // @Output in SucheTitelComponent wuerde Subject<> erfordern
+    // @Output in SucheNachnameComponent wuerde Subject<> erfordern
     // https://angular.io/guide/component-interaction#parent-calls-an-viewchild
     // query results available in ngOnInit
-    @ViewChild(SucheTitelComponent, { static: true })
-    private readonly sucheTitelComponent!: SucheTitelComponent;
+    @ViewChild(SucheNachnameComponent, { static: true })
+    private readonly sucheNachnameComponent!: SucheNachnameComponent;
 
     @ViewChild(SucheVerlagComponent, { static: true })
     private readonly sucheVerlagComponent!: SucheVerlagComponent;
@@ -71,7 +71,7 @@ export class SuchformularComponent {
      *         zu konsumieren.
      */
     onSubmit() {
-        const { nachname } = this.sucheTitelComponent;
+        const { nachname } = this.sucheNachnameComponent;
         const { verlag } = this.sucheVerlagComponent;
         const { art } = this.sucheArtComponent;
         const { javascript } = this.sucheSchlagwoerterComponent;
