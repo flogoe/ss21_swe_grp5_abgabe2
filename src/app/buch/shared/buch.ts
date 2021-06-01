@@ -226,10 +226,10 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob im Buchtitel der angegebene Teilstring enthalten ist. Dabei
+     * Abfrage, ob im Nachname der angegebene Teilstring enthalten ist. Dabei
      * wird nicht auf Gross-/Kleinschreibung geachtet.
      * @param titel Zu &uuml;berpr&uuml;fender Teilstring
-     * @return true, falls der Teilstring im Buchtitel enthalten ist. Sonst
+     * @return true, falls der Teilstring im Nachname enthalten ist. Sonst
      *         false.
      */
     containsTitel(titel: string) {
@@ -265,7 +265,7 @@ export class Buch {
 
     /**
      * Aktualisierung der Stammdaten des Buch-Objekts.
-     * @param titel Der neue Buchtitel
+     * @param titel Der neue Nachname
      * @param rating Die neue Bewertung
      * @param art Die neue Buchart (DRUCKAUSGABE oder KINDLE)
      * @param verlag Der neue Verlag
