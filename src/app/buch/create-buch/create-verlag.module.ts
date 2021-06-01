@@ -16,13 +16,13 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { CreateVerlagComponent } from './create-verlag.component';
+import { CreateGeschlechtTypeComponent } from './create-geschlechtType.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [CreateVerlagComponent],
-    exports: [CreateVerlagComponent],
+    declarations: [CreateGeschlechtTypeComponent],
+    exports: [CreateGeschlechtTypeComponent],
     imports: [CommonModule, ReactiveFormsModule],
 })
-export class CreateVerlagModule {}
+export class CreateGeschlechtTypeModule {}

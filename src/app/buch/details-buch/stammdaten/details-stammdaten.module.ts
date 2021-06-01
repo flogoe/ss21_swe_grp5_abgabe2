@@ -25,7 +25,7 @@ import { DetailsPreisModule } from './details-preis.module';
 import { DetailsRabattModule } from './details-rabatt.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
 import { DetailsNachnameModule } from './details-nachname.module';
-import { DetailsVerlagModule } from './details-verlag.module';
+import { DetailsGeschlechtTypeModule } from './details-geschlechtType.module';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -41,7 +41,7 @@ import { NgModule } from '@angular/core';
         DetailsPreisModule,
         DetailsRabattModule,
         DetailsNachnameModule,
-        DetailsVerlagModule,
+        DetailsGeschlechtTypeModule,
     ],
 })
 export class DetailsStammdatenModule {}

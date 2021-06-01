@@ -20,7 +20,7 @@ import log from 'loglevel';
 
 const MAX_RATING = 5;
 
-export type Verlag = 'BAR_VERLAG' | 'FOO_VERLAG';
+export type GeschlechtType = 'MAENNLICH' | 'WEIBLICH' | 'DIVERS';
 
 export type BuchArt = 'DRUCKAUSGABE' | 'KINDLE';
 
@@ -34,7 +34,7 @@ export const ISBN_REGEX = /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d
 export interface BuchShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     nachname: string | undefined;
-    verlag?: Verlag | '';
+    geschlecht?: GeschlechtType | '';
     art: BuchArt;
     preis: number;
     rabatt: number | undefined;
@@ -108,7 +108,7 @@ export class Buch {
         public nachname: string,
         public rating: number | undefined,
         public art: BuchArt,
-        public verlag: Verlag | '' | undefined,
+        public geschlecht: GeschlechtType | '' | undefined,
         datum: string | undefined,
         public preis: number,
         public rabatt: number,
@@ -152,7 +152,7 @@ export class Buch {
             nachname,
             rating,
             art,
-            verlag,
+            geschlecht,
             datum,
             preis,
             rabatt,
@@ -165,7 +165,7 @@ export class Buch {
             nachname ?? 'unbekannt',
             rating,
             art,
-            verlag,
+            geschlecht,
             datum,
             preis,
             rabatt ?? 0,
@@ -200,7 +200,7 @@ export class Buch {
             buchForm.nachname ?? 'unbekannt',
             Number(buchForm.rating),
             buchForm.art,
-            buchForm.verlag,
+            buchForm.geschlecht,
             buchForm.datum,
             buchForm.preis,
             rabatt,
@@ -255,12 +255,12 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob das Buch dem angegebenen Verlag zugeordnet ist.
-     * @param verlag der Name des Verlags
-     * @return true, falls das Buch dem Verlag zugeordnet ist. Sonst false.
+     * Abfrage, ob der Kunde dem angegebenen Geschlecht zugeordnet ist.
+     * @param geschlechtType das Geschlecht
+     * @return true, falls der Kunde dem Geschlecht zugeordnet ist. Sonst false.
      */
-    hasVerlag(verlag: string) {
-        return this.verlag === verlag;
+    hasGeschlechtType(geschlechtType: string) {
+        return this.geschlecht === geschlecht;
     }
 
     /**
@@ -268,7 +268,7 @@ export class Buch {
      * @param nachname Der neue Nachname
      * @param rating Die neue Bewertung
      * @param art Die neue Buchart (DRUCKAUSGABE oder KINDLE)
-     * @param verlag Der neue Verlag
+     * @param geschlecht Das neue Geschlecht
      * @param preis Der neue Preis
      * @param rabatt Der neue Rabatt
      */
@@ -276,7 +276,7 @@ export class Buch {
     updateStammdaten(
         nachname: string,
         art: BuchArt,
-        verlag: Verlag | '' | undefined,
+        geschlecht: GeschlechtType | '' | undefined,
         rating: number | undefined,
         datum: Date | undefined,
         preis: number,
@@ -285,7 +285,7 @@ export class Buch {
     ) {
         this.nachname = nachname;
         this.art = art;
-        this.verlag = verlag;
+        this.geschlecht = geschlecht;
         this.rating = rating;
         /* eslint-disable unicorn/no-new-array */
         this.ratingArray =
@@ -347,7 +347,7 @@ export class Buch {
             nachname: this.nachname,
             rating: this.rating,
             art: this.art,
-            verlag: this.verlag,
+            geschlecht: this.geschlecht,
             datum,
             preis: this.preis,
             rabatt: this.rabatt,

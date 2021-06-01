@@ -22,7 +22,7 @@ import { NgModule } from '@angular/core';
 import { SucheArtModule } from './suche-art.module';
 import { SucheSchlagwoerterModule } from './suche-schlagwoerter.module';
 import { SucheNachnameModule } from './suche-nachname.module';
-import { SucheVerlagModule } from './suche-verlag.module';
+import { SucheGeschlechtTypeModule } from './suche-geschlechtType.module';
 import { SuchformularComponent } from './suchformular.component';
 
 // Ein Modul enthaelt logisch zusammengehoerige Funktionalitaet.
@@ -38,7 +38,7 @@ import { SuchformularComponent } from './suchformular.component';
         SucheArtModule,
         SucheSchlagwoerterModule,
         SucheNachnameModule,
-        SucheVerlagModule,
+        SucheGeschlechtTypeModule,
     ],
 })
 export class SuchformularModule {}

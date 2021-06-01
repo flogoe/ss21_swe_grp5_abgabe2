@@ -33,7 +33,7 @@
           <th>Nr.</th>
           <th>ID</th>
           <th>Nachname</th>
-          <th>Verlag</th>
+          <th>GeschlechtType</th>
           <th>Schlagw&ouml;rter</th>
           <th>
             <span class="visually-hidden">Spalte f&uuml;r Details</span>
@@ -52,9 +52,10 @@
           <td (click)="onClick(b)">{{ b._id }}</td>
           <td (click)="onClick(b)">{{ b.nachname }}</td>
           <td>
-            <span [ngSwitch]="b.verlag">
-              <span *ngSwitchCase="'FOO_VERLAG'">Foo Verlag</span>
-              <span *ngSwitchCase="'BAR_VERLAG'">Bar Verlag</span>
+            <span [ngSwitch]="b.geschlechtType">
+              <span *ngSwitchCase="'MAENNLICH'">M GeschlechtType</span>
+              <span *ngSwitchCase="'WEIBLICH'">W GeschlechtType</span>
+              <span *ngSwitchCase="'DIVERS'">D GeschlechtType</span>
               <span *ngSwitchDefault>unbekannt</span>
             </span>
           </td>

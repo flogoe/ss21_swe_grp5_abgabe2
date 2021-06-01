@@ -22,7 +22,7 @@ import { UpdateIsbnModule } from './update-isbn.module';
 import { UpdateRatingModule } from './update-rating.module';
 import { UpdateStammdatenComponent } from './update-stammdaten.component';
 import { UpdateNachnameModule } from './update-nachname.module';
-import { UpdateVerlagModule } from './update-verlag.module';
+import { UpdateGeschlechtTypeModule } from './update-geschlechtType.module';
 
 @NgModule({
     declarations: [UpdateStammdatenComponent],
@@ -33,7 +33,7 @@ import { UpdateVerlagModule } from './update-verlag.module';
         UpdateIsbnModule,
         UpdateRatingModule,
         UpdateNachnameModule,
-        UpdateVerlagModule,
+        UpdateGeschlechtTypeModule,
     ],
 })
 export class UpdateStammdatenModule {}

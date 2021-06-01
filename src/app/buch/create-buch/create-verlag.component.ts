@@ -22,22 +22,22 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-verlag&gt;, um das Erfassungsformular
+ * Komponente mit dem Tag &lt;hs-create-geschlechtType&gt;, um das Erfassungsformular
  * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
-    selector: 'hs-create-verlag',
-    templateUrl: './create-verlag.component.html',
+    selector: 'hs-create-geschlechtType',
+    templateUrl: './create-geschlechtType.component.html',
 })
-export class CreateVerlagComponent implements OnInit {
+export class CreateGeschlechtTypeComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly verlag = new FormControl(undefined, Validators.required);
+    readonly geschlechtType = new FormControl(undefined, Validators.required);
 
     ngOnInit() {
-        log.debug('CreateVerlagComponent.ngOnInit');
+        log.debug('CreateGeschlechtTypeComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('verlag', this.verlag);
+        this.form.addControl('geschlechtType', this.geschlechtType);
     }
 }

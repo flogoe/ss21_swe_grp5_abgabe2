@@ -17,21 +17,21 @@
 
 import { Component, Input } from '@angular/core';
 import type { OnInit } from '@angular/core';
-import type { Verlag } from '../../shared/buch';
+import type { GeschlechtType } from '../../shared/buch';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-verlag</code>
+ * Komponente f&uuml;r das Tag <code>hs-details-geschlechtType</code>
  */
 @Component({
-    selector: 'hs-details-verlag',
-    templateUrl: './details-verlag.component.html',
+    selector: 'hs-details-geschlechtType',
+    templateUrl: './details-geschlechtType.component.html',
 })
-export class DetailsVerlagComponent implements OnInit {
+export class DetailsGeschlechtTypeComponent implements OnInit {
     @Input()
-    verlag: Verlag | '' | undefined;
+    geschlechtType: GeschlechtType | '' | undefined;
 
     ngOnInit() {
-        log.debug(`DetailsVerlagComponent.verlag=${this.verlag}`);
+        log.debug(`DetailsGeschlechtTypeComponent.geschlechtType=${this.geschlechtType}`);
     }
 }

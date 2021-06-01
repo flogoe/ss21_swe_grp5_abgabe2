@@ -26,7 +26,7 @@ import { CreateRabattModule } from './create-rabatt.module';
 import { CreateRatingModule } from './create-rating.module';
 import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
 import { CreateNachnameModule } from './create-nachname.module';
-import { CreateVerlagModule } from './create-verlag.module';
+import { CreateGeschlechtTypeModule } from './create-geschlechtType.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -51,7 +51,7 @@ import { Title } from '@angular/platform-browser';
         CreateRatingModule,
         CreateSchlagwoerterModule,
         CreateNachnameModule,
-        CreateVerlagModule,
+        CreateGeschlechtTypeModule,
         ErrorMessageModule,
         HttpClientModule,
         ReactiveFormsModule,

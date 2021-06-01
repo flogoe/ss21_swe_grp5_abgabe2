@@ -20,7 +20,7 @@ import { Subject } from 'rxjs';
 import { SucheArtComponent } from './suche-art.component';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
 import { SucheNachnameComponent } from './suche-nachname.component';
-import { SucheVerlagComponent } from './suche-verlag.component';
+import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
 import type { Suchkriterien } from '../../shared';
 import { fadeIn } from '../../../shared';
 import log from 'loglevel';
@@ -50,8 +50,8 @@ export class SuchformularComponent {
     @ViewChild(SucheNachnameComponent, { static: true })
     private readonly sucheNachnameComponent!: SucheNachnameComponent;
 
-    @ViewChild(SucheVerlagComponent, { static: true })
-    private readonly sucheVerlagComponent!: SucheVerlagComponent;
+    @ViewChild(SucheGeschlechtTypeComponent, { static: true })
+    private readonly sucheGeschlechtTypeComponent!: SucheGeschlechtTypeComponent;
 
     @ViewChild(SucheArtComponent, { static: true })
     private readonly sucheArtComponent!: SucheArtComponent;
@@ -72,17 +72,17 @@ export class SuchformularComponent {
      */
     onSubmit() {
         const { nachname } = this.sucheNachnameComponent;
-        const { verlag } = this.sucheVerlagComponent;
+        const { geschlechtType } = this.sucheGeschlechtTypeComponent;
         const { art } = this.sucheArtComponent;
         const { javascript } = this.sucheSchlagwoerterComponent;
         const { typescript } = this.sucheSchlagwoerterComponent;
         log.debug(
-            `SuchformularComponent.onFind(): nachname=${nachname}, verlag=${verlag}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
+            `SuchformularComponent.onFind(): nachname=${nachname}, geschlechtType=${geschlechtType}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
         );
 
         this.suchkriterien$.next({
             nachname,
-            verlag,
+            geschlechtType,
             art,
             schlagwoerter: { javascript, typescript },
         });
