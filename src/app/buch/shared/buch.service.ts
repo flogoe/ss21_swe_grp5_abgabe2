@@ -361,7 +361,8 @@ export class BuchService {
             return httpParams;
         }
 
-        const { nachname, geschlechtType, familienstand, schlagwoerter } = suchkriterien;
+        const { nachname, geschlechtType, familienstand, schlagwoerter } =
+            suchkriterien;
         const { javascript, typescript } = schlagwoerter;
 
         if (nachname !== '') {

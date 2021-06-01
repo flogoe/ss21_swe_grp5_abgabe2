@@ -19,7 +19,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
-import type { GeschlechtType } from '../../shared/buch';
+import type { GeschlechtType } from '../../shared/kunde';
 import log from 'loglevel';
 
 /**

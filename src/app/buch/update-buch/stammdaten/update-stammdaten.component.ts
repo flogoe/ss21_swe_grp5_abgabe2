@@ -72,8 +72,12 @@ export class UpdateStammdatenComponent implements OnInit {
         }
 
         const { nachname }: { nachname: string } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        const { familienstand }: { familienstand: FamilienstandType } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        const { geschlechtType }: { geschlechtType: GeschlechtType | '' | undefined } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const { familienstand }: { familienstand: FamilienstandType } =
+            this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const {
+            geschlechtType,
+        }: { geschlechtType: GeschlechtType | '' | undefined } =
+            this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         const { rating }: { rating: number } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         const { isbn }: { isbn: string } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         // datum, preis und rabatt koennen im Formular nicht geaendert werden

@@ -16,7 +16,7 @@
  */
 
 import { Component } from '@angular/core';
-import type { GeschlechtType } from '../../shared/buch';
+import type { GeschlechtType } from '../../shared/kunde';
 import log from 'loglevel';
 
 /**

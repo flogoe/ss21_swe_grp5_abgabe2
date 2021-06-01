@@ -22,10 +22,15 @@ const MAX_RATING = 5;
 
 export type GeschlechtType = 'MAENNLICH' | 'WEIBLICH' | 'DIVERS';
 
-export type FamilienstandType = 'LEDIG' | 'VERHEIRATET' | 'GESCHIEDEN' | 'VERWITWET';
+export type FamilienstandType =
+    | 'LEDIG'
+    | 'VERHEIRATET'
+    | 'GESCHIEDEN'
+    | 'VERWITWET';
 
 // eslint-disable-next-line max-len
-export const ISBN_REGEX = /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
+export const ISBN_REGEX =
+    /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
 
 /**
  * Gemeinsame Datenfelder unabh&auml;ngig, ob die Buchdaten von einem Server

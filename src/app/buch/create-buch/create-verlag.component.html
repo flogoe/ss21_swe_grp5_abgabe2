@@ -32,7 +32,10 @@
         <option value="DIVERS">D GeschlechtType</option>
       </select>
 
-      <div *ngIf="geschlechtType.invalid && geschlechtType.touched" class="invalid-feedback">
+      <div
+        *ngIf="geschlechtType.invalid && geschlechtType.touched"
+        class="invalid-feedback"
+      >
         <div *ngIf="geschlechtType.errors && geschlechtType.errors.required">
           <i class="material-icons">error</i>
           <span class="ms-1"> Ein GeschlechtType ist erforderlich. </span>

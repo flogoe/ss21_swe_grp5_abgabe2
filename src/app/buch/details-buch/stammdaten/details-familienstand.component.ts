@@ -16,7 +16,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import type { FamilienstandType } from '../../shared/buch';
+import type { FamilienstandType } from '../../shared/kunde';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
@@ -32,6 +32,8 @@ export class DetailsFamilienstandComponent implements OnInit {
     familienstand!: FamilienstandType;
 
     ngOnInit() {
-        log.debug(`DetailsFamilienstandComponent.familienstand=${this.familienstand}`);
+        log.debug(
+            `DetailsFamilienstandComponent.familienstand=${this.familienstand}`,
+        );
     }
 }
