@@ -16,7 +16,7 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { DetailsTitelComponent } from './details-titel.component';
+import { DetailsTitelComponent } from './details-nachname.component';
 import { NgModule } from '@angular/core';
 
 @NgModule({

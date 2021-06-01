@@ -71,7 +71,7 @@ export class UpdateStammdatenComponent implements OnInit {
             return;
         }
 
-        const { titel }: { titel: string } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const { nachname }: { nachname: string } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         const { art }: { art: BuchArt } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         const { verlag }: { verlag: Verlag | '' | undefined } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         const { rating }: { rating: number } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
@@ -79,7 +79,7 @@ export class UpdateStammdatenComponent implements OnInit {
         // datum, preis und rabatt koennen im Formular nicht geaendert werden
         const { datum, preis, rabatt } = this.buch;
         this.buch.updateStammdaten(
-            titel,
+            nachname,
             art,
             verlag,
             rating,

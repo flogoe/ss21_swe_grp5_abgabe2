@@ -19,7 +19,7 @@ import { Component, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SucheArtComponent } from './suche-art.component';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
-import { SucheTitelComponent } from './suche-titel.component';
+import { SucheTitelComponent } from './suche-nachname.component';
 import { SucheVerlagComponent } from './suche-verlag.component';
 import type { Suchkriterien } from '../../shared';
 import { fadeIn } from '../../../shared';
@@ -43,7 +43,7 @@ export class SuchformularComponent {
     @Output()
     readonly suchkriterien$ = new Subject<Suchkriterien>();
 
-    // DI der Child-Komponente, um auf deren Attribut (hier: "titel") zuzugreifen
+    // DI der Child-Komponente, um auf deren Attribut (hier: "nachname") zuzugreifen
     // @Output in SucheTitelComponent wuerde Subject<> erfordern
     // https://angular.io/guide/component-interaction#parent-calls-an-viewchild
     // query results available in ngOnInit
@@ -71,17 +71,17 @@ export class SuchformularComponent {
      *         zu konsumieren.
      */
     onSubmit() {
-        const { titel } = this.sucheTitelComponent;
+        const { nachname } = this.sucheTitelComponent;
         const { verlag } = this.sucheVerlagComponent;
         const { art } = this.sucheArtComponent;
         const { javascript } = this.sucheSchlagwoerterComponent;
         const { typescript } = this.sucheSchlagwoerterComponent;
         log.debug(
-            `SuchformularComponent.onFind(): titel=${titel}, verlag=${verlag}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
+            `SuchformularComponent.onFind(): nachname=${nachname}, verlag=${verlag}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
         );
 
         this.suchkriterien$.next({
-            titel,
+            nachname,
             verlag,
             art,
             schlagwoerter: { javascript, typescript },

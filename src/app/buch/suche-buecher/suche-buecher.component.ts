@@ -108,7 +108,7 @@ export class SucheBuecherComponent implements OnInit {
 
     private handleError(err: FindError) {
         this.suchkriterien = {
-            titel: '',
+            nachname: '',
             verlag: '',
             art: '',
             schlagwoerter: { javascript: false, typescript: false },

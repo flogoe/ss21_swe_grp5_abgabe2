@@ -33,7 +33,7 @@ export const ISBN_REGEX = /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d
  */
 export interface BuchShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
-    titel: string | undefined;
+    nachname: string | undefined;
     verlag?: Verlag | '';
     art: BuchArt;
     preis: number;
@@ -105,7 +105,7 @@ export class Buch {
     // eslint-disable-next-line max-params
     private constructor(
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
-        public titel: string,
+        public nachname: string,
         public rating: number | undefined,
         public art: BuchArt,
         public verlag: Verlag | '' | undefined,
@@ -149,7 +149,7 @@ export class Buch {
         }
 
         const {
-            titel,
+            nachname,
             rating,
             art,
             verlag,
@@ -162,7 +162,7 @@ export class Buch {
         } = buchServer;
         const buch = new Buch(
             id,
-            titel ?? 'unbekannt',
+            nachname ?? 'unbekannt',
             rating,
             art,
             verlag,
@@ -197,7 +197,7 @@ export class Buch {
             buchForm.rabatt === undefined ? 0 : buchForm.rabatt / 100; // eslint-disable-line @typescript-eslint/no-magic-numbers
         const buch = new Buch(
             buchForm._id,
-            buchForm.titel ?? 'unbekannt',
+            buchForm.nachname ?? 'unbekannt',
             Number(buchForm.rating),
             buchForm.art,
             buchForm.verlag,
@@ -228,12 +228,12 @@ export class Buch {
     /**
      * Abfrage, ob im Nachname der angegebene Teilstring enthalten ist. Dabei
      * wird nicht auf Gross-/Kleinschreibung geachtet.
-     * @param titel Zu &uuml;berpr&uuml;fender Teilstring
+     * @param nachname Zu &uuml;berpr&uuml;fender Teilstring
      * @return true, falls der Teilstring im Nachname enthalten ist. Sonst
      *         false.
      */
-    containsTitel(titel: string) {
-        return this.titel.toLowerCase().includes(titel.toLowerCase());
+    containsTitel(nachname: string) {
+        return this.nachname.toLowerCase().includes(nachname.toLowerCase());
     }
 
     /**
@@ -265,7 +265,7 @@ export class Buch {
 
     /**
      * Aktualisierung der Stammdaten des Buch-Objekts.
-     * @param titel Der neue Nachname
+     * @param nachname Der neue Nachname
      * @param rating Die neue Bewertung
      * @param art Die neue Buchart (DRUCKAUSGABE oder KINDLE)
      * @param verlag Der neue Verlag
@@ -274,7 +274,7 @@ export class Buch {
      */
     // eslint-disable-next-line max-params
     updateStammdaten(
-        titel: string,
+        nachname: string,
         art: BuchArt,
         verlag: Verlag | '' | undefined,
         rating: number | undefined,
@@ -283,7 +283,7 @@ export class Buch {
         rabatt: number,
         isbn: string,
     ) {
-        this.titel = titel;
+        this.nachname = nachname;
         this.art = art;
         this.verlag = verlag;
         this.rating = rating;
@@ -344,7 +344,7 @@ export class Buch {
         log.debug(`toJson(): datum=${datum}`);
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
-            titel: this.titel,
+            nachname: this.nachname,
             rating: this.rating,
             art: this.art,
             verlag: this.verlag,

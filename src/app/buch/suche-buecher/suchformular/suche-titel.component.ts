@@ -19,14 +19,14 @@ import { Component } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-titel</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-nachname</code>
  */
 @Component({
-    selector: 'hs-suche-titel',
-    templateUrl: './suche-titel.component.html',
+    selector: 'hs-suche-nachname',
+    templateUrl: './suche-nachname.component.html',
 })
 export class SucheTitelComponent {
-    titel = '';
+    nachname = '';
 
     // title = undefined;
     // title: string | undefined = undefined;

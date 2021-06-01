@@ -25,7 +25,7 @@ import { CreatePreisModule } from './create-preis.module';
 import { CreateRabattModule } from './create-rabatt.module';
 import { CreateRatingModule } from './create-rating.module';
 import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
-import { CreateTitelModule } from './create-titel.module';
+import { CreateTitelModule } from './create-nachname.module';
 import { CreateVerlagModule } from './create-verlag.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';

@@ -22,23 +22,23 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-titel</code>
+ * Komponente f&uuml;r das Tag <code>hs-update-nachname</code>
  */
 @Component({
-    selector: 'hs-update-titel',
-    templateUrl: './update-titel.component.html',
+    selector: 'hs-update-nachname',
+    templateUrl: './update-nachname.component.html',
 })
 export class UpdateTitelComponent implements OnInit {
     private static readonly MIN_LENGTH = 2;
 
-    // <hs-update-titel [form]="form" [currentValue]="...">
+    // <hs-update-nachname [form]="form" [currentValue]="...">
     @Input()
     form!: FormGroup;
 
     @Input()
     currentValue!: string;
 
-    titel!: FormControl;
+    nachname!: FormControl;
 
     ngOnInit() {
         log.debug(
@@ -46,11 +46,11 @@ export class UpdateTitelComponent implements OnInit {
             this.currentValue,
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.titel = new FormControl(this.currentValue, [
+        this.nachname = new FormControl(this.currentValue, [
             Validators.required,
             Validators.minLength(UpdateTitelComponent.MIN_LENGTH),
             Validators.pattern(/^\w/u),
         ]);
-        this.form.addControl('titel', this.titel);
+        this.form.addControl('nachname', this.nachname);
     }
 }

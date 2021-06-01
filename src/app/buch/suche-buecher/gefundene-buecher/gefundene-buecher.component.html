@@ -50,7 +50,7 @@
         <tr *ngFor="let b of buecher; index as i" [@easeOut]="'in'">
           <td (click)="onClick(b)">{{ i + 1 }}</td>
           <td (click)="onClick(b)">{{ b._id }}</td>
-          <td (click)="onClick(b)">{{ b.titel }}</td>
+          <td (click)="onClick(b)">{{ b.nachname }}</td>
           <td>
             <span [ngSwitch]="b.verlag">
               <span *ngSwitchCase="'FOO_VERLAG'">Foo Verlag</span>

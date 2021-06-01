@@ -16,7 +16,7 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { CreateTitelComponent } from './create-titel.component';
+import { CreateTitelComponent } from './create-nachname.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 

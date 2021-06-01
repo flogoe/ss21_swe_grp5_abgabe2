@@ -35,7 +35,7 @@ import log from 'loglevel';
 import { of } from 'rxjs';
 
 export interface Suchkriterien {
-    titel: string;
+    nachname: string;
     verlag: Verlag | '';
     art: BuchArt | '';
     schlagwoerter: { javascript: boolean; typescript: boolean };
@@ -361,11 +361,11 @@ export class BuchService {
             return httpParams;
         }
 
-        const { titel, verlag, art, schlagwoerter } = suchkriterien;
+        const { nachname, verlag, art, schlagwoerter } = suchkriterien;
         const { javascript, typescript } = schlagwoerter;
 
-        if (titel !== '') {
-            httpParams = httpParams.set('titel', titel);
+        if (nachname !== '') {
+            httpParams = httpParams.set('nachname', nachname);
         }
         if (art !== '') {
             httpParams = httpParams.set('art', art);

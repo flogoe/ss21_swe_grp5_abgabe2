@@ -17,7 +17,7 @@
 
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { SucheTitelComponent } from './suche-titel.component';
+import { SucheTitelComponent } from './suche-nachname.component';
 
 @NgModule({
     declarations: [SucheTitelComponent],

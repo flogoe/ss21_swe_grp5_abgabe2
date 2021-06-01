@@ -24,7 +24,7 @@ import { DetailsLieferbarModule } from './details-lieferbar.module';
 import { DetailsPreisModule } from './details-preis.module';
 import { DetailsRabattModule } from './details-rabatt.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
-import { DetailsTitelModule } from './details-titel.module';
+import { DetailsTitelModule } from './details-nachname.module';
 import { DetailsVerlagModule } from './details-verlag.module';
 import { NgModule } from '@angular/core';
 

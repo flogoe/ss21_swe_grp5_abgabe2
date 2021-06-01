@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { UpdateTitelComponent } from './update-titel.component';
+import { UpdateTitelComponent } from './update-nachname.component';
 
 @NgModule({
     declarations: [UpdateTitelComponent],

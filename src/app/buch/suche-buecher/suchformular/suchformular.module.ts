@@ -21,7 +21,7 @@ import { NgModule } from '@angular/core';
 
 import { SucheArtModule } from './suche-art.module';
 import { SucheSchlagwoerterModule } from './suche-schlagwoerter.module';
-import { SucheTitelModule } from './suche-titel.module';
+import { SucheTitelModule } from './suche-nachname.module';
 import { SucheVerlagModule } from './suche-verlag.module';
 import { SuchformularComponent } from './suchformular.component';
 
