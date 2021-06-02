@@ -1,0 +1,12 @@
+:host {
+  background: greenyellow;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+mat-form-field {
+  margin-left: 10px;
+  margin-right: 10px;
+}

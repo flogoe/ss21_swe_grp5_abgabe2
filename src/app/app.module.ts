@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BuchModule } from './buch/buch.module';
 import { FooterModule } from './layout/footer/footer.module';
+import { FormsModule } from '@angular/forms';
 import { HeaderModule } from './layout/header/header.module';
 import { HomeModule } from './home/home.module';
 import { MainModule } from './layout/main/main.module';
@@ -95,7 +96,6 @@ import { environment } from '../environments/environment';
         HeaderModule,
         HomeModule,
         MainModule,
-        MatCheckboxModule,
         MatCheckboxModule,
         MatButtonModule,
         MatInputModule,
