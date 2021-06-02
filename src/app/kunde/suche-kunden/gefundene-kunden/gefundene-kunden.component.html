@@ -52,7 +52,7 @@
           <td (click)="onClick(b)">{{ b._id }}</td>
           <td (click)="onClick(b)">{{ b.nachname }}</td>
           <td>
-            <span [ngSwitch]="b.geschlechtType">
+            <span [ngSwitch]="b.geschlecht">
               <span *ngSwitchCase="'MAENNLICH'">M GeschlechtType</span>
               <span *ngSwitchCase="'WEIBLICH'">W GeschlechtType</span>
               <span *ngSwitchCase="'DIVERS'">D GeschlechtType</span>
