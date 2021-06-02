@@ -19,5 +19,5 @@ const shelljs = require('shelljs'); // eslint-disable-line @typescript-eslint/no
 
 const namespace = 'acme';
 shelljs.exec(
-    `kubectl port-forward service/buchweb 4200:80 --namespace ${namespace}`,
+    `kubectl port-forward service/kundeweb 4200:80 --namespace ${namespace}`,
 );

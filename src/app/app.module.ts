@@ -23,11 +23,11 @@ import {
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BuchModule } from './buch/buch.module';
 import { FooterModule } from './layout/footer/footer.module';
 import { FormsModule } from '@angular/forms';
 import { HeaderModule } from './layout/header/header.module';
 import { HomeModule } from './home/home.module';
+import { KundeModule } from './kunde/kunde.module';
 import { MainModule } from './layout/main/main.module';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -91,7 +91,7 @@ import { environment } from '../environments/environment';
         AppRoutingModule,
         // BrowserAnimationsModule importiert BrowserModul
         BrowserAnimationsModule,
-        BuchModule,
+        KundeModule,
         FooterModule,
         HeaderModule,
         HomeModule,

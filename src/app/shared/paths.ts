@@ -30,6 +30,6 @@ export const BASE_PATH_REST = '/rest';
 // export const BASE_PATH_REST = 'https://localhost:3000/api';
 
 /**
- * Pfad beim REST-Server fuer buecher
+ * Pfad beim REST-Server fuer kunden
  */
-export const BUECHER_PATH_REST = 'buecher';
+export const KUNDEN_PATH_REST = 'kunden';

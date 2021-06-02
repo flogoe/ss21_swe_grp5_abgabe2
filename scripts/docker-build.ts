@@ -18,7 +18,7 @@
 const shelljs = require('shelljs'); // eslint-disable-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment, unicorn/prefer-module
 
 const dockerAccount = 'juergenzimmermann';
-const imageName = 'buchweb';
+const imageName = 'kundeweb';
 const imageTag = '1.0.0';
 
 const image = `docker.io/${dockerAccount}/${imageName}:${imageTag}`;
