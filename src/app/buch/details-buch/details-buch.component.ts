@@ -17,6 +17,7 @@
 
 import { ActivatedRoute, Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { first, tap } from 'rxjs/operators';
+
 import { AuthService } from '../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import type { Buch } from '../shared';
 import { BuchService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
@@ -101,8 +102,8 @@ export class DetailsBuchComponent implements OnInit {
         this.buch = result;
         this.errorMsg = undefined;
 
-        const titel = `Details ${this.buch._id}`;
-        this.titleService.setTitle(titel);
+        const nachname = `Details ${this.buch._id}`;
+        this.titleService.setTitle(nachname);
     }
 
     private handleError(err: FindError) {

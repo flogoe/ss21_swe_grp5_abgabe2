@@ -17,11 +17,11 @@
 
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { SucheVerlagComponent } from './suche-verlag.component';
+import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
 
 @NgModule({
-    declarations: [SucheVerlagComponent],
-    exports: [SucheVerlagComponent],
+    declarations: [SucheGeschlechtTypeComponent],
+    exports: [SucheGeschlechtTypeComponent],
     imports: [FormsModule],
 })
-export class SucheVerlagModule {}
+export class SucheGeschlechtTypeModule {}

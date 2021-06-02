@@ -16,12 +16,13 @@
 -->
 
 <div class="row">
-  <label class="col col-2 col-form-label gy-3">Verlag</label>
+  <label class="col col-2 col-form-label gy-3">GeschlechtType</label>
 
   <div class="col col-10 gy-3" [formGroup]="form">
-    <select class="form-select" formControlName="verlag">
-      <option value="FOO_VERLAG">Foo Verlag</option>
-      <option value="BAR_VERLAG">Bar Verlag</option>
+    <select class="form-select" formControlName="geschlechtType">
+      <option value="MAENNLICH">M GeschlechtType</option>
+      <option value="WEIBLICH">W GeschlechtType</option>
+      <option value="DIVERS">D GeschlechtType</option>
     </select>
   </div>
 </div>

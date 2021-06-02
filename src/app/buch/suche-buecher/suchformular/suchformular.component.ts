@@ -16,11 +16,12 @@
  */
 
 import { Component, Output, ViewChild } from '@angular/core';
+
 import { Subject } from 'rxjs';
-import { SucheArtComponent } from './suche-art.component';
+import { SucheFamilienstandComponent } from './suche-familienstand.component';
+import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
+import { SucheNachnameComponent } from './suche-nachname.component';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
-import { SucheTitelComponent } from './suche-titel.component';
-import { SucheVerlagComponent } from './suche-verlag.component';
 import type { Suchkriterien } from '../../shared';
 import { fadeIn } from '../../../shared';
 import log from 'loglevel';
@@ -43,18 +44,18 @@ export class SuchformularComponent {
     @Output()
     readonly suchkriterien$ = new Subject<Suchkriterien>();
 
-    // DI der Child-Komponente, um auf deren Attribut (hier: "titel") zuzugreifen
-    // @Output in SucheTitelComponent wuerde Subject<> erfordern
+    // DI der Child-Komponente, um auf deren Attribut (hier: "nachname") zuzugreifen
+    // @Output in SucheNachnameComponent wuerde Subject<> erfordern
     // https://angular.io/guide/component-interaction#parent-calls-an-viewchild
     // query results available in ngOnInit
-    @ViewChild(SucheTitelComponent, { static: true })
-    private readonly sucheTitelComponent!: SucheTitelComponent;
+    @ViewChild(SucheNachnameComponent, { static: true })
+    private readonly sucheNachnameComponent!: SucheNachnameComponent;
 
-    @ViewChild(SucheVerlagComponent, { static: true })
-    private readonly sucheVerlagComponent!: SucheVerlagComponent;
+    @ViewChild(SucheGeschlechtTypeComponent, { static: true })
+    private readonly sucheGeschlechtTypeComponent!: SucheGeschlechtTypeComponent;
 
-    @ViewChild(SucheArtComponent, { static: true })
-    private readonly sucheArtComponent!: SucheArtComponent;
+    @ViewChild(SucheFamilienstandComponent, { static: true })
+    private readonly sucheFamilienstandComponent!: SucheFamilienstandComponent;
 
     @ViewChild(SucheSchlagwoerterComponent, { static: true })
     private readonly sucheSchlagwoerterComponent!: SucheSchlagwoerterComponent;
@@ -71,19 +72,19 @@ export class SuchformularComponent {
      *         zu konsumieren.
      */
     onSubmit() {
-        const { titel } = this.sucheTitelComponent;
-        const { verlag } = this.sucheVerlagComponent;
-        const { art } = this.sucheArtComponent;
+        const { nachname } = this.sucheNachnameComponent;
+        const { geschlechtType } = this.sucheGeschlechtTypeComponent;
+        const { familienstand } = this.sucheFamilienstandComponent;
         const { javascript } = this.sucheSchlagwoerterComponent;
         const { typescript } = this.sucheSchlagwoerterComponent;
         log.debug(
-            `SuchformularComponent.onFind(): titel=${titel}, verlag=${verlag}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
+            `SuchformularComponent.onFind(): nachname=${nachname}, geschlechtType=${geschlechtType}, familienstand=${familienstand}, javascript=${javascript}, typescript=${typescript}`,
         );
 
         this.suchkriterien$.next({
-            titel,
-            verlag,
-            art,
+            nachname,
+            geschlechtType,
+            familienstand,
             schlagwoerter: { javascript, typescript },
         });
 

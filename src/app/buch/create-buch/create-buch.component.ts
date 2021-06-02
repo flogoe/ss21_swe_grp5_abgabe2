@@ -18,7 +18,8 @@
 import { Buch, BuchService, SaveError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { first, tap } from 'rxjs/operators';
-import type { BuchForm } from './../shared/buch';
+
+import type { BuchForm } from '../shared/kunde';
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { HOME_PATH } from '../../shared';

@@ -16,16 +16,16 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { DetailsArtModule } from './details-art.module';
 import { DetailsBewertungModule } from './details-bewertung.module';
 import { DetailsDatumModule } from './details-datum.module';
+import { DetailsFamilienstandModule } from './details-familienstand.module';
+import { DetailsGeschlechtTypeModule } from './details-geschlechtType.module';
 import { DetailsIsbnModule } from './details-isbn.module';
-import { DetailsLieferbarModule } from './details-lieferbar.module';
+import { DetailsNachnameModule } from './details-nachname.module';
+import { DetailsNewsletterModule } from './details-newsletter.module';
 import { DetailsPreisModule } from './details-preis.module';
 import { DetailsRabattModule } from './details-rabatt.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
-import { DetailsTitelModule } from './details-titel.module';
-import { DetailsVerlagModule } from './details-verlag.module';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -33,15 +33,15 @@ import { NgModule } from '@angular/core';
     exports: [DetailsStammdatenComponent],
     imports: [
         CommonModule,
-        DetailsArtModule,
+        DetailsFamilienstandModule,
         DetailsBewertungModule,
         DetailsDatumModule,
         DetailsIsbnModule,
-        DetailsLieferbarModule,
+        DetailsNewsletterModule,
         DetailsPreisModule,
         DetailsRabattModule,
-        DetailsTitelModule,
-        DetailsVerlagModule,
+        DetailsNachnameModule,
+        DetailsGeschlechtTypeModule,
     ],
 })
 export class DetailsStammdatenModule {}

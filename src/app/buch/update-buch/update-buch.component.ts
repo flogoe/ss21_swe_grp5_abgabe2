@@ -17,6 +17,7 @@
 
 import { BuchService, FindError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { first, tap } from 'rxjs/operators';
+
 import { ActivatedRoute } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import type { Buch } from '../shared';
 import { Component } from '@angular/core';
@@ -72,8 +73,8 @@ export class UpdateBuchComponent implements OnInit {
         this.buch = result;
         this.errorMsg = undefined;
 
-        const titel = `Aktualisieren ${this.buch._id}`;
-        this.titleService.setTitle(titel);
+        const nachname = `Aktualisieren ${this.buch._id}`;
+        this.titleService.setTitle(nachname);
     }
 
     private handleError(err: FindError) {

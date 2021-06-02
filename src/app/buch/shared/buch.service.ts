@@ -17,7 +17,7 @@
  */
 
 import { BASE_PATH_REST, BUECHER_PATH_REST } from '../../shared';
-import type { BuchArt, BuchServer, Verlag } from './buch';
+import type { BuchServer, FamilienstandType, GeschlechtType } from './buch';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
@@ -27,6 +27,7 @@ import {
     HttpResponse,
 } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
+
 import { Buch } from './buch';
 import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -35,9 +36,9 @@ import log from 'loglevel';
 import { of } from 'rxjs';
 
 export interface Suchkriterien {
-    titel: string;
-    verlag: Verlag | '';
-    art: BuchArt | '';
+    nachname: string;
+    geschlechtType: GeschlechtType | '';
+    familienstand: FamilienstandType | '';
     schlagwoerter: { javascript: boolean; typescript: boolean };
 }
 
@@ -361,17 +362,18 @@ export class BuchService {
             return httpParams;
         }
 
-        const { titel, verlag, art, schlagwoerter } = suchkriterien;
+        const { nachname, geschlechtType, familienstand, schlagwoerter } =
+            suchkriterien;
         const { javascript, typescript } = schlagwoerter;
 
-        if (titel !== '') {
-            httpParams = httpParams.set('titel', titel);
+        if (nachname !== '') {
+            httpParams = httpParams.set('nachname', nachname);
         }
-        if (art !== '') {
-            httpParams = httpParams.set('art', art);
+        if (familienstand !== '') {
+            httpParams = httpParams.set('familienstand', familienstand);
         }
-        if (verlag !== '') {
-            httpParams = httpParams.set('verlag', verlag);
+        if (geschlechtType !== '') {
+            httpParams = httpParams.set('geschlechtType', geschlechtType);
         }
         if (javascript) {
             httpParams = httpParams.set('javascript', 'true');

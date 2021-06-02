@@ -16,20 +16,20 @@
  */
 
 import { Component } from '@angular/core';
-import type { Verlag } from '../../shared/buch';
+import type { GeschlechtType } from '../../shared/kunde';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-verlag</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-geschlechtType</code>
  */
 @Component({
-    selector: 'hs-suche-verlag',
-    templateUrl: './suche-verlag.component.html',
+    selector: 'hs-suche-geschlechtType',
+    templateUrl: './suche-geschlechtType.component.html',
 })
-export class SucheVerlagComponent {
-    verlag: Verlag | '' = '';
+export class SucheGeschlechtTypeComponent {
+    geschlechtType: GeschlechtType | '' = '';
 
     constructor() {
-        log.debug('SucheVerlagComponent.constructor()');
+        log.debug('SucheGeschlechtTypeComponent.constructor()');
     }
 }

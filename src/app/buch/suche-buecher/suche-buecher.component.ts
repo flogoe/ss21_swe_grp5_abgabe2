@@ -18,6 +18,7 @@
 import type { Buch, Suchkriterien } from '../shared';
 import { BuchService, FindError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { first, tap } from 'rxjs/operators';
+
 import { Component } from '@angular/core';
 import { HttpStatusCode } from '@angular/common/http';
 import type { OnInit } from '@angular/core';
@@ -97,7 +98,7 @@ export class SucheBuecherComponent implements OnInit {
         this.waiting = false;
 
         if (result instanceof FindError) {
-            this.handleFindError(result);
+            this.handleError(result);
             return;
         }
 
@@ -106,22 +107,19 @@ export class SucheBuecherComponent implements OnInit {
         this.errorMsg = undefined;
     }
 
-    private handleFindError(err: FindError) {
-        const { statuscode } = err;
-        log.debug(
-            `SucheBuecherComponent.handleFindError(): statuscode=${statuscode}`,
-        );
-
+    private handleError(err: FindError) {
         this.suchkriterien = {
-            titel: '',
-            verlag: '',
-            art: '',
+            nachname: '',
+            geschlechtType: '',
+            familienstand: '',
             schlagwoerter: { javascript: false, typescript: false },
         };
-
         this.buecher = [];
-        this.waiting = false;
 
+        const { statuscode } = err;
+        log.debug(
+            `SucheBuecherComponent.handleError(): statuscode=${statuscode}`,
+        );
         this.setErrorMsg(statuscode);
     }
 
