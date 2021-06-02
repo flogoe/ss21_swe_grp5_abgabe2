@@ -140,10 +140,10 @@ export class AppComponent {
             log.warn('ES 2021 wird durch den Webbrowser NICHT unterstuetzt.');
             try {
                 eval('class Foo { #bar; }'); // eslint-disable-line no-eval
-            } catch {
                 log.warn(
                     'ES 2020 wird durch den Webbrowser NICHT unterstuetzt.',
                 );
+            } catch {
                 try {
                     eval('[0,[1]].flat();'); // eslint-disable-line no-eval
                 } catch {

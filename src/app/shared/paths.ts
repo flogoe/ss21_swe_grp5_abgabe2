@@ -24,14 +24,10 @@ export const HOME_PATH = 'home';
  * Basis-Pfad fuer den REST-Server wahlweise via:
  * 1) Reverse Proxy oder
  * 2) CORS bei Kubernetes, wozu Port-Forwarding fuer den Web Service
- *    erforderlich ist, der auch in K8s mit TLS läuft.
+ *    erforderlich ist.
  */
-const BASE_PATH_PROXY = '/rest';
-// const BASE_PATH_CORS = 'http://localhost:3000/api';
-// const BASE_PATH_CORS = 'http://localhost:8080/api';
-
-export const BASE_PATH_REST = BASE_PATH_PROXY;
-// export const BASE_PATH_REST = BASE_PATH_CORS;
+export const BASE_PATH_REST = '/rest';
+// export const BASE_PATH_REST = 'https://localhost:3000/api';
 
 /**
  * Pfad beim REST-Server fuer buecher
