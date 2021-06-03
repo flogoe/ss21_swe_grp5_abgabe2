@@ -26,6 +26,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-art',
     templateUrl: './suche-art.component.html',
+    styleUrls: ['./suche-art.component.scss'],
     animations: [fadeIn],
 })
 export class SucheArtComponent {

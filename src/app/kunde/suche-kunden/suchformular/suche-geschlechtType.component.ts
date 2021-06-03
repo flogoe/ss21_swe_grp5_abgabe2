@@ -25,6 +25,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-geschlechtType',
     templateUrl: './suche-geschlechtType.component.html',
+    styleUrls: ['./suche-geschlechtType.component.scss'],
 })
 export class SucheGeschlechtTypeComponent {
     geschlechtType: GeschlechtType | '' = '';
