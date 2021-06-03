@@ -17,6 +17,7 @@
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { SucheFamilienstandModule } from './suche-familienstand.module';
 import { SucheGeschlechtTypeModule } from './suche-geschlechtType.module';
@@ -38,6 +39,7 @@ import { SuchformularComponent } from './suchformular.component';
         SucheSchlagwoerterModule,
         SucheNachnameModule,
         SucheGeschlechtTypeModule,
+        MatToolbarModule,
     ],
 })
 export class SuchformularModule {}
