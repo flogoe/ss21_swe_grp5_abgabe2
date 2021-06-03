@@ -16,12 +16,22 @@
  */
 
 import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
 
 @NgModule({
     declarations: [SucheGeschlechtTypeComponent],
     exports: [SucheGeschlechtTypeComponent],
-    imports: [FormsModule],
+    imports: [
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatOptionModule,
+    ],
 })
 export class SucheGeschlechtTypeModule {}

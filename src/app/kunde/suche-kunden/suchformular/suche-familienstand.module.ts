@@ -16,12 +16,13 @@
  */
 
 import { FormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
 import { NgModule } from '@angular/core';
 import { SucheFamilienstandComponent } from './suche-familienstand.component';
 
 @NgModule({
     declarations: [SucheFamilienstandComponent],
     exports: [SucheFamilienstandComponent],
-    imports: [FormsModule],
+    imports: [FormsModule, MatRadioModule],
 })
 export class SucheFamilienstandModule {}

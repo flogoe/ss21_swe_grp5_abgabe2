@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<section class="card" [@fadeIn]="'in'">
+<section [@fadeIn]="'in'">
   <mat-toolbar color="accent">
     <i class="material-icons">search </i
     ><span> Eingabe der Suchkriterien </span>
@@ -28,23 +28,16 @@
       <hs-suche-schlagwoerter></hs-suche-schlagwoerter>
 
       <div class="row">
-        <div class="col offset-2 gy-3">
+        <div>
           <i class="material-icons">info</i>
-          <span class="ms-1">
-            Hinweis: Keine Eingabe liefert alle B&uuml;cher
-          </span>
+          <span> Hinweis: Keine Eingabe liefert alle B&uuml;cher </span>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col offset-2 gy-3">
-          <!-- default: type="submit" -->
-          <button type="submit" class="btn btn-primary">
-            <i class="material-icons">search</i>
-            <span class="ms-1">Suchen</span>
-          </button>
-        </div>
-      </div>
+      <button mat-raised-button color="accent" type="submit">
+        <i class="material-icons">search</i>
+        <span>Suchen</span>
+      </button>
     </form>
   </div>
 </section>

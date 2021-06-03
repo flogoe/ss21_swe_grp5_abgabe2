@@ -1,42 +1,5 @@
-<!--
-    Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-<!--
-    Bootstrap:
-        (xs):    -  480px ("extra small")
-        sm:      -  767px ("small")
-        md:  768 -  991px ("medium")
-        lg:  992 - 1199px ("large")
-        xl: 1200 px       ("extra large")
-    CSS-Klassen von Bootstrap:
-        card-..., form-..., row, btn, bg-primary, ...
-        https://v5.getbootstrap.com/docs/5.0/forms
--->
-
-<div class="row">
-  <mat-form-field appearance="legacy">
-    <mat-label>Legacy form field</mat-label>
-    <input
-      matInput
-      id="nachnameInput"
-      placeholder="Den Nachnamen oder einen Teil davon eingeben"
-      [(ngModel)]="nachname"
-      name="nachname"
-    />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</div>
+<h3>Nachname</h3>
+<mat-form-field>
+  <mat-label>Nachname</mat-label>
+  <input matInput id="nachnameInput" [(ngModel)]="nachname" name="nachname" />
+</mat-form-field>

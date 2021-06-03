@@ -82,12 +82,12 @@ export class SuchformularComponent {
             `SuchformularComponent.onFind(): nachname=${nachname}, geschlechtType=${geschlechtType}, familienstand=${familienstand}, javascript=${javascript}, typescript=${typescript}`,
         );
 
-        this.suchkriterien$.next({
-            nachname,
-            geschlechtType,
-            familienstand,
-            schlagwoerter: { javascript, typescript },
-        });
+        // this.suchkriterien$.next({
+        //     nachname,
+        //     geschlechtType,
+        //     familienstand,
+        //     schlagwoerter: { javascript, typescript },
+        // });
 
         // Inspektion der Komponente mit dem Tag-Namen "app" im Debugger
         // Voraussetzung: globale Variable ng deklarieren (s.o.)
