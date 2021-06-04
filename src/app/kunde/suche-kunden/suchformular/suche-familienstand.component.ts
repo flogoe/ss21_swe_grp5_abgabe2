@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import type { FamilienstandType } from '../../shared/kunde';
 import { Component } from '@angular/core';
+import type { FamilienstandType } from '../../shared/kunde';
 import { fadeIn } from '../../../shared';
 import log from 'loglevel';
 
@@ -26,6 +26,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-familienstand',
     templateUrl: './suche-familienstand.component.html',
+    styleUrls: ['./suche-familienstand.component.scss'],
     animations: [fadeIn],
 })
 export class SucheFamilienstandComponent {

@@ -24,6 +24,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-titel',
     templateUrl: './suche-titel.component.html',
+    styleUrls: ['./suche-titel.component.scss'],
 })
 export class SucheTitelComponent {
     titel = '';

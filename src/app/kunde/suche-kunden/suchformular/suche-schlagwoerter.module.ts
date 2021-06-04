@@ -16,12 +16,13 @@
  */
 
 import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgModule } from '@angular/core';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
 
 @NgModule({
     declarations: [SucheSchlagwoerterComponent],
     exports: [SucheSchlagwoerterComponent],
-    imports: [FormsModule],
+    imports: [FormsModule, MatCheckboxModule],
 })
 export class SucheSchlagwoerterModule {}

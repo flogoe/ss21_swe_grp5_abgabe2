@@ -24,6 +24,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suche-schlagwoerter',
     templateUrl: './suche-schlagwoerter.component.html',
+    styleUrls: ['./suche-schlagwoerter.component.scss'],
 })
 export class SucheSchlagwoerterComponent {
     javascript = false;

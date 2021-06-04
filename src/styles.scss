@@ -14,6 +14,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 @import './app/sass/colors';
+@import '~@angular/material/theming';
+
+@include mat-core();
 
 $gradient: url('/assets/img/gradientBlueSky.png');
 
@@ -29,6 +32,7 @@ $gradient: url('/assets/img/gradientBlueSky.png');
 html,
 body {
   height: 100%;
+  background: #fafafa;
 }
 body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;

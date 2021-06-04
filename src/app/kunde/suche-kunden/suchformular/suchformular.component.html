@@ -14,70 +14,30 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<section class="card" [@fadeIn]="'in'">
-  <div class="card-header bg-primary">
-    <i class="material-icons">search</i>
-    <span class="ms-1 fw-bold"> Eingabe der Suchkriterien </span>
-  </div>
-  <div class="card-body">
-    <!--
-            Bootstrap:
-                (xs):    -  480px ("extra small")
-                sm:      -  767px ("small")
-                md:  768 -  991px ("medium")
-                lg:  992 - 1199px ("large")
-                xl: 1200 px       ("extra large")
-            CSS-Klassen von Bootstrap:
-                card-..., form-..., row, btn, bg-primary, ...
-                https://v5.getbootstrap.com/docs/5.0/forms
-        -->
+<section [@fadeIn]="'in'">
+  <mat-toolbar color="accent">
+    <i class="material-icons">search </i
+    ><span> Eingabe der Suchkriterien </span>
+  </mat-toolbar>
 
-    <!--
-            Formulare zur Interaktion mit dem Endbenutzer:
-            * Daten werden modifiziert, z.B. in Suchfelder oder
-              Erfassungs-/Aenderungsformularen
-            * Aenderungen wirken sich auf Teile der Seite aus:
-              Ergebnisse/Fehler anzeigen, Navigationsmoeglichkeiten
-            * Eingaben werden validiert
-
-            Template-Syntax:, z.B. (submit)="onFind()" fuer Output (= Event Binding)
-            d.h. Angular registriert einen "DOM Event Listener" fuer das Ereignis
-            "submit" und ruft die Methode onFind() der Komponentenklasse,
-            wenn das Ereignis eintritt.
-
-            Definition von Attributnamen gemaess HTML: Attribute names must
-            consist of one or more characters other than the space characters,
-            U+0000 NULL, """, "'", ">", "/", "=", the control characters,
-            and any characters that are not defined by Unicode.
-        -->
-
+  <div class="contentWrapper">
     <form (submit)="onSubmit()" role="form">
       <hs-suche-nachname></hs-suche-nachname>
       <hs-suche-geschlechtType></hs-suche-geschlechtType>
       <hs-suche-familienstand></hs-suche-familienstand>
       <hs-suche-schlagwoerter></hs-suche-schlagwoerter>
 
-      <!-- vertikale und horizontale "Gutter" als Abstaende ("gaps") zwischen den Spalten -->
-      <!-- https://v5.getbootstrap.com/docs/5.0/layout/gutters/#horizontal-gutters -->
       <div class="row">
-        <div class="col offset-2 gy-3">
+        <div>
           <i class="material-icons">info</i>
-          <!-- margin left -->
-          <span class="ms-1">
-            Hinweis: Keine Eingabe liefert alle B&uuml;cher
-          </span>
+          <span> Hinweis: Keine Eingabe liefert alle B&uuml;cher </span>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col offset-2 gy-3">
-          <!-- default: type="submit" -->
-          <button type="submit" class="btn btn-primary">
-            <i class="material-icons">search</i>
-            <span class="ms-1">Suchen</span>
-          </button>
-        </div>
-      </div>
+      <button mat-raised-button color="accent" type="submit">
+        <i class="material-icons">search</i>
+        <span>Suchen</span>
+      </button>
     </form>
   </div>
 </section>

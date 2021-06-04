@@ -1,45 +1,7 @@
-<!--
-    Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-<div class="row">
-  <label class="col col-2 col-form-label gy-3">Familienstand</label>
-  <div class="col col-10 gy-3">
-    <div class="form-check">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="ledigInput"
-        [(ngModel)]="familienstand"
-        name="familienstand"
-        value="LEDIG"
-      />
-      <!-- margin left -->
-      <label class="radio-inline ms-1" for="ledigInput"> Ledig </label>
-    </div>
-
-    <div class="form-check">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="kindleInput"
-        [(ngModel)]="familienstand"
-        name="familienstand"
-        value="VERHEIRATET"
-      />
-      <label class="radio-inline ms-1" for="kindleInput"> Verheiratet </label>
-    </div>
-  </div>
-</div>
+<h3>Familienstand</h3>
+<mat-radio-group aria-label="Select an option" [(ngModel)]="familienstand">
+  <mat-radio-button name="ledig" value="LEDIG">ledig</mat-radio-button>
+  <mat-radio-button name="verheiratet" value="VERHEIRATET"
+    >verheiratet</mat-radio-button
+  >
+</mat-radio-group>
