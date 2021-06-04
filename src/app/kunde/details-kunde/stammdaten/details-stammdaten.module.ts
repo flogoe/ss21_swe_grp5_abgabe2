@@ -16,15 +16,11 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { DetailsBewertungModule } from './details-bewertung.module';
 import { DetailsDatumModule } from './details-datum.module';
 import { DetailsFamilienstandModule } from './details-familienstand.module';
 import { DetailsGeschlechtTypeModule } from './details-geschlechtType.module';
-import { DetailsIsbnModule } from './details-isbn.module';
 import { DetailsNachnameModule } from './details-nachname.module';
 import { DetailsNewsletterModule } from './details-newsletter.module';
-import { DetailsPreisModule } from './details-preis.module';
-import { DetailsRabattModule } from './details-rabatt.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
 import { NgModule } from '@angular/core';
 
@@ -34,12 +30,8 @@ import { NgModule } from '@angular/core';
     imports: [
         CommonModule,
         DetailsFamilienstandModule,
-        DetailsBewertungModule,
         DetailsDatumModule,
-        DetailsIsbnModule,
         DetailsNewsletterModule,
-        DetailsPreisModule,
-        DetailsRabattModule,
         DetailsNachnameModule,
         DetailsGeschlechtTypeModule,
     ],

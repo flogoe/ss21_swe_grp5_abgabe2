@@ -24,6 +24,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-details-breadcrumbs',
     templateUrl: './details-breadcrumbs.component.html',
+    styleUrls: ['./details-breadcrumbs.component.scss'],
 })
 export class DetailsBreadcrumbsComponent {
     constructor() {

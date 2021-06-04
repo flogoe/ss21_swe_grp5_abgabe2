@@ -27,6 +27,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-details-stammdaten',
     templateUrl: './details-stammdaten.component.html',
+    styleUrls: ['./details-stammdaten.component.scss'],
 })
 export class DetailsStammdatenComponent implements OnInit {
     // Property Binding: <hs-details-stammdaten [kunde]="...">

@@ -21,7 +21,7 @@
   <hs-details-breadcrumbs></hs-details-breadcrumbs>
 
   <section class="mt-1 ms-1" *ngIf="kunde; else showErrorMsg">
-    <h4>Kunde {{ kunde._id }}:</h4>
+    <mat-toolbar color="accent">Details für Kunde {{ kunde._id }}:</mat-toolbar>
 
     <!-- https://v5.getbootstrap.com/docs/5.0/components/navs/#tabs -->
     <!-- jQuery erfordert id -->

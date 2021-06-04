@@ -16,6 +16,7 @@
  */
 
 import { Component, Input } from '@angular/core';
+
 import type { FamilienstandType } from '../../shared/kunde';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
@@ -26,6 +27,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-details-familienstand',
     templateUrl: './details-familienstand.component.html',
+    styleUrls: ['./details-familienstand.component.scss'],
 })
 export class DetailsFamilienstandComponent implements OnInit {
     @Input()

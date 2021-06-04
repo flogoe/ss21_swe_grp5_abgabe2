@@ -27,6 +27,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-details-geschlechtType',
     templateUrl: './details-geschlechtType.component.html',
+    styleUrls: ['./details-geschlechtType.component.scss'],
 })
 export class DetailsGeschlechtTypeComponent implements OnInit {
     @Input()

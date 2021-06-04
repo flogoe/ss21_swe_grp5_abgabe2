@@ -17,9 +17,6 @@
 
 <div *ngIf="kunde">
   <hs-details-nachname [nachname]="kunde.nachname"></hs-details-nachname>
-  <hs-details-bewertung
-    [ratingArray]="kunde.ratingArray"
-  ></hs-details-bewertung>
   <hs-details-familienstand
     [familienstand]="kunde.familienstand"
   ></hs-details-familienstand>
@@ -27,10 +24,7 @@
     [geschlechtType]="kunde.geschlecht"
   ></hs-details-geschlechtType>
   <hs-details-datum [formatted]="kunde.datumFormatted"></hs-details-datum>
-  <hs-details-preis [preis]="kunde.preis"></hs-details-preis>
-  <hs-details-rabatt [rabatt]="kunde.rabatt"></hs-details-rabatt>
   <hs-details-newsletter
     [newsletter]="kunde.newsletter"
   ></hs-details-newsletter>
-  <hs-details-isbn [isbn]="kunde.isbn"></hs-details-isbn>
 </div>
