@@ -124,13 +124,11 @@ export class KundeService {
         // Falls benoetigt, gibt es in Angular dafuer den Service Jsonp.
     }
 
-    private findResultToKundeArray(
-        result: KundeServer[] | FindError,
-    ): Kunde[] | FindError {
-        if (result instanceof FindError) {
-            return result;
+    private findResultToKundeArray(res: any | FindError): Kunde[] | FindError {
+        if (res instanceof FindError) {
+            return res;
         }
-
+        const result = res._embedded.kundeList as KundeServer[];
         const kunden = result.map(kunde => Kunde.fromServer(kunde));
         log.debug('KundeService.mapFindResult(): kunden=', kunden);
         return kunden;

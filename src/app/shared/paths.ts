@@ -32,4 +32,5 @@ export const BASE_PATH_REST = '/rest';
 /**
  * Pfad beim REST-Server fuer kunden
  */
-export const KUNDEN_PATH_REST = 'kunden';
+export const KUNDEN_PATH_REST = '';
+// export const KUNDEN_PATH_REST = 'kunden';
