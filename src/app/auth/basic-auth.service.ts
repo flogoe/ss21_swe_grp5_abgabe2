@@ -34,9 +34,14 @@ export interface Identity {
     password?: string;
 }
 
+export const ROLLE_ADMIN = 'ROLE_ADMIN';
+
 @Injectable({ providedIn: 'root' })
 export class BasicAuthService {
     readonly isLoggedIn$ = new Subject<boolean>();
+
+    // public fuer z.B. nav.component mit der Property isAdmin
+    readonly rollen$ = new Subject<string[]>();
 
     constructor(private readonly cookieService: CookieService) {
         log.debug('BasicAuthService.constructor()');
@@ -101,8 +106,20 @@ export class BasicAuthService {
             basicAuth,
             roles,
         );
+        const rolesArray = roles.split(',');
+        this.rollen$.next(rolesArray);
         this.isLoggedIn$.next(true);
         return roles;
+    }
+
+    /**
+     * @return void
+     */
+    logout() {
+        log.debug('AuthService.logout()');
+        this.cookieService.deleteAuthorization();
+        this.isLoggedIn$.next(false);
+        this.rollen$.next([]);
     }
 
     /**
@@ -112,5 +129,30 @@ export class BasicAuthService {
      */
     get isLoggedIn() {
         return this.cookieService.getAuthorization() !== undefined;
+    }
+
+    /**
+     * @return String fuer JWT oder Basic-Authentifizierung
+     */
+    get authorization() {
+        return this.cookieService.getAuthorization();
+    }
+
+    /**
+     * Statische Abfrage, z.B. beim Start des Browsers, wenn noch kein
+     * Click-Ereignis eingetreten ist oder bei der Anzeige des Suchergebnisses.
+     * @return true, falls ein User in der Rolle "admin" eingeloggt ist;
+     *         sonst false.
+     */
+    get isAdmin() {
+        // z.B. 'admin,mitarbeiter'
+        const rolesStr = this.cookieService.getRoles();
+        if (rolesStr === undefined) {
+            return false;
+        }
+
+        // z.B. ['admin', 'mitarbeiter']
+        const rolesArray = rolesStr.split(',');
+        return rolesArray.includes(ROLLE_ADMIN);
     }
 }

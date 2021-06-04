@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { AuthService } from '../../auth/auth.service';
 import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import { Component } from '@angular/core';
 import { CookieService } from 'src/app/auth/cookie.service';
@@ -80,10 +79,9 @@ export class LoginLogoutComponent implements OnInit {
      */
     onLogout() {
         log.debug('LoginLogoutComponent.onLogout()');
-        // this.authService.logout();
+        this.authService.logout();
         this.init = false;
-        // this.isLoggedIn$.next(false);
-        this.cookieService.deleteAuthorization();
+        this.isLoggedIn$.next(false);
         return this.router.navigate([HOME_PATH]);
     }
 }

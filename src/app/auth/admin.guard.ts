@@ -21,7 +21,8 @@ import type {
     RouterStateSnapshot,
     UrlTree,
 } from '@angular/router';
-import { AuthService } from './auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+
+import { BasicAuthService } from './basic-auth.service';
 import { Injectable } from '@angular/core';
 import type { Observable } from 'rxjs';
 import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
@@ -34,7 +35,7 @@ import log from 'loglevel';
 @Injectable({ providedIn: 'root' })
 export class AdminGuard implements CanActivate {
     constructor(
-        private readonly authService: AuthService,
+        private readonly authService: BasicAuthService,
         private readonly router: Router,
     ) {
         log.debug('AdminGuard.constructor()');
