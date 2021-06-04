@@ -39,6 +39,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-gefundene-kunden',
     templateUrl: './gefundene-kunden.component.html',
+    styleUrls: ['./gefundene-kunden.component.scss'],
     animations: [easeIn, easeOut],
 })
 export class GefundeneKundenComponent implements OnInit {
