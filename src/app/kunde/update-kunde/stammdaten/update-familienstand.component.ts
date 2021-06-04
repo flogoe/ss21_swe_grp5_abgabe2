@@ -17,6 +17,7 @@
 
 import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+
 import type { FamilienstandType } from '../../shared/kunde';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
@@ -28,6 +29,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-update-familienstand',
     templateUrl: './update-familienstand.component.html',
+    styleUrls: ['./update-familienstand.component.scss'],
 })
 export class UpdateFamilienstandComponent implements OnInit {
     // <hs-update-familienstand [form]="form" [currentValue]="...">

@@ -15,13 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateFamilienstandModule } from './update-familienstand.module';
 import { UpdateGeschlechtTypeModule } from './update-geschlechtType.module';
-import { UpdateIsbnModule } from './update-isbn.module';
 import { UpdateNachnameModule } from './update-nachname.module';
-import { UpdateRatingModule } from './update-rating.module';
 import { UpdateStammdatenComponent } from './update-stammdaten.component';
 
 @NgModule({
@@ -30,10 +29,9 @@ import { UpdateStammdatenComponent } from './update-stammdaten.component';
     imports: [
         ReactiveFormsModule,
         UpdateFamilienstandModule,
-        UpdateIsbnModule,
-        UpdateRatingModule,
         UpdateNachnameModule,
         UpdateGeschlechtTypeModule,
+        MatButtonModule,
     ],
 })
 export class UpdateStammdatenModule {}

@@ -18,6 +18,7 @@
 import { CommonModule } from '@angular/common';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { FormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UpdateKundeComponent } from './update-kunde.component';
@@ -33,6 +34,7 @@ import { UpdateStammdatenModule } from './stammdaten/update-stammdaten.module';
         FormsModule,
         UpdateSchlagwoerterModule,
         UpdateStammdatenModule,
+        MatToolbarModule,
     ],
     providers: [Title],
 })

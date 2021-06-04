@@ -17,6 +17,7 @@
 
 import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
@@ -27,6 +28,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-update-nachname',
     templateUrl: './update-nachname.component.html',
+    styleUrls: ['./update-nachname.component.scss'],
 })
 export class UpdateNachnameComponent implements OnInit {
     private static readonly MIN_LENGTH = 2;

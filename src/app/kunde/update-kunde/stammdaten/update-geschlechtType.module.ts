@@ -15,6 +15,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateGeschlechtTypeComponent } from './update-geschlechtType.component';
@@ -22,6 +25,11 @@ import { UpdateGeschlechtTypeComponent } from './update-geschlechtType.component
 @NgModule({
     declarations: [UpdateGeschlechtTypeComponent],
     exports: [UpdateGeschlechtTypeComponent],
-    imports: [ReactiveFormsModule],
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatOptionModule,
+    ],
 })
 export class UpdateGeschlechtTypeModule {}
