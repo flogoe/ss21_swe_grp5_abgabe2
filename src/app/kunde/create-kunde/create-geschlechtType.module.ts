@@ -17,12 +17,21 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateGeschlechtTypeComponent } from './create-geschlechtType.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateGeschlechtTypeComponent],
     exports: [CreateGeschlechtTypeComponent],
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatOptionModule,
+    ],
 })
 export class CreateGeschlechtTypeModule {}

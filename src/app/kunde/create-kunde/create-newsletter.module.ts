@@ -16,12 +16,13 @@
  */
 
 import { CreateNewsletterComponent } from './create-newsletter.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateNewsletterComponent],
     exports: [CreateNewsletterComponent],
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, MatCheckboxModule],
 })
 export class CreateNewsletterModule {}

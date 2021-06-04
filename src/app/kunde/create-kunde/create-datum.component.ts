@@ -15,7 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Component,
+    Input,
+} from '@angular/core';
 
 import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
@@ -31,15 +36,23 @@ import log from 'loglevel';
     templateUrl: './create-datum.component.html',
     styleUrls: ['./create-datum.component.scss'],
 })
-export class CreateDatumComponent implements OnInit {
+export class CreateDatumComponent implements OnInit, AfterViewInit {
     @Input()
     form!: FormGroup;
 
     readonly datum = new FormControl(undefined);
 
+    // eslint-disable-next-line no-useless-constructor
+    constructor(private readonly cd: ChangeDetectorRef) {}
+
     ngOnInit() {
         log.debug('CreateDatumComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
         this.form.addControl('datum', this.datum);
+    }
+
+    ngAfterViewInit() {
+        this.cd.markForCheck();
+        this.cd.detectChanges();
     }
 }

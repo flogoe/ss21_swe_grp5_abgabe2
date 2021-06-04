@@ -24,6 +24,8 @@ import { CreateNachnameModule } from './create-nachname.module';
 import { CreateNewsletterModule } from './create-newsletter.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
@@ -47,6 +49,8 @@ import { Title } from '@angular/platform-browser';
         ReactiveFormsModule,
         CreateGeschlechtTypeModule,
         CreateNachnameModule,
+        MatToolbarModule,
+        MatButtonModule,
     ],
     providers: [Title],
 })
