@@ -29,6 +29,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-create-familienstand',
     templateUrl: './create-familienstand.component.html',
+    styleUrls: ['./create-familienstand.component.scss'],
 })
 export class CreateFamilienstandComponent implements OnInit {
     @Input()

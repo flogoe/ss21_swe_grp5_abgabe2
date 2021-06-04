@@ -19,14 +19,9 @@ import { CommonModule } from '@angular/common';
 import { CreateDatumModule } from './create-datum.module';
 import { CreateFamilienstandModule } from './create-familienstand.module';
 import { CreateGeschlechtTypeModule } from './create-geschlechtType.module';
-import { CreateIsbnModule } from './create-isbn.module';
 import { CreateKundeComponent } from './create-kunde.component';
 import { CreateNachnameModule } from './create-nachname.module';
 import { CreateNewsletterModule } from './create-newsletter.module';
-import { CreatePreisModule } from './create-preis.module';
-import { CreateRabattModule } from './create-rabatt.module';
-import { CreateRatingModule } from './create-rating.module';
-import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -44,17 +39,14 @@ import { Title } from '@angular/platform-browser';
         CommonModule,
         CreateFamilienstandModule,
         CreateDatumModule,
-        CreateIsbnModule,
         CreateNewsletterModule,
-        CreatePreisModule,
-        CreateRabattModule,
-        CreateRatingModule,
-        CreateSchlagwoerterModule,
         CreateNachnameModule,
         CreateGeschlechtTypeModule,
         ErrorMessageModule,
         HttpClientModule,
         ReactiveFormsModule,
+        CreateGeschlechtTypeModule,
+        CreateNachnameModule,
     ],
     providers: [Title],
 })

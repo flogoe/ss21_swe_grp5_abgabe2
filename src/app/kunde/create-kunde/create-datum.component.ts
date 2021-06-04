@@ -29,6 +29,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-create-datum',
     templateUrl: './create-datum.component.html',
+    styleUrls: ['./create-datum.component.scss'],
 })
 export class CreateDatumComponent implements OnInit {
     @Input()

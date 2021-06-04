@@ -35,6 +35,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-create-kunde',
     templateUrl: './create-kunde.component.html',
+    styleUrls: ['./create-kunde.component.scss'],
 })
 export class CreateKundeComponent implements OnInit {
     form = new FormGroup({});

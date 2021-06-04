@@ -29,6 +29,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-create-geschlechtType',
     templateUrl: './create-geschlechtType.component.html',
+    styleUrls: ['./create-geschlechtType.component.scss'],
 })
 export class CreateGeschlechtTypeComponent implements OnInit {
     @Input()
