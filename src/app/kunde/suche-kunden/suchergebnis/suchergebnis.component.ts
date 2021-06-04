@@ -27,6 +27,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-suchergebnis',
     templateUrl: './suchergebnis.component.html',
+    styleUrls: ['./suchergebnis.component.scss'],
 })
 export class SuchergebnisComponent {
     // Im ganzen Beispiel: lokale Speicherung des Zustands und nicht durch z.B.
