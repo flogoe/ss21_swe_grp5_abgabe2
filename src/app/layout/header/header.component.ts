@@ -16,6 +16,7 @@
  */
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import log from 'loglevel';
 
 /**
@@ -35,7 +36,11 @@ import log from 'loglevel';
     // ]
 })
 export class HeaderComponent {
-    constructor() {
+    constructor(private readonly router: Router) {
         log.debug('HeaderComponent.constructor()');
+    }
+
+    navigateToHome() {
+        this.router.navigateByUrl('');
     }
 }

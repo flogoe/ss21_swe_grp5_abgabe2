@@ -9,7 +9,7 @@
     <span class="ms-1">Suche</span>
   </div>
 
-  <div *ngIf="isAdmin$ | async">
+  <div *ngIf="isAdmin">
     <div
       class="listItem"
       routerLink="/kunden/create"
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="nav-item dropdown" *ngIf="isAdmin$ | async">
+  <div class="nav-item dropdown" *ngIf="isAdmin">
     <div
       class="listItem"
       id="navbarDropdownMenuLink"

@@ -21,7 +21,7 @@ import { JwtService } from './jwt.service'; // eslint-disable-line @typescript-e
 import { Subject } from 'rxjs';
 import log from 'loglevel';
 
-export const ROLLE_ADMIN = 'admin';
+export const ROLLE_ADMIN = 'ROLE_ADMIN';
 // Spring Security:
 // export const ROLLE_ADMIN = 'ROLE_ADMIN'
 
