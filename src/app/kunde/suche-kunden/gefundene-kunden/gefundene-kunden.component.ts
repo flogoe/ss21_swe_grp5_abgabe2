@@ -17,15 +17,16 @@
 
 /* eslint-disable max-classes-per-file */
 
-import { AuthService, ROLLE_ADMIN } from '../../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Component, Input } from '@angular/core';
 import { KundeService, RemoveError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { easeIn, easeOut } from '../../../shared';
 import { first, tap } from 'rxjs/operators';
 
+import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import type { Kunde } from '../../shared';
 import { NgLocalization } from '@angular/common';
 import type { OnInit } from '@angular/core';
+import { ROLLE_ADMIN } from '../../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Subject } from 'rxjs';
 import log from 'loglevel';
@@ -58,7 +59,7 @@ export class GefundeneKundenComponent implements OnInit {
     constructor(
         private readonly kundeService: KundeService,
         private readonly router: Router,
-        private readonly authService: AuthService,
+        private readonly authService: BasicAuthService,
     ) {
         log.debug('GefundeneKundenComponent.constructor()');
     }

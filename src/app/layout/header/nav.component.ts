@@ -15,9 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { AuthService, ROLLE_ADMIN } from '../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import { Component } from '@angular/core';
 import type { OnInit } from '@angular/core';
+import { ROLLE_ADMIN } from '../../auth/basic-auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Subject } from 'rxjs';
 import log from 'loglevel';
 import { tap } from 'rxjs/operators';
@@ -28,11 +29,12 @@ import { tap } from 'rxjs/operators';
 @Component({
     selector: 'hs-nav',
     templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
     isAdmin$ = new Subject<boolean>();
 
-    constructor(private readonly authService: AuthService) {
+    constructor(private readonly authService: BasicAuthService) {
         log.debug('NavComponent.constructor()');
     }
 

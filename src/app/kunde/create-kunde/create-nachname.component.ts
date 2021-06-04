@@ -30,6 +30,7 @@ import log from 'loglevel';
     // moduleId: module.id,
     selector: 'hs-create-nachname',
     templateUrl: './create-nachname.component.html',
+    styleUrls: ['./create-nachname.component.scss'],
 })
 export class CreateNachnameComponent implements OnInit {
     private static readonly MIN_LENGTH = 2;

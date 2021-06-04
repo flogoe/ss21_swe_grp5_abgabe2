@@ -18,7 +18,7 @@
 import { ActivatedRoute, Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { first, tap } from 'rxjs/operators';
 
-import { AuthService } from '../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import { Component } from '@angular/core';
 import { FindError } from './../shared/errors';
 import { HttpStatusCode } from '@angular/common/http';
@@ -53,7 +53,7 @@ export class DetailsKundeComponent implements OnInit {
         private readonly titleService: Title,
         private readonly router: Router,
         private readonly route: ActivatedRoute,
-        private readonly authService: AuthService,
+        private readonly authService: BasicAuthService,
     ) {
         log.debug('DetailsKundeComponent.constructor()');
 

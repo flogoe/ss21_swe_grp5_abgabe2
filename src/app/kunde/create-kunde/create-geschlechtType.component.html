@@ -1,46 +1,17 @@
-<!--
-    Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-
-<div class="row">
-  <label class="col col-2 col-form-label gy-3">GeschlechtType *</label>
-  <div class="col col-10 gy-3" [formGroup]="form">
-    <div class="input-group">
-      <select
-        class="form-select"
-        formControlName="geschlechtType"
-        required
-        [class.is-invalid]="geschlechtType.invalid && geschlechtType.touched"
-        [class.is-valid]="geschlechtType.valid && geschlechtType.touched"
-      >
-        <option value="">Einen GeschlechtType ausw&auml;hlen</option>
-        <option value="MAENNLICH">M GeschlechtType</option>
-        <option value="WEIBLICH">W GeschlechtType</option>
-        <option value="DIVERS">D GeschlechtType</option>
-      </select>
-
-      <div
-        *ngIf="geschlechtType.invalid && geschlechtType.touched"
-        class="invalid-feedback"
-      >
-        <div *ngIf="geschlechtType.errors && geschlechtType.errors.required">
-          <i class="material-icons">error</i>
-          <span class="ms-1"> Ein GeschlechtType ist erforderlich. </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<h3>Geschlecht</h3>
+<mat-form-field [formGroup]="form">
+  <mat-label>Geschlecht auswählen</mat-label>
+  <mat-select
+    matNativeControl
+    required
+    formControlName="geschlechtType"
+    required
+    [class.is-invalid]="geschlechtType.invalid && geschlechtType.touched"
+    [class.is-valid]="geschlechtType.valid && geschlechtType.touched"
+    name="geschlecht"
+  >
+    <mat-option value="MAENNLICH">Männlich</mat-option>
+    <mat-option value="WEIBLICH">Weiblich</mat-option>
+    <mat-option value="DIVERS">Divers</mat-option>
+  </mat-select>
+</mat-form-field>

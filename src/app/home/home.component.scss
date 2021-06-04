@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+mat-card {
+  margin-top: 100px;
+  width: 500px;
+}
+.row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  i {
+    margin-right: 15px;
+  }
+}
+
+.body {
+  margin: 15px;
+}
+.subCaption {
+  margin-right: 5px;
+  font-weight: 500;
+}
