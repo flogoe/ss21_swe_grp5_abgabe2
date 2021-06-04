@@ -2,12 +2,14 @@
   mat-raised-button
   color="accent"
   type="submit"
-  (click)="onLogout()"
   *ngIf="(isLoggedIn$ | async) || init; else login"
+  (click)="onLogout()"
 >
   <span class="me-1">Logout</span>
   <i class="material-icons md-48">chevron_right</i>
 </button>
+
+<h4>{{ isLoggedIn$ | async }}</h4>
 
 <ng-template #login
   ><mat-form-field class="example-full-width">

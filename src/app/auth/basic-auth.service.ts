@@ -19,6 +19,7 @@ import { BASE_PATH_REST } from '../shared';
 import { CookieService } from './cookie.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import log from 'loglevel';
 
 enum Rolle {
@@ -35,6 +36,8 @@ export interface Identity {
 
 @Injectable({ providedIn: 'root' })
 export class BasicAuthService {
+    readonly isLoggedIn$ = new Subject<boolean>();
+
     constructor(private readonly cookieService: CookieService) {
         log.debug('BasicAuthService.constructor()');
     }
@@ -44,6 +47,7 @@ export class BasicAuthService {
      * @param password als String
      * @return void
      */
+    // eslint-disable-next-line max-statements
     async login(username: string | undefined, password: string | undefined) {
         log.debug(
             `BasicAuthService.login(): username=${username}, password=${password}`,
@@ -97,6 +101,16 @@ export class BasicAuthService {
             basicAuth,
             roles,
         );
+        this.isLoggedIn$.next(true);
         return roles;
+    }
+
+    /**
+     * Statische Abfrage, z.B. beim Start des Browsers, wenn noch kein
+     * Click-Ereignis eingetreten ist.
+     * @return true, falls ein User eingeloggt ist; sonst false.
+     */
+    get isLoggedIn() {
+        return this.cookieService.getAuthorization() !== undefined;
     }
 }
