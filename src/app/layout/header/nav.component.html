@@ -1,25 +1,28 @@
-<ul>
-  <li>
-    <a
-      routerLink="/kunden/suche"
-      routerLinkActive="active"
-      aria-label="Suche Kunden"
-    >
-      <i class="material-icons">search</i>
-      <span class="ms-1">Suche</span>
-    </a>
-  </li>
+<div class="navWrapper">
+  <div
+    class="listItem"
+    routerLink="/kunden/suche"
+    routerLinkActive="active"
+    aria-label="Suche Kunden"
+  >
+    <i class="material-icons">search</i>
+    <span class="ms-1">Suche</span>
+  </div>
 
-  <li *ngIf="isAdmin$ | async">
-    <a routerLink="/kunden/create" aria-label="Neuen Kunden anlegen">
-      <i class="material-icons">menu_book</i>
-      <span>Neuer Kunde</span>
-    </a>
-  </li>
-
-  <li class="nav-item dropdown" *ngIf="isAdmin$ | async">
+  <div *ngIf="isAdmin$ | async">
     <div
-      class="nav-link dropdown-toggle"
+      class="listItem"
+      routerLink="/kunden/create"
+      aria-label="Neuen Kunden anlegen"
+    >
+      <i class="material-icons">add</i>
+      <span>Neuer Kunde</span>
+    </div>
+  </div>
+
+  <div class="nav-item dropdown" *ngIf="isAdmin$ | async">
+    <div
+      class="listItem"
       id="navbarDropdownMenuLink"
       data-bs-toggle="dropdown"
       aria-haspopup="true"
@@ -28,32 +31,33 @@
       <i class="material-icons">bar_chart</i>
       <span class="ms-1">Diagramme</span>
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a
+    <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <div
         routerLink="/kunden/balkendiagramm"
         class="dropdown-item"
         aria-label="Balkendiagramm fuer Bewertungen"
       >
         <i class="material-icons">bar_chart</i>
         <span class="ms-1">Balkendiagramm</span>
-      </a>
-      <a
+      </div>
+      <div
         routerLink="/kunden/liniendiagramm"
         class="dropdown-item"
         aria-label="Liniendiagramm fuer Bewertungen"
       >
         <i class="material-icons">multiline_chart</i>
         <span class="ms-1">Liniendiagramm</span>
-      </a>
-      <a
+      </div>
+      <div
         routerLink="/kunden/tortendiagramm"
         class="dropdown-item"
         aria-label="Tortendiagramm fuer Bewertungen"
       >
         <i class="material-icons">pie_chart</i>
         <span class="ms-1">Tortendiagramm</span>
-      </a>
-    </div>
-  </li>
-</ul>
+      </div>
+    </div> -->
+  </div>
+</div>
+
 <hs-login-logout></hs-login-logout>

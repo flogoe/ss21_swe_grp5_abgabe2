@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listItem {
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.listItem:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+i {
+  margin-right: 5px;
+}
