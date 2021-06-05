@@ -36,11 +36,18 @@ export const ISBN_REGEX =
 export interface KundeShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     nachname: string | undefined;
+    email: string;
+    adresse: Adresse;
     geschlecht?: GeschlechtType | '';
     familienstand: FamilienstandType;
     datum?: string;
     newsletter?: boolean;
     version?: number;
+}
+
+export interface Adresse {
+    plz: string;
+    ort: string;
 }
 
 interface Link {
@@ -95,6 +102,8 @@ export class Kunde {
     private constructor(
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
         public nachname: string,
+        public email: string,
+        public adresse: Adresse,
         public familienstand: FamilienstandType,
         public geschlecht: GeschlechtType | '' | undefined,
         datum: string | undefined,
@@ -135,6 +144,8 @@ export class Kunde {
 
         const {
             nachname,
+            email,
+            adresse,
             familienstand,
             geschlecht,
             datum,
@@ -144,6 +155,8 @@ export class Kunde {
         const kunde = new Kunde(
             id,
             nachname ?? 'unbekannt',
+            email,
+            adresse,
             familienstand,
             geschlecht,
             datum,
@@ -176,6 +189,8 @@ export class Kunde {
         const kunde = new Kunde(
             kundeForm._id,
             kundeForm.nachname ?? 'unbekannt',
+            kundeForm.email,
+            kundeForm.adresse,
             kundeForm.familienstand,
             kundeForm.geschlecht,
             kundeForm.datum,
@@ -288,6 +303,8 @@ export class Kunde {
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             nachname: this.nachname,
+            email: this.email,
+            adresse: this.adresse,
             familienstand: this.familienstand,
             geschlecht: this.geschlecht,
             datum,

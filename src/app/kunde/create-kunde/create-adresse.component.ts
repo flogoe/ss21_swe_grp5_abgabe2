@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
-import type { FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
@@ -26,14 +26,17 @@ export class CreateAdresseComponent implements OnInit, AfterViewInit {
     readonly plz = new FormControl(undefined, [Validators.required]);
 
     readonly ort = new FormControl(undefined, [Validators.required]);
+
+    readonly adresseForm = new FormGroup({});
     // eslint-disable-next-line no-useless-constructor
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {
         log.debug('CreateAdresseComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('plz', this.plz);
-        this.form.addControl('ort', this.ort);
+        this.adresseForm.addControl('plz', this.plz);
+        this.adresseForm.addControl('ort', this.ort);
+        this.form.addControl('adresse', this.adresseForm);
     }
 
     ngAfterViewInit() {
