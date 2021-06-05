@@ -1,5 +1,14 @@
 <h3>Familienstand</h3>
-<mat-radio-group aria-label="Select an option" formControlName="familienstand">
-  <mat-radio-button name="ledig" value="L">ledig</mat-radio-button>
-  <mat-radio-button name="verheiratet" value="VH">verheiratet</mat-radio-button>
-</mat-radio-group>
+<div [formGroup]="form">
+  <mat-radio-group
+    aria-label="Select an option"
+    formControlName="familienstand"
+  >
+    <mat-radio-button name="ledig" value="L">ledig</mat-radio-button>
+    <mat-radio-button name="verheiratet" value="VH"
+      >verheiratet</mat-radio-button
+    >
+    <mat-radio-button name="geschieden" value="G">geschieden</mat-radio-button>
+    <mat-radio-button name="verwitwet" value="VW">verwitwet</mat-radio-button>
+  </mat-radio-group>
+</div>
