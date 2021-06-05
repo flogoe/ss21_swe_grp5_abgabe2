@@ -18,8 +18,6 @@
 
 import log from 'loglevel';
 
-const MAX_RATING = 5;
-
 export type GeschlechtType = 'MAENNLICH' | 'WEIBLICH' | 'DIVERS';
 
 export type FamilienstandType =
@@ -40,11 +38,8 @@ export interface KundeShared {
     nachname: string | undefined;
     geschlecht?: GeschlechtType | '';
     familienstand: FamilienstandType;
-    preis: number;
-    rabatt: number | undefined;
     datum?: string;
     newsletter?: boolean;
-    isbn: string;
     version?: number;
 }
 
@@ -62,7 +57,6 @@ interface Link {
  * </ul>
  */
 export interface KundeServer extends KundeShared {
-    rating?: number;
     interessen?: string[];
     // eslint-disable-next-line @typescript-eslint/naming-convention
     _links?: {
@@ -82,9 +76,9 @@ export interface KundeServer extends KundeShared {
  * </ul>
  */
 export interface KundeForm extends KundeShared {
-    rating: string;
-    javascript?: boolean;
-    typescript?: boolean;
+    sport?: boolean;
+    lesen?: boolean;
+    reisen?: boolean;
 }
 
 /**
@@ -94,15 +88,6 @@ export interface KundeForm extends KundeShared {
 export class Kunde {
     private static readonly SPACE = 2;
 
-    ratingArray: boolean[] =
-        /* eslint-disable unicorn/no-new-array, unicorn/prefer-spread */
-        this.rating === undefined
-            ? new Array<boolean>(MAX_RATING).fill(false)
-            : new Array<boolean>(this.rating)
-                  .fill(true)
-                  .concat(new Array(MAX_RATING - this.rating).fill(false));
-    /* eslint-enable unicorn/no-new-array, unicorn/prefer-spread */
-
     datum: Date | undefined;
 
     // wird aufgerufen von fromServer() oder von fromForm()
@@ -110,15 +95,11 @@ export class Kunde {
     private constructor(
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
         public nachname: string,
-        public rating: number | undefined,
         public familienstand: FamilienstandType,
         public geschlecht: GeschlechtType | '' | undefined,
         datum: string | undefined,
-        public preis: number,
-        public rabatt: number,
         public newsletter: boolean | undefined,
         public interessen: string[],
-        public isbn: string,
         public version: number | undefined,
     ) {
         // TODO Parsing, ob der Datum-String valide ist
@@ -154,28 +135,20 @@ export class Kunde {
 
         const {
             nachname,
-            rating,
             familienstand,
             geschlecht,
             datum,
-            preis,
-            rabatt,
             newsletter,
             interessen,
-            isbn,
         } = kundeServer;
         const kunde = new Kunde(
             id,
             nachname ?? 'unbekannt',
-            rating,
             familienstand,
             geschlecht,
             datum,
-            preis,
-            rabatt ?? 0,
             newsletter,
             interessen ?? [],
-            isbn,
             version,
         );
         log.debug('Kunde.fromServer(): kunde=', kunde);
@@ -190,27 +163,24 @@ export class Kunde {
     static fromForm(kundeForm: KundeForm) {
         log.debug('Kunde.fromForm(): kundeForm=', kundeForm);
         const interessen: string[] = [];
-        if (kundeForm.javascript === true) {
-            interessen.push('JAVASCRIPT');
+        if (kundeForm.sport === true) {
+            interessen.push('S');
         }
-        if (kundeForm.typescript === true) {
-            interessen.push('TYPESCRIPT');
+        if (kundeForm.lesen === true) {
+            interessen.push('L');
+        }
+        if (kundeForm.reisen === true) {
+            interessen.push('R');
         }
 
-        const rabatt =
-            kundeForm.rabatt === undefined ? 0 : kundeForm.rabatt / 100; // eslint-disable-line @typescript-eslint/no-magic-numbers
         const kunde = new Kunde(
             kundeForm._id,
             kundeForm.nachname ?? 'unbekannt',
-            Number(kundeForm.rating),
             kundeForm.familienstand,
             kundeForm.geschlecht,
             kundeForm.datum,
-            kundeForm.preis,
-            rabatt,
             kundeForm.newsletter,
             interessen,
-            kundeForm.isbn,
             kundeForm.version,
         );
         log.debug('Kunde.fromForm(): kunde=', kunde);
@@ -241,24 +211,6 @@ export class Kunde {
     }
 
     /**
-     * Die Bewertung ("rating") des Kundees um 1 erh&ouml;hen
-     */
-    rateUp() {
-        if (this.rating !== undefined && this.rating < MAX_RATING) {
-            this.rating++;
-        }
-    }
-
-    /**
-     * Die Bewertung ("rating") des Kundees um 1 erniedrigen
-     */
-    rateDown() {
-        if (this.rating !== undefined && this.rating > 0) {
-            this.rating--;
-        }
-    }
-
-    /**
      * Abfrage, ob der Kunde dem angegebenen Geschlecht zugeordnet ist.
      * @param geschlechtType das Geschlecht
      * @return true, falls der Kunde dem Geschlecht zugeordnet ist. Sonst false.
@@ -270,37 +222,21 @@ export class Kunde {
     /**
      * Aktualisierung der Stammdaten des Kunde-Objekts.
      * @param nachname Der neue Nachname
-     * @param rating Die neue Bewertung
      * @param familienstand Der neue Familienstand
      * @param geschlecht Das neue Geschlecht
-     * @param preis Der neue Preis
-     * @param rabatt Der neue Rabatt
      */
     // eslint-disable-next-line max-params
     updateStammdaten(
         nachname: string,
         familienstand: FamilienstandType,
         geschlecht: GeschlechtType | '' | undefined,
-        rating: number | undefined,
         datum: Date | undefined,
-        preis: number,
-        rabatt: number,
-        isbn: string,
     ) {
         this.nachname = nachname;
         this.familienstand = familienstand;
         this.geschlecht = geschlecht;
-        this.rating = rating;
-        /* eslint-disable unicorn/no-new-array */
-        this.ratingArray =
-            rating === undefined
-                ? new Array<boolean>(MAX_RATING).fill(false)
-                : new Array<boolean>(rating).fill(true);
         /* eslint-enable unicorn/no-new-array */
         this.datum = datum === undefined ? new Date() : datum;
-        this.preis = preis;
-        this.rabatt = rabatt;
-        this.isbn = isbn;
     }
 
     /**
@@ -352,15 +288,11 @@ export class Kunde {
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             nachname: this.nachname,
-            rating: this.rating,
             familienstand: this.familienstand,
             geschlecht: this.geschlecht,
             datum,
-            preis: this.preis,
-            rabatt: this.rabatt,
             newsletter: this.newsletter,
             interessen: this.interessen,
-            isbn: this.isbn,
         };
     }
 

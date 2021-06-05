@@ -17,9 +17,9 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateDatumModule } from './create-datum.module';
+import { CreateEmailModule } from './create-email.module';
 import { CreateFamilienstandModule } from './create-familienstand.module';
 import { CreateGeschlechtTypeModule } from './create-geschlechtType.module';
-import { CreateInteressenComponent } from './create-interessen.component';
 import { CreateInteressenModule } from './create-interessen.module';
 import { CreateKundeComponent } from './create-kunde.component';
 import { CreateNachnameModule } from './create-nachname.module';
@@ -54,6 +54,7 @@ import { Title } from '@angular/platform-browser';
         MatToolbarModule,
         MatButtonModule,
         CreateInteressenModule,
+        CreateEmailModule,
     ],
     providers: [Title],
 })

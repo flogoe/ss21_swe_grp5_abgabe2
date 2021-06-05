@@ -82,19 +82,12 @@ export class UpdateStammdatenComponent implements OnInit {
             geschlechtType,
         }: { geschlechtType: GeschlechtType | '' | undefined } =
             this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        const { rating }: { rating: number } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        const { isbn }: { isbn: string } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        // datum, preis und rabatt koennen im Formular nicht geaendert werden
-        const { datum, preis, rabatt } = this.kunde;
+        const { datum } = this.kunde;
         this.kunde.updateStammdaten(
             nachname,
             familienstand,
             geschlechtType,
-            rating,
             datum,
-            preis,
-            rabatt,
-            isbn,
         );
         log.debug('kunde=', this.kunde);
 
