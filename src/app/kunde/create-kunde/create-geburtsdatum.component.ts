@@ -21,8 +21,8 @@ import {
     Component,
     Input,
 } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
-import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
@@ -40,7 +40,7 @@ export class CreateGeburtsdatumComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly geburtsdatum = new FormControl(undefined);
+    readonly geburtsdatum = new FormControl(undefined, [Validators.required]);
 
     // eslint-disable-next-line no-useless-constructor
     constructor(private readonly cd: ChangeDetectorRef) {}
