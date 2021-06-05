@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import type { FormGroup } from '@angular/forms';
@@ -37,9 +37,13 @@ export class CreateGeschlechtTypeComponent implements OnInit {
 
     readonly geschlecht = new FormControl(undefined, Validators.required);
 
+    constructor(private readonly cd: ChangeDetectorRef) {}
+
     ngOnInit() {
         log.debug('CreateGeschlechtTypeComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
         this.form.addControl('geschlecht', this.geschlecht);
+        this.cd.markForCheck();
+        this.cd.detectChanges();
     }
 }

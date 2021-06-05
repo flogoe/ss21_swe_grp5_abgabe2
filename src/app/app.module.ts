@@ -130,6 +130,7 @@ import { environment } from '../environments/environment';
         MatDatepickerModule,
         MatNativeDateModule,
         FormsModule,
+        MatProgressSpinnerModule,
     ],
 
     providers: [

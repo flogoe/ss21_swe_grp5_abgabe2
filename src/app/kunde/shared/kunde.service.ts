@@ -373,16 +373,19 @@ export class KundeService {
             httpParams = httpParams.set('familienstand', familienstand);
         }
         if (geschlechtType !== '') {
-            httpParams = httpParams.set('geschlechtType', geschlechtType);
+            httpParams = httpParams.set('geschlecht', geschlechtType);
         }
         if (sport) {
-            httpParams = httpParams.set('sport', 'true');
+            // httpParams = httpParams.set('sport', 'true');
+            httpParams = httpParams.set('interessen', 'S');
         }
         if (lesen) {
-            httpParams = httpParams.set('lesen', 'true');
+            // httpParams = httpParams.set('lesen', 'true');
+            httpParams = httpParams.set('interessen', 'L');
         }
         if (reisen) {
-            httpParams = httpParams.set('reisen', 'true');
+            // httpParams = httpParams.set('reisen', 'true');
+            httpParams = httpParams.set('interessen', 'R');
         }
         return httpParams;
     }

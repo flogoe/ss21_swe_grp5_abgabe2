@@ -17,29 +17,22 @@
 
 import { Component, Input } from '@angular/core';
 
-import { FormControl } from '@angular/forms';
-import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-familienstand&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Kunde zu realisieren.
+ * Komponente f&uuml;r das Tag <code>hs-details-email</code>
  */
 @Component({
-    selector: 'hs-create-familienstand',
-    templateUrl: './create-familienstand.component.html',
-    styleUrls: ['./create-familienstand.component.scss'],
+    selector: 'hs-details-email',
+    templateUrl: './details-email.component.html',
+    styleUrls: ['./details-email.component.scss'],
 })
-export class CreateFamilienstandComponent implements OnInit {
+export class DetailsEmailComponent implements OnInit {
     @Input()
-    form!: FormGroup;
-
-    readonly familienstand = new FormControl();
+    email!: string;
 
     ngOnInit() {
-        log.debug('CreateFamilienstandComponent.ngOnInit');
-        // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('familienstand', this.familienstand);
+        log.debug(`DetailsEmailComponent.email=${this.email}`);
     }
 }
