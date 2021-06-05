@@ -36,7 +36,7 @@ import log from 'loglevel';
     templateUrl: './create-geburtsdatum.component.html',
     styleUrls: ['./create-geburtsdatum.component.scss'],
 })
-export class CreateGeburtsdatumComponent implements OnInit, AfterViewInit {
+export class CreateGeburtsdatumComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
@@ -49,9 +49,6 @@ export class CreateGeburtsdatumComponent implements OnInit, AfterViewInit {
         log.debug('CreateGeburtsdatumComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
         this.form.addControl('geburtsdatum', this.geburtsdatum);
-    }
-
-    ngAfterViewInit() {
         this.cd.markForCheck();
         this.cd.detectChanges();
     }
