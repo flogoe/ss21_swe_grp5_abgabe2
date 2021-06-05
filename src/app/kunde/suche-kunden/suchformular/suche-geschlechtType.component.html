@@ -1,12 +1,7 @@
 <h3>Geschlecht</h3>
 <mat-form-field appearance="fill">
   <mat-label>Geschlecht auswählen</mat-label>
-  <mat-select
-    matNativeControl
-    required
-    [(ngModel)]="geschlechtType"
-    name="geschlecht"
-  >
+  <mat-select matNativeControl [(ngModel)]="geschlechtType" name="geschlecht">
     <mat-option value="">Keine Auswahl</mat-option>
     <mat-option value="M">Männlich</mat-option>
     <mat-option value="W">Weiblich</mat-option>
