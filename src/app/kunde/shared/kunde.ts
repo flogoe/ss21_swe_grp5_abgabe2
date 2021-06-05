@@ -40,7 +40,7 @@ export interface KundeShared {
     adresse: Adresse;
     geschlecht?: GeschlechtType | '';
     familienstand: FamilienstandType;
-    datum?: string;
+    geburtsdatum?: string;
     newsletter?: boolean;
     version?: number;
 }
@@ -95,7 +95,7 @@ export interface KundeForm extends KundeShared {
 export class Kunde {
     private static readonly SPACE = 2;
 
-    datum: Date | undefined;
+    geburtsdatum: Date | undefined;
 
     // wird aufgerufen von fromServer() oder von fromForm()
     // eslint-disable-next-line max-params
@@ -106,13 +106,14 @@ export class Kunde {
         public adresse: Adresse,
         public familienstand: FamilienstandType,
         public geschlecht: GeschlechtType | '' | undefined,
-        datum: string | undefined,
+        geburtsdatum: string | undefined,
         public newsletter: boolean | undefined,
         public interessen: string[],
         public version: number | undefined,
     ) {
-        // TODO Parsing, ob der Datum-String valide ist
-        this.datum = datum === undefined ? new Date() : new Date(datum);
+        // TODO Parsing, ob der Geburtsdatum-String valide ist
+        this.geburtsdatum =
+            geburtsdatum === undefined ? new Date() : new Date(geburtsdatum);
         log.debug('Kunde(): this=', this);
     }
 
@@ -148,7 +149,7 @@ export class Kunde {
             adresse,
             familienstand,
             geschlecht,
-            datum,
+            geburtsdatum,
             newsletter,
             interessen,
         } = kundeServer;
@@ -159,7 +160,7 @@ export class Kunde {
             adresse,
             familienstand,
             geschlecht,
-            datum,
+            geburtsdatum,
             newsletter,
             interessen ?? [],
             version,
@@ -193,7 +194,7 @@ export class Kunde {
             kundeForm.adresse,
             kundeForm.familienstand,
             kundeForm.geschlecht,
-            kundeForm.datum,
+            kundeForm.geburtsdatum,
             kundeForm.newsletter,
             interessen,
             kundeForm.version,
@@ -204,14 +205,16 @@ export class Kunde {
 
     // Property in TypeScript wie in C#
     // https://www.typescriptlang.org/docs/handbook/classes.html#accessors
-    get datumFormatted() {
+    get geburtsdatumFormatted() {
         // z.B. 7. Mai 2020
         const formatter = new Intl.DateTimeFormat('de', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
         });
-        return this.datum === undefined ? '' : formatter.format(this.datum);
+        return this.geburtsdatum === undefined
+            ? ''
+            : formatter.format(this.geburtsdatum);
     }
 
     /**
@@ -245,13 +248,14 @@ export class Kunde {
         nachname: string,
         familienstand: FamilienstandType,
         geschlecht: GeschlechtType | '' | undefined,
-        datum: Date | undefined,
+        geburtsdatum: Date | undefined,
     ) {
         this.nachname = nachname;
         this.familienstand = familienstand;
         this.geschlecht = geschlecht;
         /* eslint-enable unicorn/no-new-array */
-        this.datum = datum === undefined ? new Date() : datum;
+        this.geburtsdatum =
+            geburtsdatum === undefined ? new Date() : geburtsdatum;
     }
 
     /**
@@ -295,11 +299,11 @@ export class Kunde {
      * @return Das JSON-Objekt f&uuml;r den RESTful Web Service
      */
     toJSON(): KundeServer {
-        const datum =
-            this.datum === undefined
+        const geburtsdatum =
+            this.geburtsdatum === undefined
                 ? undefined
-                : this.datum.toISOString().split('T')[0];
-        log.debug(`toJson(): datum=${datum}`);
+                : this.geburtsdatum.toISOString().split('T')[0];
+        log.debug(`toJson(): geburtsdatum=${geburtsdatum}`);
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             nachname: this.nachname,
@@ -307,7 +311,7 @@ export class Kunde {
             adresse: this.adresse,
             familienstand: this.familienstand,
             geschlecht: this.geschlecht,
-            datum,
+            geburtsdatum,
             newsletter: this.newsletter,
             interessen: this.interessen,
         };

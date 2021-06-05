@@ -6,7 +6,7 @@
   "preis": 9999,
   "rabatt": 0.99,
   "lieferbar": true,
-  "datum": "2020-02-01",
+  "geburtsdatum": "2020-02-01",
   "isbn": "0-0070-9732-8",
   "homepage": "https://test.de/",
   "interessen": ["JAVASCRIPT", "TYPESCRIPT"]

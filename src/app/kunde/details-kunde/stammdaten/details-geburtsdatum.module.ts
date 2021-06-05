@@ -15,26 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CreateDatumComponent } from './create-datum.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
+import { DetailsGeburtsdatumComponent } from './details-geburtsdatum.component';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [CreateDatumComponent],
-    exports: [CreateDatumComponent],
-    imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatInputModule,
-        MatButtonModule,
-    ],
-    providers: [MatDatepickerModule],
+    declarations: [DetailsGeburtsdatumComponent],
+    exports: [DetailsGeburtsdatumComponent],
 })
-export class CreateDatumModule {}
+export class DetailsGeburtsdatumModule {}

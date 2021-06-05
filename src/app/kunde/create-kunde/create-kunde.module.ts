@@ -17,9 +17,9 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateAdresseModule } from './create-adresse.module';
-import { CreateDatumModule } from './create-datum.module';
 import { CreateEmailModule } from './create-email.module';
 import { CreateFamilienstandModule } from './create-familienstand.module';
+import { CreateGeburtsdatumModule } from './create-geburtsdatum.module';
 import { CreateGeschlechtTypeModule } from './create-geschlechtType.module';
 import { CreateInteressenModule } from './create-interessen.module';
 import { CreateKundeComponent } from './create-kunde.component';
@@ -43,7 +43,7 @@ import { Title } from '@angular/platform-browser';
     imports: [
         CommonModule,
         CreateFamilienstandModule,
-        CreateDatumModule,
+        CreateGeburtsdatumModule,
         CreateNewsletterModule,
         CreateNachnameModule,
         CreateGeschlechtTypeModule,

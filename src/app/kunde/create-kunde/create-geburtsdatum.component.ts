@@ -28,27 +28,27 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-datum&gt;, um das Erfassungsformular
+ * Komponente mit dem Tag &lt;hs-create-geburtsdatum&gt;, um das Erfassungsformular
  * f&uuml;r ein neues Kunde zu realisieren.
  */
 @Component({
-    selector: 'hs-create-datum',
-    templateUrl: './create-datum.component.html',
-    styleUrls: ['./create-datum.component.scss'],
+    selector: 'hs-create-geburtsdatum',
+    templateUrl: './create-geburtsdatum.component.html',
+    styleUrls: ['./create-geburtsdatum.component.scss'],
 })
-export class CreateDatumComponent implements OnInit, AfterViewInit {
+export class CreateGeburtsdatumComponent implements OnInit, AfterViewInit {
     @Input()
     form!: FormGroup;
 
-    readonly datum = new FormControl(undefined);
+    readonly geburtsdatum = new FormControl(undefined);
 
     // eslint-disable-next-line no-useless-constructor
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {
-        log.debug('CreateDatumComponent.ngOnInit');
+        log.debug('CreateGeburtsdatumComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('datum', this.datum);
+        this.form.addControl('geburtsdatum', this.geburtsdatum);
     }
 
     ngAfterViewInit() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,11 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { DetailsDatumComponent } from './details-datum.component';
-import { NgModule } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-@NgModule({
-    declarations: [DetailsDatumComponent],
-    exports: [DetailsDatumComponent],
+import type { OnInit } from '@angular/core';
+import log from 'loglevel';
+
+/**
+ * Komponente f&uuml;r das Tag <code>hs-details-geburtsdatum</code>
+ */
+@Component({
+    selector: 'hs-details-geburtsdatum',
+    templateUrl: './details-geburtsdatum.component.html',
+    styleUrls: ['./details-geburtsdatum.component.scss'],
 })
-export class DetailsDatumModule {}
+export class DetailsGeburtsdatumComponent implements OnInit {
+    @Input()
+    formatted!: string;
+
+    ngOnInit() {
+        log.debug(`DetailsGeburtsdatumComponent: formatted=${this.formatted}`);
+    }
+}

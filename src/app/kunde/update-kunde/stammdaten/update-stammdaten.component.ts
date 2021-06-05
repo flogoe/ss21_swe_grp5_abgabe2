@@ -82,12 +82,12 @@ export class UpdateStammdatenComponent implements OnInit {
             geschlechtType,
         }: { geschlechtType: GeschlechtType | '' | undefined } =
             this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        const { datum } = this.kunde;
+        const { geburtsdatum } = this.kunde;
         this.kunde.updateStammdaten(
             nachname,
             familienstand,
             geschlechtType,
-            datum,
+            geburtsdatum,
         );
         log.debug('kunde=', this.kunde);
 

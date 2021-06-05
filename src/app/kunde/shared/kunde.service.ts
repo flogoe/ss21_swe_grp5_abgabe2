@@ -208,7 +208,7 @@ export class KundeService {
      */
     save(kunde: Kunde): Observable<SaveError | string> {
         log.debug('KundeService.save(): kunde=', kunde);
-        kunde.datum = new Date();
+        kunde.geburtsdatum = new Date();
 
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
