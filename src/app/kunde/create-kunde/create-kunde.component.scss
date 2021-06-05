@@ -17,3 +17,23 @@
 .mat-form-field {
   max-width: 300px !important;
 }
+
+.warn {
+  color: #f44336;
+}
+
+.warnRow {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 5px;
+  span {
+    background: #f443361f;
+    padding: 5px;
+  }
+
+  i {
+    margin-right: 10px;
+  }
+}
