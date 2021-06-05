@@ -20,11 +20,7 @@ import log from 'loglevel';
 
 export type GeschlechtType = 'M' | 'W' | 'D';
 
-export type FamilienstandType =
-    | 'LEDIG'
-    | 'VERHEIRATET'
-    | 'GESCHIEDEN'
-    | 'VERWITWET';
+export type FamilienstandType = 'L' | 'VH' | 'G' | 'VW';
 
 export const ISBN_REGEX =
     /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
@@ -43,11 +39,17 @@ export interface KundeShared {
     geburtsdatum?: string;
     newsletter?: boolean;
     version?: number;
+    user?: User;
 }
 
 export interface Adresse {
     plz: string;
     ort: string;
+}
+
+export interface User {
+    username: string;
+    password: string;
 }
 
 interface Link {
@@ -110,6 +112,7 @@ export class Kunde {
         public newsletter: boolean | undefined,
         public interessen: string[],
         public version: number | undefined,
+        public user?: User | undefined,
     ) {
         // TODO Parsing, ob der Geburtsdatum-String valide ist
         this.geburtsdatum =
@@ -187,6 +190,13 @@ export class Kunde {
             interessen.push('R');
         }
 
+        const user: User = {
+            username: kundeForm.nachname?.toLocaleLowerCase() ?? 'neuerUser',
+            password: 'p',
+        };
+
+        console.log('gibt es user?', user);
+
         const kunde = new Kunde(
             kundeForm._id,
             kundeForm.nachname ?? 'unbekannt',
@@ -198,6 +208,7 @@ export class Kunde {
             kundeForm.newsletter,
             interessen,
             kundeForm.version,
+            user,
         );
         log.debug('Kunde.fromForm(): kunde=', kunde);
         return kunde;
@@ -314,6 +325,7 @@ export class Kunde {
             geburtsdatum,
             newsletter: this.newsletter,
             interessen: this.interessen,
+            user: this.user,
         };
     }
 

@@ -26,11 +26,11 @@ import {
     HttpParams,
     HttpResponse,
 } from '@angular/common/http';
+import { Kunde, User } from './kunde';
 import { catchError, map } from 'rxjs/operators';
 
 import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Kunde } from './kunde';
 import type { Observable } from 'rxjs';
 import log from 'loglevel';
 import { of } from 'rxjs';
@@ -216,6 +216,8 @@ export class KundeService {
             Accept: 'text/plain',
         });
         /* eslint-enable @typescript-eslint/naming-convention */
+
+        console.log('FINAL SEND KUNDE:', kunde.toJSON());
 
         return this.httpClient
             .post(this.baseUrlKunden, kunde.toJSON(), {
