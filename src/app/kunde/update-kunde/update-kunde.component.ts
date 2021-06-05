@@ -31,7 +31,7 @@ import log from 'loglevel';
  * f&uuml;r die folgenden Tags:
  * <ul>
  *  <li> <code>hs-stammdaten</code>
- *  <li> <code>hs-schlagwoerter</code>
+ *  <li> <code>hs-interessen</code>
  * </ul>
  */
 @Component({

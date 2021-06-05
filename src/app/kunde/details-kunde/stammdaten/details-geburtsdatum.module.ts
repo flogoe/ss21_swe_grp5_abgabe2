@@ -15,11 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { DetailsDatumComponent } from './details-datum.component';
+import { DetailsGeburtsdatumComponent } from './details-geburtsdatum.component';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-    declarations: [DetailsDatumComponent],
-    exports: [DetailsDatumComponent],
+    declarations: [DetailsGeburtsdatumComponent],
+    exports: [DetailsGeburtsdatumComponent],
 })
-export class DetailsDatumModule {}
+export class DetailsGeburtsdatumModule {}

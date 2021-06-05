@@ -21,19 +21,19 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-schlagwoerter</code>
+ * Komponente f&uuml;r das Tag <code>hs-details-interessen</code>
  */
 @Component({
-    selector: 'hs-details-schlagwoerter',
-    templateUrl: './details-schlagwoerter.component.html',
+    selector: 'hs-details-interessen',
+    templateUrl: './details-interessen.component.html',
 })
-export class DetailsSchlagwoerterComponent implements OnInit {
-    // <hs-schlagwoerter [values]="kunde.schlagwoerter">
+export class DetailsInteressenComponent implements OnInit {
+    // <hs-interessen [values]="kunde.interessen">
     // Decorator fuer ein Attribut. Siehe InputMetadata
     @Input()
     values!: string[];
 
     ngOnInit() {
-        log.debug('DetailsSchlagwoerterComponent.values=', this.values);
+        log.debug('DetailsInteressenComponent.values=', this.values);
     }
 }

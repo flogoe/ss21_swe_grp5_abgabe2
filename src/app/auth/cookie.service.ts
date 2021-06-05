@@ -21,7 +21,7 @@ import { Injectable } from '@angular/core';
 import log from 'loglevel';
 
 // Namen der Cookies: nur als Speichermechanismus (nicht zum Server übertragen):
-// Ablaufdatum oder Session-Cookie (Lebensdauer gebunden an Tab).
+// Ablaufgeburtsdatum oder Session-Cookie (Lebensdauer gebunden an Tab).
 // Kein XSS (Cross-Site Scripting) wie bei Local Storage
 // Evtl. CSRF (Cross-Site Request Forgery)
 
@@ -91,7 +91,7 @@ export class CookieService {
     /**
      * @param name Name des Cookies
      * @param value Wert des Cookies
-     * @param expires Ablaufdatum in Millisekunden. Default: Session.
+     * @param expires Ablaufgeburtsdatum in Millisekunden. Default: Session.
      * @param path Pfad des Cookies. Default: /.
      * @param domain Domain des Cookies. Default: aktuelle Domain.
      */

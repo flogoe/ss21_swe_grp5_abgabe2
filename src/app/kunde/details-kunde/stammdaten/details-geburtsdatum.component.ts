@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,16 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { BalkendiagrammComponent } from './balkendiagramm.component';
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { Title } from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
 
-@NgModule({
-    declarations: [BalkendiagrammComponent],
-    exports: [BalkendiagrammComponent],
-    imports: [HttpClientModule, NgxChartsModule],
-    providers: [Title],
+import type { OnInit } from '@angular/core';
+import log from 'loglevel';
+
+/**
+ * Komponente f&uuml;r das Tag <code>hs-details-geburtsdatum</code>
+ */
+@Component({
+    selector: 'hs-details-geburtsdatum',
+    templateUrl: './details-geburtsdatum.component.html',
+    styleUrls: ['./details-geburtsdatum.component.scss'],
 })
-export class BalkendiagrammModule {}
+export class DetailsGeburtsdatumComponent implements OnInit {
+    @Input()
+    formatted!: string;
+
+    ngOnInit() {
+        log.debug(`DetailsGeburtsdatumComponent: formatted=${this.formatted}`);
+    }
+}

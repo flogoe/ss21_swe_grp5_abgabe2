@@ -15,13 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CommonModule } from '@angular/common';
-import { DetailsSchlagwoerterComponent } from './details-schlagwoerter.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateInteressenComponent } from './update-interessen.component';
 
 @NgModule({
-    declarations: [DetailsSchlagwoerterComponent],
-    exports: [DetailsSchlagwoerterComponent],
-    imports: [CommonModule],
+    declarations: [UpdateInteressenComponent],
+    exports: [UpdateInteressenComponent],
+    imports: [ReactiveFormsModule, MatCheckboxModule, MatButtonModule],
 })
-export class DetailsSchlagwoerterModule {}
+export class UpdateInteressenModule {}

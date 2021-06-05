@@ -16,9 +16,12 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { CreateDatumModule } from './create-datum.module';
+import { CreateAdresseModule } from './create-adresse.module';
+import { CreateEmailModule } from './create-email.module';
 import { CreateFamilienstandModule } from './create-familienstand.module';
+import { CreateGeburtsdatumModule } from './create-geburtsdatum.module';
 import { CreateGeschlechtTypeModule } from './create-geschlechtType.module';
+import { CreateInteressenModule } from './create-interessen.module';
 import { CreateKundeComponent } from './create-kunde.component';
 import { CreateNachnameModule } from './create-nachname.module';
 import { CreateNewsletterModule } from './create-newsletter.module';
@@ -40,7 +43,7 @@ import { Title } from '@angular/platform-browser';
     imports: [
         CommonModule,
         CreateFamilienstandModule,
-        CreateDatumModule,
+        CreateGeburtsdatumModule,
         CreateNewsletterModule,
         CreateNachnameModule,
         CreateGeschlechtTypeModule,
@@ -51,6 +54,9 @@ import { Title } from '@angular/platform-browser';
         CreateNachnameModule,
         MatToolbarModule,
         MatButtonModule,
+        CreateInteressenModule,
+        CreateEmailModule,
+        CreateAdresseModule,
     ],
     providers: [Title],
 })

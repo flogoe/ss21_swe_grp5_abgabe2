@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,9 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-export class KeineKundenError extends Error {
-    constructor() {
-        super('Es gibt keine Kunden');
-        this.name = 'KeineKundenError';
-    }
-}
+import { CommonModule } from '@angular/common';
+import { DetailsInteressenComponent } from './details-interessen.component';
+import { NgModule } from '@angular/core';
+
+@NgModule({
+    declarations: [DetailsInteressenComponent],
+    exports: [DetailsInteressenComponent],
+    imports: [CommonModule],
+})
+export class DetailsInteressenModule {}

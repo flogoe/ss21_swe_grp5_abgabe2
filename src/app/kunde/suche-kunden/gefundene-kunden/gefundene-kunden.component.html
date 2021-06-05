@@ -53,17 +53,18 @@
           <td (click)="onClick(b)">{{ b.nachname }}</td>
           <td>
             <span [ngSwitch]="b.geschlecht">
-              <span *ngSwitchCase="'MAENNLICH'">M GeschlechtType</span>
-              <span *ngSwitchCase="'WEIBLICH'">W GeschlechtType</span>
-              <span *ngSwitchCase="'DIVERS'">D GeschlechtType</span>
+              <span *ngSwitchCase="'M'">Männlich</span>
+              <span *ngSwitchCase="'W'">Weiblich</span>
+              <span *ngSwitchCase="'D'">Divers</span>
               <span *ngSwitchDefault>unbekannt</span>
             </span>
           </td>
           <td (click)="onClick(b)">
-            <span *ngFor="let sw of b.schlagwoerter">
+            <span *ngFor="let sw of b.interessen">
               <span [ngSwitch]="sw">
-                <span *ngSwitchCase="'JAVASCRIPT'"> JavaScript<br /> </span>
-                <span *ngSwitchCase="'TYPESCRIPT'"> TypeScript </span>
+                <span *ngSwitchCase="'S'"> Sport<br /> </span>
+                <span *ngSwitchCase="'L'"> Lesen </span>
+                <span *ngSwitchCase="'R'"> Reisen </span>
               </span>
             </span>
           </td>

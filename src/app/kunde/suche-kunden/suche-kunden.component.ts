@@ -112,7 +112,7 @@ export class SucheKundenComponent implements OnInit {
             nachname: '',
             geschlechtType: '',
             familienstand: '',
-            schlagwoerter: { javascript: false, typescript: false },
+            interessen: { sport: false, lesen: false, reisen: false },
         };
         this.kunden = [];
 

@@ -19,19 +19,21 @@ import { Component } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-schlagwoerter</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-interessen</code>
  */
 @Component({
-    selector: 'hs-suche-schlagwoerter',
-    templateUrl: './suche-schlagwoerter.component.html',
-    styleUrls: ['./suche-schlagwoerter.component.scss'],
+    selector: 'hs-suche-interessen',
+    templateUrl: './suche-interessen.component.html',
+    styleUrls: ['./suche-interessen.component.scss'],
 })
-export class SucheSchlagwoerterComponent {
-    javascript = false;
+export class SucheInteressenComponent {
+    sport = false;
 
-    typescript = false;
+    lesen = false;
+
+    reisen = false;
 
     constructor() {
-        log.debug('SucheSchlagwoerterComponent.constructor()');
+        log.debug('SucheInteressenComponent.constructor()');
     }
 }

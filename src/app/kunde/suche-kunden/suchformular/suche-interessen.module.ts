@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,16 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { HttpClientModule } from '@angular/common/http';
-import { LiniendiagrammComponent } from './liniendiagramm.component';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgModule } from '@angular/core';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { Title } from '@angular/platform-browser';
+import { SucheInteressenComponent } from './suche-interessen.component';
 
 @NgModule({
-    declarations: [LiniendiagrammComponent],
-    exports: [LiniendiagrammComponent],
-    imports: [HttpClientModule, NgxChartsModule],
-    providers: [Title],
+    declarations: [SucheInteressenComponent],
+    exports: [SucheInteressenComponent],
+    imports: [FormsModule, MatCheckboxModule],
 })
-export class LiniendiagrammModule {}
+export class SucheInteressenModule {}

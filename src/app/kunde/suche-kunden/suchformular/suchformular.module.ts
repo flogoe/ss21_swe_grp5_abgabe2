@@ -23,8 +23,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { SucheFamilienstandModule } from './suche-familienstand.module';
 import { SucheGeschlechtTypeModule } from './suche-geschlechtType.module';
+import { SucheInteressenModule } from './suche-interessen.module';
 import { SucheNachnameModule } from './suche-nachname.module';
-import { SucheSchlagwoerterModule } from './suche-schlagwoerter.module';
 import { SuchformularComponent } from './suchformular.component';
 
 // Ein Modul enthaelt logisch zusammengehoerige Funktionalitaet.
@@ -38,7 +38,7 @@ import { SuchformularComponent } from './suchformular.component';
         FormsModule,
         HttpClientModule,
         SucheFamilienstandModule,
-        SucheSchlagwoerterModule,
+        SucheInteressenModule,
         SucheNachnameModule,
         SucheGeschlechtTypeModule,
         MatToolbarModule,

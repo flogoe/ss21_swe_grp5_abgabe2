@@ -16,16 +16,13 @@
  */
 
 import { AdminGuard } from '../auth/admin.guard';
-import { BalkendiagrammComponent } from './diagramme/balkendiagramm.component';
 import { CreateKundeComponent } from './create-kunde/create-kunde.component';
 import { CreateKundeGuard } from './create-kunde/create-kunde.guard';
 import { DetailsKundeComponent } from './details-kunde/details-kunde.component';
-import { LiniendiagrammComponent } from './diagramme/liniendiagramm.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import type { Routes } from '@angular/router';
 import { SucheKundenComponent } from './suche-kunden/suche-kunden.component';
-import { TortendiagrammComponent } from './diagramme/tortendiagramm.component';
 import { UpdateKundeComponent } from './update-kunde/update-kunde.component';
 
 // Route-Definitionen fuer das Feature-Modul "kunde":
@@ -41,22 +38,6 @@ const routes: Routes = [
         canActivate: [AdminGuard],
         canDeactivate: [CreateKundeGuard],
     },
-    {
-        path: 'balkendiagramm',
-        component: BalkendiagrammComponent,
-        canActivate: [AdminGuard],
-    },
-    {
-        path: 'liniendiagramm',
-        component: LiniendiagrammComponent,
-        canActivate: [AdminGuard],
-    },
-    {
-        path: 'tortendiagramm',
-        component: TortendiagrammComponent,
-        canActivate: [AdminGuard],
-    },
-
     // id als Pfad-Parameter
     {
         path: ':id',

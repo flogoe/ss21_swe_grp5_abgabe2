@@ -1,7 +1,10 @@
 :host {
   display: flex;
   margin-bottom: 25px;
-  flex-direction: column;
+}
+
+mat-checkbox {
+  margin-right: 10px;
 }
 
 .mat-form-field {

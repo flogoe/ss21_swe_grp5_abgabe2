@@ -18,15 +18,9 @@
 
 import log from 'loglevel';
 
-const MAX_RATING = 5;
+export type GeschlechtType = 'M' | 'W' | 'D';
 
-export type GeschlechtType = 'MAENNLICH' | 'WEIBLICH' | 'DIVERS';
-
-export type FamilienstandType =
-    | 'LEDIG'
-    | 'VERHEIRATET'
-    | 'GESCHIEDEN'
-    | 'VERWITWET';
+export type FamilienstandType = 'L' | 'VH' | 'G' | 'VW';
 
 export const ISBN_REGEX =
     /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
@@ -38,14 +32,24 @@ export const ISBN_REGEX =
 export interface KundeShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     nachname: string | undefined;
+    email: string;
+    adresse: Adresse;
     geschlecht?: GeschlechtType | '';
     familienstand: FamilienstandType;
-    preis: number;
-    rabatt: number | undefined;
-    datum?: string;
+    geburtsdatum?: string;
     newsletter?: boolean;
-    isbn: string;
     version?: number;
+    user?: User;
+}
+
+export interface Adresse {
+    plz: string;
+    ort: string;
+}
+
+export interface User {
+    username: string;
+    password: string;
 }
 
 interface Link {
@@ -62,8 +66,7 @@ interface Link {
  * </ul>
  */
 export interface KundeServer extends KundeShared {
-    rating?: number;
-    schlagwoerter?: string[];
+    interessen?: string[];
     // eslint-disable-next-line @typescript-eslint/naming-convention
     _links?: {
         self: Link;
@@ -82,9 +85,9 @@ export interface KundeServer extends KundeShared {
  * </ul>
  */
 export interface KundeForm extends KundeShared {
-    rating: string;
-    javascript?: boolean;
-    typescript?: boolean;
+    sport?: boolean;
+    lesen?: boolean;
+    reisen?: boolean;
 }
 
 /**
@@ -94,35 +97,26 @@ export interface KundeForm extends KundeShared {
 export class Kunde {
     private static readonly SPACE = 2;
 
-    ratingArray: boolean[] =
-        /* eslint-disable unicorn/no-new-array, unicorn/prefer-spread */
-        this.rating === undefined
-            ? new Array<boolean>(MAX_RATING).fill(false)
-            : new Array<boolean>(this.rating)
-                  .fill(true)
-                  .concat(new Array(MAX_RATING - this.rating).fill(false));
-    /* eslint-enable unicorn/no-new-array, unicorn/prefer-spread */
-
-    datum: Date | undefined;
+    geburtsdatum: Date | undefined;
 
     // wird aufgerufen von fromServer() oder von fromForm()
     // eslint-disable-next-line max-params
     private constructor(
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
         public nachname: string,
-        public rating: number | undefined,
+        public email: string,
+        public adresse: Adresse,
         public familienstand: FamilienstandType,
         public geschlecht: GeschlechtType | '' | undefined,
-        datum: string | undefined,
-        public preis: number,
-        public rabatt: number,
+        geburtsdatum: string | undefined,
         public newsletter: boolean | undefined,
-        public schlagwoerter: string[],
-        public isbn: string,
+        public interessen: string[],
         public version: number | undefined,
+        public user?: User | undefined,
     ) {
-        // TODO Parsing, ob der Datum-String valide ist
-        this.datum = datum === undefined ? new Date() : new Date(datum);
+        // TODO Parsing, ob der Geburtsdatum-String valide ist
+        this.geburtsdatum =
+            geburtsdatum === undefined ? new Date() : new Date(geburtsdatum);
         log.debug('Kunde(): this=', this);
     }
 
@@ -154,28 +148,24 @@ export class Kunde {
 
         const {
             nachname,
-            rating,
+            email,
+            adresse,
             familienstand,
             geschlecht,
-            datum,
-            preis,
-            rabatt,
+            geburtsdatum,
             newsletter,
-            schlagwoerter,
-            isbn,
+            interessen,
         } = kundeServer;
         const kunde = new Kunde(
             id,
             nachname ?? 'unbekannt',
-            rating,
+            email,
+            adresse,
             familienstand,
             geschlecht,
-            datum,
-            preis,
-            rabatt ?? 0,
+            geburtsdatum,
             newsletter,
-            schlagwoerter ?? [],
-            isbn,
+            interessen ?? [],
             version,
         );
         log.debug('Kunde.fromServer(): kunde=', kunde);
@@ -189,29 +179,36 @@ export class Kunde {
      */
     static fromForm(kundeForm: KundeForm) {
         log.debug('Kunde.fromForm(): kundeForm=', kundeForm);
-        const schlagwoerter: string[] = [];
-        if (kundeForm.javascript === true) {
-            schlagwoerter.push('JAVASCRIPT');
+        const interessen: string[] = [];
+        if (kundeForm.sport === true) {
+            interessen.push('S');
         }
-        if (kundeForm.typescript === true) {
-            schlagwoerter.push('TYPESCRIPT');
+        if (kundeForm.lesen === true) {
+            interessen.push('L');
+        }
+        if (kundeForm.reisen === true) {
+            interessen.push('R');
         }
 
-        const rabatt =
-            kundeForm.rabatt === undefined ? 0 : kundeForm.rabatt / 100; // eslint-disable-line @typescript-eslint/no-magic-numbers
+        const user: User = {
+            username: kundeForm.nachname?.toLocaleLowerCase() ?? 'neuerUser',
+            password: 'p',
+        };
+
+        console.log('gibt es user?', user);
+
         const kunde = new Kunde(
             kundeForm._id,
             kundeForm.nachname ?? 'unbekannt',
-            Number(kundeForm.rating),
+            kundeForm.email,
+            kundeForm.adresse,
             kundeForm.familienstand,
             kundeForm.geschlecht,
-            kundeForm.datum,
-            kundeForm.preis,
-            rabatt,
+            kundeForm.geburtsdatum,
             kundeForm.newsletter,
-            schlagwoerter,
-            kundeForm.isbn,
+            interessen,
             kundeForm.version,
+            user,
         );
         log.debug('Kunde.fromForm(): kunde=', kunde);
         return kunde;
@@ -219,14 +216,16 @@ export class Kunde {
 
     // Property in TypeScript wie in C#
     // https://www.typescriptlang.org/docs/handbook/classes.html#accessors
-    get datumFormatted() {
+    get geburtsdatumFormatted() {
         // z.B. 7. Mai 2020
         const formatter = new Intl.DateTimeFormat('de', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
         });
-        return this.datum === undefined ? '' : formatter.format(this.datum);
+        return this.geburtsdatum === undefined
+            ? ''
+            : formatter.format(this.geburtsdatum);
     }
 
     /**
@@ -241,24 +240,6 @@ export class Kunde {
     }
 
     /**
-     * Die Bewertung ("rating") des Kundees um 1 erh&ouml;hen
-     */
-    rateUp() {
-        if (this.rating !== undefined && this.rating < MAX_RATING) {
-            this.rating++;
-        }
-    }
-
-    /**
-     * Die Bewertung ("rating") des Kundees um 1 erniedrigen
-     */
-    rateDown() {
-        if (this.rating !== undefined && this.rating > 0) {
-            this.rating--;
-        }
-    }
-
-    /**
      * Abfrage, ob der Kunde dem angegebenen Geschlecht zugeordnet ist.
      * @param geschlechtType das Geschlecht
      * @return true, falls der Kunde dem Geschlecht zugeordnet ist. Sonst false.
@@ -270,68 +251,56 @@ export class Kunde {
     /**
      * Aktualisierung der Stammdaten des Kunde-Objekts.
      * @param nachname Der neue Nachname
-     * @param rating Die neue Bewertung
      * @param familienstand Der neue Familienstand
      * @param geschlecht Das neue Geschlecht
-     * @param preis Der neue Preis
-     * @param rabatt Der neue Rabatt
      */
     // eslint-disable-next-line max-params
     updateStammdaten(
         nachname: string,
         familienstand: FamilienstandType,
         geschlecht: GeschlechtType | '' | undefined,
-        rating: number | undefined,
-        datum: Date | undefined,
-        preis: number,
-        rabatt: number,
-        isbn: string,
+        geburtsdatum: Date | undefined,
     ) {
         this.nachname = nachname;
         this.familienstand = familienstand;
         this.geschlecht = geschlecht;
-        this.rating = rating;
-        /* eslint-disable unicorn/no-new-array */
-        this.ratingArray =
-            rating === undefined
-                ? new Array<boolean>(MAX_RATING).fill(false)
-                : new Array<boolean>(rating).fill(true);
         /* eslint-enable unicorn/no-new-array */
-        this.datum = datum === undefined ? new Date() : datum;
-        this.preis = preis;
-        this.rabatt = rabatt;
-        this.isbn = isbn;
+        this.geburtsdatum =
+            geburtsdatum === undefined ? new Date() : geburtsdatum;
     }
 
     /**
      * Abfrage, ob es zum Kunde auch Schlagw&ouml;rter gibt.
-     * @return true, falls es mindestens ein Schlagwort gibt. Sonst false.
+     * @return true, falls es mindestens ein Interesse gibt. Sonst false.
      */
-    hasSchlagwoerter() {
-        return this.schlagwoerter.length > 0;
+    hasInteressen() {
+        return this.interessen.length > 0;
     }
 
     /**
-     * Abfrage, ob es zum Kunde das angegebene Schlagwort gibt.
-     * @param schlagwort das zu &uuml;berpr&uuml;fende Schlagwort
-     * @return true, falls es das Schlagwort gibt. Sonst false.
+     * Abfrage, ob es zum Kunde das angegebene Interesse gibt.
+     * @param interesse das zu &uuml;berpr&uuml;fende Interesse
+     * @return true, falls es das Interesse gibt. Sonst false.
      */
-    hasSchlagwort(schlagwort: string) {
-        return this.schlagwoerter.includes(schlagwort);
+    hasInteresse(interesse: string) {
+        return this.interessen.includes(interesse);
     }
 
     /**
      * Aktualisierung der Schlagw&ouml;rter des Kunde-Objekts.
-     * @param javascript ist das Schlagwort JAVASCRIPT gesetzt
-     * @param typescript ist das Schlagwort TYPESCRIPT gesetzt
+     * @param javascript ist das Interesse JAVASCRIPT gesetzt
+     * @param typescript ist das Interesse TYPESCRIPT gesetzt
      */
-    updateSchlagwoerter(javascript: boolean, typescript: boolean) {
-        this.resetSchlagwoerter();
-        if (javascript) {
-            this.addSchlagwort('JAVASCRIPT');
+    updateInteressen(sport: boolean, lesen: boolean, reisen: boolean) {
+        this.resetInteressen();
+        if (sport) {
+            this.addInteresse('S');
         }
-        if (typescript) {
-            this.addSchlagwort('TYPESCRIPT');
+        if (lesen) {
+            this.addInteresse('L');
+        }
+        if (reisen) {
+            this.addInteresse('R');
         }
     }
 
@@ -341,23 +310,22 @@ export class Kunde {
      * @return Das JSON-Objekt f&uuml;r den RESTful Web Service
      */
     toJSON(): KundeServer {
-        const datum =
-            this.datum === undefined
+        const geburtsdatum =
+            this.geburtsdatum === undefined
                 ? undefined
-                : this.datum.toISOString().split('T')[0];
-        log.debug(`toJson(): datum=${datum}`);
+                : this.geburtsdatum.toISOString().split('T')[0];
+        log.debug(`toJson(): geburtsdatum=${geburtsdatum}`);
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             nachname: this.nachname,
-            rating: this.rating,
+            email: this.email,
+            adresse: this.adresse,
             familienstand: this.familienstand,
             geschlecht: this.geschlecht,
-            datum,
-            preis: this.preis,
-            rabatt: this.rabatt,
+            geburtsdatum,
             newsletter: this.newsletter,
-            schlagwoerter: this.schlagwoerter,
-            isbn: this.isbn,
+            interessen: this.interessen,
+            user: this.user,
         };
     }
 
@@ -366,12 +334,12 @@ export class Kunde {
         return JSON.stringify(this, null, Kunde.SPACE);
     }
 
-    private resetSchlagwoerter() {
-        this.schlagwoerter = [];
+    private resetInteressen() {
+        this.interessen = [];
     }
 
-    private addSchlagwort(schlagwort: string) {
-        this.schlagwoerter.push(schlagwort);
+    private addInteresse(interesse: string) {
+        this.interessen.push(interesse);
     }
 }
 /* eslint-enable max-lines */

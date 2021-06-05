@@ -49,7 +49,7 @@ GET {{localHTTPS}}/rest/kunden?nachname=a
 ### Suche mit vorhandener ISBN-Nummber
 GET {{localHTTPS}}/rest/kunden?isbn=000-0-00000-000-1
 
-### Suche mit vorhandenen Schlagwoertern
+### Suche mit vorhandenen Interessenn
 GET {{localHTTPS}}/rest/kunden?javascript=true&typescript=true
 
 ### Suche mit gueltiger Kundeart

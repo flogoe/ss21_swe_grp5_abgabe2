@@ -1,0 +1,50 @@
+<h3>Adresse</h3>
+<div [formGroup]="adresseForm">
+  <mat-form-field>
+    <mat-label>Plz</mat-label>
+    <input
+      matInput
+      id="plzInput"
+      name="plz"
+      formControlName="plz"
+      [class.is-invalid]="plz.invalid && plz.touched"
+      [class.is-valid]="plz.valid && plz.touched"
+    />
+  </mat-form-field>
+  <div *ngIf="plz.invalid && plz.touched" class="invalid-feedback">
+    <mat-error *ngIf="plz.errors && plz.errors.required">
+      Ein Plz muss eingegeben werden.
+    </mat-error>
+    <mat-error *ngIf="plz.hasError('plz') && !plz.hasError('required')">
+      Ein Plz muss im richtigen Format eingegeben werden.
+    </mat-error>
+    <mat-error
+      *ngIf="
+        (plz.hasError('minlength') && !plz.hasError('required')) ||
+        (plz.hasError('maxlength') && !plz.hasError('required'))
+      "
+    >
+      Eine Postleitzahl muss aus genau 5 Zahlen bestehen.
+    </mat-error>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Ort</mat-label>
+    <input
+      matInput
+      id="ortInput"
+      name="ort"
+      formControlName="ort"
+      [class.is-invalid]="ort.invalid && ort.touched"
+      [class.is-valid]="ort.valid && ort.touched"
+    />
+  </mat-form-field>
+  <div *ngIf="ort.invalid && ort.touched" class="invalid-feedback">
+    <mat-error *ngIf="ort.errors && ort.errors.required">
+      Ein Ort muss eingegeben werden.
+    </mat-error>
+    <mat-error *ngIf="ort.hasError('ort') && !ort.hasError('required')">
+      Ein Ort muss im richtigen Format eingegeben werden.
+    </mat-error>
+  </div>
+</div>
