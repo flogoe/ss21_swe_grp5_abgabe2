@@ -18,7 +18,7 @@
 
 import log from 'loglevel';
 
-export type GeschlechtType = 'MAENNLICH' | 'WEIBLICH' | 'DIVERS';
+export type GeschlechtType = 'M' | 'W' | 'D';
 
 export type FamilienstandType =
     | 'LEDIG'

@@ -35,11 +35,11 @@ export class CreateGeschlechtTypeComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly geschlechtType = new FormControl(undefined, Validators.required);
+    readonly geschlecht = new FormControl(undefined, Validators.required);
 
     ngOnInit() {
         log.debug('CreateGeschlechtTypeComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('geschlechtType', this.geschlechtType);
+        this.form.addControl('geschlecht', this.geschlecht);
     }
 }
