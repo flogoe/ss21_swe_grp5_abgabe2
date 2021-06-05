@@ -16,6 +16,7 @@
  */
 
 import { CommonModule } from '@angular/common';
+import { CreateAdresseModule } from './create-adresse.module';
 import { CreateDatumModule } from './create-datum.module';
 import { CreateEmailModule } from './create-email.module';
 import { CreateFamilienstandModule } from './create-familienstand.module';
@@ -55,6 +56,7 @@ import { Title } from '@angular/platform-browser';
         MatButtonModule,
         CreateInteressenModule,
         CreateEmailModule,
+        CreateAdresseModule,
     ],
     providers: [Title],
 })
