@@ -32,13 +32,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
   <form [formGroup]="form" role="form">
-    <h3>Schlagwörter</h3>
-    <mat-checkbox id="javaScriptInput" formControlName="javascript">
-      JavaScript
-    </mat-checkbox>
+    <h3>Interessen</h3>
+    <mat-checkbox id="sportInput" formControlName="sport"> Sport </mat-checkbox>
 
-    <mat-checkbox id="typeScriptInput" formControlName="typescript">
-      TypeScript
+    <mat-checkbox id="lesenInput" formControlName="lesen"> Lesen </mat-checkbox>
+
+    <mat-checkbox id="reisenInput" formControlName="reisen">
+      Reisen
     </mat-checkbox>
 
     <div class="row gy-3">
@@ -52,7 +52,7 @@
           [disabled]="form.pristine || form.invalid"
         >
           <i class="material-icons">check</i>
-          <span class="ms-1">Schlagw&ouml;rter aktualisieren</span>
+          <span class="ms-1">Interessen aktualisieren</span>
         </button>
       </div>
     </div>

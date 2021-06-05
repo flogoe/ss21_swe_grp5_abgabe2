@@ -28,22 +28,24 @@ import { first } from 'rxjs/operators';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-schlagwoerter</code>
+ * Komponente f&uuml;r das Tag <code>hs-interessen</code>
  */
 @Component({
-    selector: 'hs-update-schlagwoerter',
-    templateUrl: './update-schlagwoerter.component.html',
+    selector: 'hs-update-interessen',
+    templateUrl: './update-interessen.component.html',
 })
-export class UpdateSchlagwoerterComponent implements OnInit {
-    // <hs-update-schlagwoerter [kunde]="...">
+export class UpdateInteressenComponent implements OnInit {
+    // <hs-update-interessen [kunde]="...">
     @Input()
     kunde!: Kunde;
 
     form!: FormGroup;
 
-    javascript!: FormControl;
+    sport!: FormControl;
 
-    typescript!: FormControl;
+    lesen!: FormControl;
+
+    reisen!: FormControl;
 
     errorMsg: string | undefined = undefined;
 
@@ -51,31 +53,34 @@ export class UpdateSchlagwoerterComponent implements OnInit {
         private readonly kundeService: KundeService,
         private readonly router: Router,
     ) {
-        log.debug('UpdateSchlagwoerterComponent.constructor()');
+        log.debug('UpdateInteressenComponent.constructor()');
     }
 
     /**
      * Das Formular als Gruppe von Controls initialisieren und mit den
-     * Schlagwoertern des zu &auml;ndernden Kundes vorbelegen.
+     * Interessenn des zu &auml;ndernden Kundes vorbelegen.
      */
     ngOnInit() {
         log.debug('kunde=', this.kunde);
 
         // Definition und Vorbelegung der Eingabedaten (hier: Checkbox)
-        const hasJavaScript = this.kunde.hasSchlagwort('JAVASCRIPT');
-        this.javascript = new FormControl(hasJavaScript);
-        const hasTypeScript = this.kunde.hasSchlagwort('TYPESCRIPT');
-        this.typescript = new FormControl(hasTypeScript);
+        const hasSport = this.kunde.hasInteresse('S');
+        this.sport = new FormControl(hasSport);
+        const hasLesen = this.kunde.hasInteresse('L');
+        this.lesen = new FormControl(hasLesen);
+        const hasReisen = this.kunde.hasInteresse('R');
+        this.reisen = new FormControl(hasReisen);
 
         this.form = new FormGroup({
             // siehe ngFormControl innerhalb von @Component({template: `...`})
-            javascript: this.javascript,
-            typescript: this.typescript,
+            sport: this.sport,
+            lesen: this.lesen,
+            reisen: this.reisen,
         });
     }
 
     /**
-     * Die aktuellen Schlagwoerter f&uuml;r das angezeigte Kunde-Objekt
+     * Die aktuellen Interessen f&uuml;r das angezeigte Kunde-Objekt
      * zur&uuml;ckschreiben.
      * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
      *         zu konsumieren.
@@ -83,14 +88,16 @@ export class UpdateSchlagwoerterComponent implements OnInit {
     onUpdate() {
         if (this.form.pristine) {
             log.debug(
-                'UpdateSchlagwoerterComponent.onUpdate(): keine Aenderungen',
+                'UpdateInteressenComponent.onUpdate(): keine Aenderungen',
             );
             return;
         }
 
-        const javascript: boolean = this.javascript.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        const typescript: boolean = this.typescript.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        this.kunde.updateSchlagwoerter(javascript, typescript);
+        const sport: boolean = this.sport.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const lesen: boolean = this.lesen.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const reisen: boolean = this.reisen.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+
+        this.kunde.updateInteressen(sport, lesen, reisen);
         log.debug('kunde=', this.kunde);
 
         const next = async (result: Kunde | UpdateError) => {
@@ -112,7 +119,7 @@ export class UpdateSchlagwoerterComponent implements OnInit {
     private handleError(err: UpdateError) {
         const { statuscode } = err;
         log.debug(
-            `UpdateSchlagwoerterComponent.handleError(): statuscode=${statuscode}`,
+            `UpdateInteressenComponent.handleError(): statuscode=${statuscode}`,
         );
 
         switch (statuscode) {
@@ -140,7 +147,7 @@ export class UpdateSchlagwoerterComponent implements OnInit {
         }
 
         log.debug(
-            `UpdateSchlagwoerterComponent.handleError(): errorMsg=${this.errorMsg}`,
+            `UpdateInteressenComponent.handleError(): errorMsg=${this.errorMsg}`,
         );
     }
 }

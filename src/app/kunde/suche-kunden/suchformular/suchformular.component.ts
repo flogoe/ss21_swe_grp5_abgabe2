@@ -20,8 +20,8 @@ import { Component, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SucheFamilienstandComponent } from './suche-familienstand.component';
 import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
+import { SucheInteressenComponent } from './suche-interessen.component';
 import { SucheNachnameComponent } from './suche-nachname.component';
-import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
 import type { Suchkriterien } from '../../shared';
 import { fadeIn } from '../../../shared';
 import log from 'loglevel';
@@ -58,8 +58,8 @@ export class SuchformularComponent {
     @ViewChild(SucheFamilienstandComponent, { static: true })
     private readonly sucheFamilienstandComponent!: SucheFamilienstandComponent;
 
-    @ViewChild(SucheSchlagwoerterComponent, { static: true })
-    private readonly sucheSchlagwoerterComponent!: SucheSchlagwoerterComponent;
+    @ViewChild(SucheInteressenComponent, { static: true })
+    private readonly sucheInteressenComponent!: SucheInteressenComponent;
 
     // DI: Constructor Injection (React hat uebrigens keine DI)
     // Empfehlung: Konstruktor nur fuer DI
@@ -76,17 +76,19 @@ export class SuchformularComponent {
         const { nachname } = this.sucheNachnameComponent;
         const { geschlechtType } = this.sucheGeschlechtTypeComponent;
         const { familienstand } = this.sucheFamilienstandComponent;
-        const { javascript } = this.sucheSchlagwoerterComponent;
-        const { typescript } = this.sucheSchlagwoerterComponent;
+        const { sport } = this.sucheInteressenComponent;
+        const { lesen } = this.sucheInteressenComponent;
+        const { reisen } = this.sucheInteressenComponent;
+
         log.debug(
-            `SuchformularComponent.onFind(): nachname=${nachname}, geschlechtType=${geschlechtType}, familienstand=${familienstand}, javascript=${javascript}, typescript=${typescript}`,
+            `SuchformularComponent.onFind(): nachname=${nachname}, geschlechtType=${geschlechtType}, familienstand=${familienstand}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
         );
 
         this.suchkriterien$.next({
             nachname,
             geschlechtType,
             familienstand,
-            schlagwoerter: { javascript, typescript },
+            interessen: { sport, lesen, reisen },
         });
 
         // Inspektion der Komponente mit dem Tag-Namen "app" im Debugger

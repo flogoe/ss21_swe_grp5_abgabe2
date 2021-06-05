@@ -18,11 +18,11 @@
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgModule } from '@angular/core';
-import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
+import { SucheInteressenComponent } from './suche-interessen.component';
 
 @NgModule({
-    declarations: [SucheSchlagwoerterComponent],
-    exports: [SucheSchlagwoerterComponent],
+    declarations: [SucheInteressenComponent],
+    exports: [SucheInteressenComponent],
     imports: [FormsModule, MatCheckboxModule],
 })
-export class SucheSchlagwoerterModule {}
+export class SucheInteressenModule {}

@@ -63,7 +63,7 @@ interface Link {
  */
 export interface KundeServer extends KundeShared {
     rating?: number;
-    schlagwoerter?: string[];
+    interessen?: string[];
     // eslint-disable-next-line @typescript-eslint/naming-convention
     _links?: {
         self: Link;
@@ -117,7 +117,7 @@ export class Kunde {
         public preis: number,
         public rabatt: number,
         public newsletter: boolean | undefined,
-        public schlagwoerter: string[],
+        public interessen: string[],
         public isbn: string,
         public version: number | undefined,
     ) {
@@ -161,7 +161,7 @@ export class Kunde {
             preis,
             rabatt,
             newsletter,
-            schlagwoerter,
+            interessen,
             isbn,
         } = kundeServer;
         const kunde = new Kunde(
@@ -174,7 +174,7 @@ export class Kunde {
             preis,
             rabatt ?? 0,
             newsletter,
-            schlagwoerter ?? [],
+            interessen ?? [],
             isbn,
             version,
         );
@@ -189,12 +189,12 @@ export class Kunde {
      */
     static fromForm(kundeForm: KundeForm) {
         log.debug('Kunde.fromForm(): kundeForm=', kundeForm);
-        const schlagwoerter: string[] = [];
+        const interessen: string[] = [];
         if (kundeForm.javascript === true) {
-            schlagwoerter.push('JAVASCRIPT');
+            interessen.push('JAVASCRIPT');
         }
         if (kundeForm.typescript === true) {
-            schlagwoerter.push('TYPESCRIPT');
+            interessen.push('TYPESCRIPT');
         }
 
         const rabatt =
@@ -209,7 +209,7 @@ export class Kunde {
             kundeForm.preis,
             rabatt,
             kundeForm.newsletter,
-            schlagwoerter,
+            interessen,
             kundeForm.isbn,
             kundeForm.version,
         );
@@ -305,33 +305,36 @@ export class Kunde {
 
     /**
      * Abfrage, ob es zum Kunde auch Schlagw&ouml;rter gibt.
-     * @return true, falls es mindestens ein Schlagwort gibt. Sonst false.
+     * @return true, falls es mindestens ein Interesse gibt. Sonst false.
      */
-    hasSchlagwoerter() {
-        return this.schlagwoerter.length > 0;
+    hasInteressen() {
+        return this.interessen.length > 0;
     }
 
     /**
-     * Abfrage, ob es zum Kunde das angegebene Schlagwort gibt.
-     * @param schlagwort das zu &uuml;berpr&uuml;fende Schlagwort
-     * @return true, falls es das Schlagwort gibt. Sonst false.
+     * Abfrage, ob es zum Kunde das angegebene Interesse gibt.
+     * @param interesse das zu &uuml;berpr&uuml;fende Interesse
+     * @return true, falls es das Interesse gibt. Sonst false.
      */
-    hasSchlagwort(schlagwort: string) {
-        return this.schlagwoerter.includes(schlagwort);
+    hasInteresse(interesse: string) {
+        return this.interessen.includes(interesse);
     }
 
     /**
      * Aktualisierung der Schlagw&ouml;rter des Kunde-Objekts.
-     * @param javascript ist das Schlagwort JAVASCRIPT gesetzt
-     * @param typescript ist das Schlagwort TYPESCRIPT gesetzt
+     * @param javascript ist das Interesse JAVASCRIPT gesetzt
+     * @param typescript ist das Interesse TYPESCRIPT gesetzt
      */
-    updateSchlagwoerter(javascript: boolean, typescript: boolean) {
-        this.resetSchlagwoerter();
-        if (javascript) {
-            this.addSchlagwort('JAVASCRIPT');
+    updateInteressen(sport: boolean, lesen: boolean, reisen: boolean) {
+        this.resetInteressen();
+        if (sport) {
+            this.addInteresse('S');
         }
-        if (typescript) {
-            this.addSchlagwort('TYPESCRIPT');
+        if (lesen) {
+            this.addInteresse('L');
+        }
+        if (reisen) {
+            this.addInteresse('R');
         }
     }
 
@@ -356,7 +359,7 @@ export class Kunde {
             preis: this.preis,
             rabatt: this.rabatt,
             newsletter: this.newsletter,
-            schlagwoerter: this.schlagwoerter,
+            interessen: this.interessen,
             isbn: this.isbn,
         };
     }
@@ -366,12 +369,12 @@ export class Kunde {
         return JSON.stringify(this, null, Kunde.SPACE);
     }
 
-    private resetSchlagwoerter() {
-        this.schlagwoerter = [];
+    private resetInteressen() {
+        this.interessen = [];
     }
 
-    private addSchlagwort(schlagwort: string) {
-        this.schlagwoerter.push(schlagwort);
+    private addInteresse(interesse: string) {
+        this.interessen.push(interesse);
     }
 }
 /* eslint-enable max-lines */

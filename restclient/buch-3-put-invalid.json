@@ -10,5 +10,5 @@
   "datum": "12345-123-123",
   "isbn": "falsche-isbn",
   "homepage": "anyHomepage",
-  "schlagwoerter": ["JAVASCRIPT"]
+  "interessen": ["JAVASCRIPT"]
 }

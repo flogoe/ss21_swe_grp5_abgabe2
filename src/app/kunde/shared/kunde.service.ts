@@ -39,7 +39,7 @@ export interface Suchkriterien {
     nachname: string;
     geschlechtType: GeschlechtType | '';
     familienstand: FamilienstandType | '';
-    schlagwoerter: { javascript: boolean; typescript: boolean };
+    interessen: { sport: boolean; lesen: boolean; reisen: boolean };
 }
 
 // Methoden der Klasse HttpClient
@@ -360,9 +360,9 @@ export class KundeService {
             return httpParams;
         }
 
-        const { nachname, geschlechtType, familienstand, schlagwoerter } =
+        const { nachname, geschlechtType, familienstand, interessen } =
             suchkriterien;
-        const { javascript, typescript } = schlagwoerter;
+        const { sport, lesen, reisen } = interessen;
 
         if (nachname !== '') {
             httpParams = httpParams.set('nachname', nachname);
@@ -373,11 +373,14 @@ export class KundeService {
         if (geschlechtType !== '') {
             httpParams = httpParams.set('geschlechtType', geschlechtType);
         }
-        if (javascript) {
-            httpParams = httpParams.set('javascript', 'true');
+        if (sport) {
+            httpParams = httpParams.set('sport', 'true');
         }
-        if (typescript) {
-            httpParams = httpParams.set('typescript', 'true');
+        if (lesen) {
+            httpParams = httpParams.set('lesen', 'true');
+        }
+        if (reisen) {
+            httpParams = httpParams.set('reisen', 'true');
         }
         return httpParams;
     }
