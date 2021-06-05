@@ -18,6 +18,14 @@
     <mat-error *ngIf="plz.hasError('plz') && !plz.hasError('required')">
       Ein Plz muss im richtigen Format eingegeben werden.
     </mat-error>
+    <mat-error
+      *ngIf="
+        (plz.hasError('minlength') && !plz.hasError('required')) ||
+        (plz.hasError('maxlength') && !plz.hasError('required'))
+      "
+    >
+      Eine Postleitzahl muss aus genau 5 Zahlen bestehen.
+    </mat-error>
   </div>
 
   <mat-form-field>

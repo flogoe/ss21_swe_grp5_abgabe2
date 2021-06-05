@@ -23,7 +23,13 @@ export class CreateAdresseComponent implements OnInit, AfterViewInit {
     @Input()
     form!: FormGroup;
 
-    readonly plz = new FormControl(undefined, [Validators.required]);
+    readonly PLZ_LENGTH = 5;
+
+    readonly plz = new FormControl(undefined, [
+        Validators.required,
+        Validators.minLength(this.PLZ_LENGTH),
+        Validators.maxLength(this.PLZ_LENGTH),
+    ]);
 
     readonly ort = new FormControl(undefined, [Validators.required]);
 
