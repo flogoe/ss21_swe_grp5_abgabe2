@@ -287,7 +287,7 @@ export class Kunde {
     }
 
     /**
-     * Aktualisierung der Schlagw&ouml;rter des Kunde-Objekts.
+     * Aktualisierung der Interessen des Kunde-Objekts.
      * @param javascript ist das Interesse JAVASCRIPT gesetzt
      * @param typescript ist das Interesse TYPESCRIPT gesetzt
      */
