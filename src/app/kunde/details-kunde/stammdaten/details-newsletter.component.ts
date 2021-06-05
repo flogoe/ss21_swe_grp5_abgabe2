@@ -16,6 +16,7 @@
  */
 
 import { Component, Input } from '@angular/core';
+
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
@@ -25,6 +26,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-details-newsletter',
     templateUrl: './details-newsletter.component.html',
+    styleUrls: ['./details-newsletter.component.scss'],
 })
 export class DetailsNewsletterComponent implements OnInit {
     @Input()

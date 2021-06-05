@@ -19,9 +19,9 @@
 <!-- Eine Direktive ist eine Komponente ohne View -->
 
 <div class="card" aria-label="Gefundene Kunden" *ngIf="kunden.length">
-  <div class="card-header">
-    <i class="material-icons">folder_open</i>
-    <span class="ms-1 fw-bold">Gefundene B&uuml;cher</span>
+  <div class="cardHeader">
+    <i class="material-icons">people</i>
+    <span class="ms-1 fw-bold">Gefundene Kunden</span>
   </div>
   <div class="card-body">
     <table
@@ -74,12 +74,12 @@
               [state]="{ kunde: b }"
               title="Details anzeigen"
             >
-              <i class="material-icons">search</i>
+              <i class="material-icons search">search</i>
             </a>
           </td>
           <td *ngIf="isAdmin || (isAdmin$ | async)">
             <span (click)="onRemove(b)" title="Entfernen">
-              <i class="material-icons">delete</i>
+              <i class="material-icons delete">delete</i>
             </span>
           </td>
         </tr>
@@ -87,25 +87,25 @@
     </table>
   </div>
   <div class="card-footer">
-    <div>
+    <div class="info">
       <i class="material-icons">info</i>
       <span class="ms-1" [ngPlural]="kunden.length">
         <!-- zu vergleichender Ausdruck -->
-        <ng-template ngPluralCase="=0"> Es gibt kein Kunde </ng-template>
-        <ng-template ngPluralCase="=1"> Es gibt ein Kunde </ng-template>
+        <ng-template ngPluralCase="=0"> Es gibt keinen Kunden </ng-template>
+        <ng-template ngPluralCase="=1"> Es gibt einen Kunden </ng-template>
         <ng-template ngPluralCase="other">
-          Es gibt {{ kunden.length }} B&uuml;cher
+          Es gibt {{ kunden.length }} Kunden
         </ng-template>
       </span>
     </div>
 
-    <div>
+    <!-- <div>
       <i class="material-icons">info</i>
       <span class="ms-1">
         Zur Anzeige der JSON-Datens&auml;tze in gefundene-kunden.html am
         Dateiende den Kommentar beim Tag &lt;pre&gt; entfernen
       </span>
-    </div>
+    </div> -->
   </div>
 </div>
 

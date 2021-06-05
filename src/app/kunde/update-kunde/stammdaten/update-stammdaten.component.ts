@@ -33,6 +33,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-update-stammdaten',
     templateUrl: './update-stammdaten.component.html',
+    styleUrls: ['./update-stammdaten.component.scss'],
 })
 export class UpdateStammdatenComponent implements OnInit {
     // <hs-update-stammdaten [kunde]="...">
@@ -73,8 +74,10 @@ export class UpdateStammdatenComponent implements OnInit {
         }
 
         const { nachname }: { nachname: string } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { familienstand }: { familienstand: FamilienstandType } =
             this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const {
             geschlechtType,
         }: { geschlechtType: GeschlechtType | '' | undefined } =

@@ -17,6 +17,7 @@
 
 import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import { Component } from '@angular/core';
+import { CookieService } from 'src/app/auth/cookie.service';
 import type { OnInit } from '@angular/core';
 import { ROLLE_ADMIN } from '../../auth/basic-auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Subject } from 'rxjs';
@@ -34,7 +35,12 @@ import { tap } from 'rxjs/operators';
 export class NavComponent implements OnInit {
     isAdmin$ = new Subject<boolean>();
 
-    constructor(private readonly authService: BasicAuthService) {
+    isAdmin = false;
+
+    constructor(
+        private readonly authService: BasicAuthService,
+        private readonly cookieService: CookieService,
+    ) {
         log.debug('NavComponent.constructor()');
     }
 
@@ -52,10 +58,17 @@ export class NavComponent implements OnInit {
             .pipe(
                 tap((rollen: string[]) =>
                     // ein neues Observable vom Typ boolean
-                    this.isAdmin$.next(rollen.includes(ROLLE_ADMIN)),
+                    {
+                        this.isAdmin$.next(rollen.includes(ROLLE_ADMIN));
+                        this.isAdmin = rollen.includes(ROLLE_ADMIN);
+                    },
                 ),
             )
             // das Subject von AuthService abonnieren bzw. beobachten
             .subscribe();
+
+        const rolesArray = this.cookieService.getRoles()?.split(',');
+        console.log('ROLES ARRAY PUSH', rolesArray);
+        this.authService.rollen$.next(rolesArray);
     }
 }

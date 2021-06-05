@@ -37,6 +37,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-update-kunde',
     templateUrl: './update-kunde.component.html',
+    styleUrls: ['./update-kunde.component.scss'],
 })
 export class UpdateKundeComponent implements OnInit {
     kunde: Kunde | undefined;

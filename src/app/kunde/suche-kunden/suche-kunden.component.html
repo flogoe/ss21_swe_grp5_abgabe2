@@ -21,6 +21,9 @@
   <hs-waiting *ngIf="waiting; else showSuchergebnis"></hs-waiting>
 
   <ng-template #showSuchergebnis>
-    <hs-suchergebnis [kunden]="kunden" [errorMsg]="errorMsg"> </hs-suchergebnis>
+    <ng-container *ngIf="kunden.length > 0">
+      <hs-suchergebnis [kunden]="kunden" [errorMsg]="errorMsg">
+      </hs-suchergebnis>
+    </ng-container>
   </ng-template>
 </section>

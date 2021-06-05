@@ -21,21 +21,20 @@
   </hs-update-familienstand>
   <hs-update-geschlechtType [form]="form" [currentValue]="kunde.geschlecht">
   </hs-update-geschlechtType>
-  <hs-update-rating [form]="form" [currentValue]="kunde.rating">
-  </hs-update-rating>
-  <hs-update-isbn [form]="form" [currentValue]="kunde.isbn"> </hs-update-isbn>
 
   <div class="row">
     <div class="col offset-2 gy-3">
       <!-- form.pristine ist das Gegenteil von form.dirty -->
       <button
+        mat-raised-button
+        color="accent"
         type="submit"
         class="btn btn-primary"
         (click)="onUpdate()"
         [disabled]="form.pristine || form.invalid"
       >
         <i class="material-icons">check</i>
-        <span class="ms-1">Stammdaten aktualisieren</span>
+        Stammdaten aktualisieren
       </button>
     </div>
   </div>

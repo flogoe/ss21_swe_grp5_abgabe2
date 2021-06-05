@@ -15,14 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { MatRadioModule } from '@angular/material/radio';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { UpdateFamilienstandComponent } from './update-familienstand.component';
 
 @NgModule({
     declarations: [UpdateFamilienstandComponent],
     exports: [UpdateFamilienstandComponent],
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, MatRadioModule],
 })
 export class UpdateFamilienstandModule {}

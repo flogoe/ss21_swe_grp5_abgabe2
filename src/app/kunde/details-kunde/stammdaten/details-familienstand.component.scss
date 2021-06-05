@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px;
+  background: #f4f4f4;
+  margin-bottom: 5px;
+}
+
+label {
+  font-weight: 500;
+}
+.col-11 {
+  margin-top: 5px;
+  margin-left: 15px;
+}

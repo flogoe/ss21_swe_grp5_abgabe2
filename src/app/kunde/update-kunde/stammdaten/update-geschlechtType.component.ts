@@ -29,6 +29,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-update-geschlechtType',
     templateUrl: './update-geschlechtType.component.html',
+    styleUrls: ['./update-geschlechtType.component.scss'],
 })
 export class UpdateGeschlechtTypeComponent implements OnInit {
     // <hs-update-geschlechtType [form]="form" [currentValue]="...">

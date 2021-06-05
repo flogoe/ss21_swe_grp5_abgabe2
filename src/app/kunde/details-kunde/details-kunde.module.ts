@@ -23,6 +23,7 @@ import { DetailsSchlagwoerterModule } from './schlagwoerter/details-schlagwoerte
 import { DetailsStammdatenModule } from './stammdaten/details-stammdaten.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { WaitingModule } from '../../shared/waiting.module';
@@ -40,6 +41,7 @@ import { WaitingModule } from '../../shared/waiting.module';
         ErrorMessageModule,
         HttpClientModule,
         WaitingModule,
+        MatToolbarModule,
     ],
 })
 export class DetailsKundeModule {}

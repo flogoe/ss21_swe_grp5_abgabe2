@@ -16,6 +16,7 @@
  */
 
 import { Component, Input } from '@angular/core';
+
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
@@ -25,6 +26,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-details-datum',
     templateUrl: './details-datum.component.html',
+    styleUrls: ['./details-datum.component.scss'],
 })
 export class DetailsDatumComponent implements OnInit {
     @Input()

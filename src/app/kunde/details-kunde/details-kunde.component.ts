@@ -35,6 +35,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-details-kunde',
     templateUrl: './details-kunde.component.html',
+    styleUrls: ['./details-kunde.component.scss'],
 })
 export class DetailsKundeComponent implements OnInit {
     waiting = true;
