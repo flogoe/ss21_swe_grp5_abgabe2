@@ -30,12 +30,12 @@ import { NgModule } from '@angular/core';
     exports: [DetailsStammdatenComponent],
     imports: [
         CommonModule,
+        DetailsEmailModule,
         DetailsFamilienstandModule,
         DetailsGeburtsdatumModule,
-        DetailsNewsletterModule,
-        DetailsNachnameModule,
         DetailsGeschlechtTypeModule,
-        DetailsEmailModule,
+        DetailsNachnameModule,
+        DetailsNewsletterModule,
     ],
 })
 export class DetailsStammdatenModule {}

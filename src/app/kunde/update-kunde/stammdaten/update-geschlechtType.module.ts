@@ -26,10 +26,10 @@ import { UpdateGeschlechtTypeComponent } from './update-geschlechtType.component
     declarations: [UpdateGeschlechtTypeComponent],
     exports: [UpdateGeschlechtTypeComponent],
     imports: [
-        ReactiveFormsModule,
         MatFormFieldModule,
-        MatSelectModule,
         MatOptionModule,
+        MatSelectModule,
+        ReactiveFormsModule,
     ],
 })
 export class UpdateGeschlechtTypeModule {}

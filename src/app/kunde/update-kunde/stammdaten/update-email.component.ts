@@ -28,7 +28,7 @@ export class UpdateEmailComponent implements OnInit, AfterViewInit {
 
     email!: FormControl;
 
-    // eslint-disable-next-line no-useless-constructor
+    // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {

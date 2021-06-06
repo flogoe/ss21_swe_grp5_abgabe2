@@ -15,15 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { FindError, KundeService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { FindError, KundeService } from '../shared';
 import { first, tap } from 'rxjs/operators';
 
-import { ActivatedRoute } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { HttpStatusCode } from '@angular/common/http';
 import type { Kunde } from '../shared';
 import type { OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Title } from '@angular/platform-browser';
 import log from 'loglevel';
 
 /**
@@ -65,7 +65,7 @@ export class UpdateKundeComponent implements OnInit {
             .subscribe();
     }
 
-    private setProps(result: Kunde | FindError) {
+    private setProps(result: FindError | Kunde) {
         if (result instanceof FindError) {
             this.handleError(result);
             return;

@@ -28,12 +28,12 @@ import { UpdateGeburtsdatumComponent } from './update-geburtsdatum.component';
     declarations: [UpdateGeburtsdatumComponent],
     exports: [UpdateGeburtsdatumComponent],
     imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatInputModule,
         MatButtonModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
     ],
     providers: [MatDatepickerModule],
 })

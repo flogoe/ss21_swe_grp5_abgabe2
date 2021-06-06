@@ -18,16 +18,17 @@
 /* eslint-disable max-classes-per-file */
 
 import { Component, Input } from '@angular/core';
-import { KundeService, RemoveError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { KundeService, RemoveError } from '../../shared';
 import { easeIn, easeOut } from '../../../shared';
 import { first, tap } from 'rxjs/operators';
 
+// eslint-disable-next-line import/no-unresolved
 import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import type { Kunde } from '../../shared';
 import { NgLocalization } from '@angular/common';
 import type { OnInit } from '@angular/core';
-import { ROLLE_ADMIN } from '../../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
-import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { ROLLE_ADMIN } from '../../../auth/auth.service';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import log from 'loglevel';
 

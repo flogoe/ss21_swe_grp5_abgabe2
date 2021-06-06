@@ -15,11 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// eslint-disable-next-line import/no-unresolved
 import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import { Component } from '@angular/core';
+// eslint-disable-next-line import/no-unresolved
 import { CookieService } from 'src/app/auth/cookie.service';
 import type { OnInit } from '@angular/core';
-import { ROLLE_ADMIN } from '../../auth/basic-auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { ROLLE_ADMIN } from '../../auth/basic-auth.service';
 import { Subject } from 'rxjs';
 import log from 'loglevel';
 import { tap } from 'rxjs/operators';
@@ -58,6 +60,7 @@ export class NavComponent implements OnInit {
             .pipe(
                 tap((rollen: string[]) =>
                     // ein neues Observable vom Typ boolean
+                    // eslint-disable-next-line @typescript-eslint/brace-style
                     {
                         this.isAdmin$.next(rollen.includes(ROLLE_ADMIN));
                         this.isAdmin = rollen.includes(ROLLE_ADMIN);

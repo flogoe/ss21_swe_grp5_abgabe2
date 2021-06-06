@@ -15,9 +15,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CookieService } from './cookie.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { CookieService } from './cookie.service';
 import { Injectable } from '@angular/core';
-import { JwtService } from './jwt.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { JwtService } from './jwt.service';
 import { Subject } from 'rxjs';
 import log from 'loglevel';
 

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* eslint-disable max-classes-per-file, no-useless-constructor, no-empty-function */
+/* eslint-disable max-classes-per-file, no-empty-function */
 
 export class FindError {
     constructor(readonly statuscode: number, readonly cause?: Error) {}
@@ -33,4 +33,4 @@ export class RemoveError {
     constructor(readonly statuscode: number) {}
 }
 
-/* eslint-enable max-classes-per-file, no-useless-constructor, no-empty-function */
+/* eslint-enable max-classes-per-file,no-empty-function */

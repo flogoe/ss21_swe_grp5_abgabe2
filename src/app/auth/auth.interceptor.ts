@@ -31,7 +31,8 @@ import log from 'loglevel';
 
 @Injectable({ providedIn: 'root' })
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private readonly authService: BasicAuthService) {} // eslint-disable-line no-empty-function,no-useless-constructor
+    // eslint-disable-next-line no-empty-function
+    constructor(private readonly authService: BasicAuthService) {}
 
     intercept(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

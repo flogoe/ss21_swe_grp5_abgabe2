@@ -27,6 +27,7 @@ import log from 'loglevel';
  * Komponente f&uuml;r das Tag <code>hs-update-geschlechtType</code>
  */
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'hs-update-geschlechtType',
     templateUrl: './update-geschlechtType.component.html',
     styleUrls: ['./update-geschlechtType.component.scss'],

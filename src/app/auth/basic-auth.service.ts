@@ -16,7 +16,7 @@
  */
 
 import { BASE_PATH_REST } from '../shared';
-import { CookieService } from './cookie.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { CookieService } from './cookie.service';
 import { HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';

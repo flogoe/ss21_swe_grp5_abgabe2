@@ -28,7 +28,7 @@ export class CreateEmailComponent implements OnInit, AfterViewInit {
         Validators.email,
     ]);
 
-    // eslint-disable-next-line no-useless-constructor
+    // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {

@@ -24,6 +24,6 @@ import { UpdateInteressenComponent } from './update-interessen.component';
 @NgModule({
     declarations: [UpdateInteressenComponent],
     exports: [UpdateInteressenComponent],
-    imports: [ReactiveFormsModule, MatCheckboxModule, MatButtonModule],
+    imports: [MatButtonModule, MatCheckboxModule, ReactiveFormsModule],
 })
 export class UpdateInteressenModule {}

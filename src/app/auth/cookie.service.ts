@@ -128,6 +128,7 @@ export class CookieService {
 
         log.debug(`setCookie(): ${cookieStr}`);
         // neues Cookie anlegen
+        // eslint-disable-next-line unicorn/no-document-cookie
         document.cookie = cookieStr;
     }
 

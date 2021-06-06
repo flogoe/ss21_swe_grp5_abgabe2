@@ -15,12 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import {
-    AfterViewInit,
-    ChangeDetectorRef,
-    Component,
-    Input,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import type { FormGroup } from '@angular/forms';
@@ -42,7 +37,7 @@ export class CreateGeburtsdatumComponent implements OnInit {
 
     readonly geburtsdatum = new FormControl(undefined, [Validators.required]);
 
-    // eslint-disable-next-line no-useless-constructor
+    // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {

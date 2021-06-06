@@ -17,14 +17,8 @@
 
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { Kunde, KundeService, UpdateError } from '../shared';
 
-import { HOME_PATH } from 'src/app/shared';
 import type { OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
-import { first } from 'rxjs/operators';
-import log from 'loglevel';
 
 /**
  * Komponente f&uuml;r das Tag <code>hs-interessen</code>

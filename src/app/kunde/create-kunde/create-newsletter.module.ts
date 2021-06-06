@@ -23,6 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
     declarations: [CreateNewsletterComponent],
     exports: [CreateNewsletterComponent],
-    imports: [ReactiveFormsModule, MatCheckboxModule],
+    imports: [MatCheckboxModule, ReactiveFormsModule],
 })
 export class CreateNewsletterModule {}

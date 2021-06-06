@@ -25,7 +25,7 @@ import type {
 import { BasicAuthService } from './basic-auth.service';
 import { Injectable } from '@angular/core';
 import type { Observable } from 'rxjs';
-import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Router } from '@angular/router';
 import log from 'loglevel';
 
 // https://angular.io/guide/router#can-activate-guard

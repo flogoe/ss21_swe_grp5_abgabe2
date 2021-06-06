@@ -23,6 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
     declarations: [CreateFamilienstandComponent],
     exports: [CreateFamilienstandComponent],
-    imports: [ReactiveFormsModule, MatRadioModule],
+    imports: [MatRadioModule, ReactiveFormsModule],
 })
 export class CreateFamilienstandModule {}

@@ -17,7 +17,7 @@
 
 import { Component } from '@angular/core';
 import type { OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Title } from '@angular/platform-browser';
 import log from 'loglevel';
 
 @Component({

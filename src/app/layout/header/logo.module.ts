@@ -15,13 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
-
 import { LogoComponent } from './logo.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 // single component module
 

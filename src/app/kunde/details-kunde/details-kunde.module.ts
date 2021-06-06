@@ -40,8 +40,8 @@ import { WaitingModule } from '../../shared/waiting.module';
         DetailsStammdatenModule,
         ErrorMessageModule,
         HttpClientModule,
-        WaitingModule,
         MatToolbarModule,
+        WaitingModule,
     ],
 })
 export class DetailsKundeModule {}

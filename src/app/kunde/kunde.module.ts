@@ -24,9 +24,9 @@ import { UpdateKundeModule } from './update-kunde/update-kunde.module';
 
 @NgModule({
     imports: [
-        KundeRoutingModule,
         CreateKundeModule,
         DetailsKundeModule,
+        KundeRoutingModule,
         SucheKundenModule,
         UpdateKundeModule,
     ],

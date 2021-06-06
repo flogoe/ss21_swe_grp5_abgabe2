@@ -16,7 +16,7 @@
  */
 
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { Kunde, KundeService, SaveError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Kunde, KundeService, SaveError } from '../shared';
 import { first, tap } from 'rxjs/operators';
 
 import { Component } from '@angular/core';
@@ -24,8 +24,8 @@ import { FormGroup } from '@angular/forms';
 import { HOME_PATH } from '../../shared';
 import type { KundeForm } from '../shared/kunde';
 import type { OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
-import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import log from 'loglevel';
 
 /**
