@@ -257,12 +257,16 @@ export class Kunde {
     // eslint-disable-next-line max-params
     updateStammdaten(
         nachname: string,
+        email: string,
+        adresse: Adresse,
         familienstand: FamilienstandType,
         geschlecht: GeschlechtType | '' | undefined,
         geburtsdatum: Date | undefined,
     ) {
         this.nachname = nachname;
-        this.familienstand = familienstand;
+        (this.email = email),
+            (this.adresse = adresse),
+            (this.familienstand = familienstand);
         this.geschlecht = geschlecht;
         /* eslint-enable unicorn/no-new-array */
         this.geburtsdatum =

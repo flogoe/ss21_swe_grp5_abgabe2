@@ -20,6 +20,7 @@ import type { FamilienstandType, GeschlechtType, Kunde } from '../../shared';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { KundeService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 
+import { Adresse } from '../../shared/kunde';
 import { FormGroup } from '@angular/forms';
 import { HOME_PATH } from '../../../shared';
 import type { OnInit } from '@angular/core';
@@ -74,6 +75,13 @@ export class UpdateStammdatenComponent implements OnInit {
         }
 
         const { nachname }: { nachname: string } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const { email }: { email: string } = this.form.value;
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const { adresse }: { adresse: Adresse } = this.form.value;
+
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { familienstand }: { familienstand: FamilienstandType } =
             this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
@@ -85,6 +93,8 @@ export class UpdateStammdatenComponent implements OnInit {
         const { geburtsdatum } = this.kunde;
         this.kunde.updateStammdaten(
             nachname,
+            email,
+            adresse,
             familienstand,
             geschlechtType,
             geburtsdatum,
