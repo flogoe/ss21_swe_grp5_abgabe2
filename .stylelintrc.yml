@@ -14,10 +14,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ---
-extends:
+# extends:
   # https://stylelint.io
-  - stylelint-config-standard
-  - stylelint-config-sass-guidelines
+  # - stylelint-config-standard
+  # - stylelint-config-sass-guidelines
   #- stylelint-config-twbs-bootstrap/scss
 
 # https://github.com/stylelint/stylelint/blob/master/docs/user-guide/rules/list.md
@@ -27,21 +27,17 @@ rules:
   block-closing-brace-newline-after: always
   block-no-empty: true
   block-opening-brace-newline-after: always
-  color-function-notation: modern
   color-named: always-where-possible
-  color-no-hex: true
   color-no-invalid-hex: true
   comment-empty-line-before: always
   comment-no-empty: true
   declaration-bang-space-after: never
   declaration-block-no-duplicate-properties: true
-  declaration-block-no-redundant-longhand-properties: true
   declaration-block-no-shorthand-property-overrides: true
   declaration-block-semicolon-newline-after: always
   declaration-block-semicolon-newline-before: never-multi-line
   declaration-block-single-line-max-declarations: 1
   declaration-empty-line-before: never
-  declaration-no-important: true
   font-family-no-duplicate-names: true
   font-family-no-missing-generic-family-keyword: true
   font-weight-notation: named-where-possible
@@ -55,18 +51,18 @@ rules:
   no-descending-specificity: true
   no-duplicate-at-import-rules: true
   no-duplicate-selectors: true
-  no-empty-source: true
+  # no-empty-source: false
   no-extra-semicolons: true
   no-invalid-double-slash-comments: true
   number-max-precision: 2
   property-case: lower
-  property-no-unknown: true
   selector-pseudo-class-no-unknown: true
   selector-pseudo-element-no-unknown: true
-  selector-type-no-unknown: true
   shorthand-property-no-redundant-values: true
   string-no-newline: true
   unit-case: lower
   unit-no-unknown: true
   value-keyword-case: lower
-  scss/dollar-variable-pattern: null
+  # value-list-comma-newline-after: false
+  # declaration-colon-newline-after: false
+  # declaration-block-no-redundant-longhand-properties: false

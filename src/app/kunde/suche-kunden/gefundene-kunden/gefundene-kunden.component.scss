@@ -4,6 +4,7 @@ table {
   border-spacing: 0;
   width: 100%;
 }
+
 tr {
   height: 56px;
 }
@@ -17,6 +18,7 @@ td {
   text-align: center;
   border-bottom-color: rgba(0, 0, 0, 0.12);
 }
+
 .search {
   color: #03a9f4;
 }
@@ -57,6 +59,7 @@ th {
   justify-content: flex-start;
   align-items: center;
   margin-top: 15px;
+
   i {
     margin-right: 10px;
   }
