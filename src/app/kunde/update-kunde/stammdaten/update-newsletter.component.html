@@ -14,18 +14,10 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<div class="row mt-2">
-  <label class="col col-1"> Interessen </label>
-  <div class="row" *ngFor="let interesse of values">
-    <div class="col col-11">
-      <div class="checkbox">
-        <input type="checkbox" checked disabled class="checkbox" />
-        <label class="ms-2" [ngSwitch]="interesse">
-          <span *ngSwitchCase="'S'">Sport</span>
-          <span *ngSwitchCase="'L'">Lesen</span>
-          <span *ngSwitchCase="'R'">Reisen</span>
-        </label>
-      </div>
-    </div>
-  </div>
+
+<h3>Newsletter</h3>
+<div [formGroup]="form">
+  <mat-checkbox id="newsletterInput" formControlName="newsletter">
+    Newsletter
+  </mat-checkbox>
 </div>

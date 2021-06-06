@@ -17,24 +17,29 @@
 
 import { Component, Input } from '@angular/core';
 
+import { FormControl } from '@angular/forms';
+import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-interessen</code>
+ * Komponente mit dem Tag &lt;hs-update-newsletter&gt;, um das Erfassungsformular
+ * f&uuml;r ein neues Kunde zu realisieren.
  */
 @Component({
-    selector: 'hs-details-interessen',
-    templateUrl: './details-interessen.component.html',
-    styleUrls: ['./details.interessen.component.scss'],
+    selector: 'hs-update-newsletter',
+    templateUrl: './update-newsletter.component.html',
+    styleUrls: ['./update-newsletter.component.scss'],
 })
-export class DetailsInteressenComponent implements OnInit {
-    // <hs-interessen [values]="kunde.interessen">
-    // Decorator fuer ein Attribut. Siehe InputMetadata
+export class UpdateNewsletterComponent implements OnInit {
     @Input()
-    values!: string[];
+    form!: FormGroup;
+
+    readonly newsletter = new FormControl(false);
 
     ngOnInit() {
-        log.debug('DetailsInteressenComponent.values=', this.values);
+        log.debug('UpdateNewsletterComponent.ngOnInit');
+        // siehe formControlName innerhalb @Component({templateUrl: ...})
+        this.form.addControl('newsletter', this.newsletter);
     }
 }
