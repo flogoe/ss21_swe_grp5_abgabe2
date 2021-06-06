@@ -28,12 +28,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     declarations: [CreateGeburtsdatumComponent],
     exports: [CreateGeburtsdatumComponent],
     imports: [
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatInputModule,
         MatButtonModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
     ],
     providers: [MatDatepickerModule],
 })

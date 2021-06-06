@@ -30,8 +30,8 @@ import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
         FormsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule,
         MatOptionModule,
+        MatSelectModule,
     ],
 })
 export class SucheGeschlechtTypeModule {}

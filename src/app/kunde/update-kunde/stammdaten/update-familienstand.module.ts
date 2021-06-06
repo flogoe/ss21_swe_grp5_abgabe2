@@ -23,6 +23,6 @@ import { UpdateFamilienstandComponent } from './update-familienstand.component';
 @NgModule({
     declarations: [UpdateFamilienstandComponent],
     exports: [UpdateFamilienstandComponent],
-    imports: [ReactiveFormsModule, MatRadioModule],
+    imports: [MatRadioModule, ReactiveFormsModule],
 })
 export class UpdateFamilienstandModule {}

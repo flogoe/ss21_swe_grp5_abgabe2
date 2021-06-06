@@ -107,7 +107,7 @@ rules:
   "@typescript-eslint/consistent-type-definitions":
     - error
     - interface
-  "@typescript-eslint/consistent-type-imports": error
+  "@typescript-eslint/consistent-type-imports": off
   "@typescript-eslint/default-param-last": error
   "@typescript-eslint/dot-notation": error
   "@typescript-eslint/explicit-function-return-type": off
@@ -167,7 +167,7 @@ rules:
   "@typescript-eslint/no-duplicate-imports": error
   "@typescript-eslint/no-dynamic-delete": error
   "@typescript-eslint/no-empty-function":
-    - error
+    - off
     - allow:
         - arrowFunctions
   "@typescript-eslint/no-extra-non-null-assertion": error
@@ -215,7 +215,7 @@ rules:
   "@typescript-eslint/no-unnecessary-type-constraint": error
   # "@typescript-eslint/no-untyped-public-signature": error
   "@typescript-eslint/no-unused-vars-experimental": error
-  "@typescript-eslint/no-useless-constructor": error
+  "@typescript-eslint/no-useless-constructor": off
   "@typescript-eslint/non-nullable-type-assertion-style": error
   "@typescript-eslint/object-curly-spacing":
     - error
@@ -478,7 +478,7 @@ rules:
   no-useless-catch: error
   no-useless-computed-key: error
   no-useless-concat: error
-  no-useless-constructor: error
+  no-useless-constructor: off
   no-useless-rename: error
   no-useless-return: error
   no-void: error

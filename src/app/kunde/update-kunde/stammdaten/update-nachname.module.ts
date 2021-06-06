@@ -27,9 +27,9 @@ import { UpdateNachnameComponent } from './update-nachname.component';
     exports: [UpdateNachnameComponent],
     imports: [
         CommonModule,
-        ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
+        ReactiveFormsModule,
     ],
 })
 export class UpdateNachnameModule {}

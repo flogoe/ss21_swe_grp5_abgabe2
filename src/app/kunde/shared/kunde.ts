@@ -1,3 +1,6 @@
+/* eslint-disable no-extra-parens */
+/* eslint-disable no-sequences */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable max-lines */
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
@@ -18,9 +21,9 @@
 
 import log from 'loglevel';
 
-export type GeschlechtType = 'M' | 'W' | 'D';
+export type GeschlechtType = 'D' | 'M' | 'W';
 
-export type FamilienstandType = 'L' | 'VH' | 'G' | 'VW';
+export type FamilienstandType = 'G' | 'L' | 'VH' | 'VW';
 
 export const ISBN_REGEX =
     /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
@@ -33,12 +36,14 @@ export interface KundeShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     nachname: string | undefined;
     email: string;
+    // eslint-disable-next-line no-use-before-define
     adresse: Adresse;
     geschlecht?: GeschlechtType | '';
     familienstand: FamilienstandType;
     geburtsdatum?: string;
     newsletter?: boolean;
     version?: number;
+    // eslint-disable-next-line no-use-before-define
     user?: User;
 }
 
@@ -257,14 +262,17 @@ export class Kunde {
     // eslint-disable-next-line max-params
     updateStammdaten(
         nachname: string,
+        email: string,
+        adresse: Adresse,
         familienstand: FamilienstandType,
         geschlecht: GeschlechtType | '' | undefined,
         geburtsdatum: Date | undefined,
     ) {
         this.nachname = nachname;
-        this.familienstand = familienstand;
+        (this.email = email),
+            (this.adresse = adresse),
+            (this.familienstand = familienstand);
         this.geschlecht = geschlecht;
-        /* eslint-enable unicorn/no-new-array */
         this.geburtsdatum =
             geburtsdatum === undefined ? new Date() : geburtsdatum;
     }
@@ -343,3 +351,6 @@ export class Kunde {
     }
 }
 /* eslint-enable max-lines */
+/* eslint-enable no-extra-parens */
+/* eslint-enable no-sequences */
+/* eslint-enable no-unused-expressions */

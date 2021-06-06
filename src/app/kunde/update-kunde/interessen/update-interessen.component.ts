@@ -18,12 +18,12 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { KundeService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { KundeService, UpdateError } from '../../shared';
 
 import { HOME_PATH } from '../../../shared';
 import type { Kunde } from '../../shared';
 import type { OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import log from 'loglevel';
 

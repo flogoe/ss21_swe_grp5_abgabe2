@@ -27,6 +27,7 @@ import log from 'loglevel';
  * f&uuml;r ein neues Kunde zu realisieren.
  */
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'hs-create-geschlechtType',
     templateUrl: './create-geschlechtType.component.html',
     styleUrls: ['./create-geschlechtType.component.scss'],
@@ -37,6 +38,7 @@ export class CreateGeschlechtTypeComponent implements OnInit {
 
     readonly geschlecht = new FormControl(undefined, Validators.required);
 
+    // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {

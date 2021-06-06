@@ -1,3 +1,4 @@
+/* eslint-disable array-bracket-newline */
 /*
  * Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -15,12 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import {
-    AfterViewInit,
-    ChangeDetectorRef,
-    Component,
-    Input,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import type { FormGroup } from '@angular/forms';
@@ -45,7 +41,7 @@ export class UpdateGeburtsdatumComponent implements OnInit {
 
     geburtsdatum!: FormControl;
 
-    // eslint-disable-next-line no-useless-constructor
+    // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {
@@ -60,3 +56,4 @@ export class UpdateGeburtsdatumComponent implements OnInit {
         this.cd.detectChanges();
     }
 }
+/* eslint-enable array-bracket-newline */

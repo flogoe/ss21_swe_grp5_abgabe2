@@ -24,6 +24,6 @@ import { RouterModule } from '@angular/router';
 @NgModule({
     declarations: [DetailsBearbeitenComponent],
     exports: [DetailsBearbeitenComponent],
-    imports: [CommonModule, RouterModule, MatButtonModule],
+    imports: [CommonModule, MatButtonModule, RouterModule],
 })
 export class DetailsBearbeitenModule {}

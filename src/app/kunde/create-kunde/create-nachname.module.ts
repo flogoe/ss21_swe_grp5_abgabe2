@@ -27,9 +27,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     exports: [CreateNachnameComponent],
     imports: [
         CommonModule,
-        ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
+        ReactiveFormsModule,
     ],
 })
 export class CreateNachnameModule {}

@@ -15,26 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { FindError, KundeService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { FindError, KundeService } from '../shared';
 import type { Kunde, Suchkriterien } from '../shared';
 import { first, tap } from 'rxjs/operators';
 
 import { Component } from '@angular/core';
 import { HttpStatusCode } from '@angular/common/http';
 import type { OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Title } from '@angular/platform-browser';
 import log from 'loglevel';
 
-/**
- * Komponente f&uuml;r das Tag <code>&lt;hs-suche-kunden&gt;</code>, die aus
- * den Kindkomponenten f&uuml;r diese Tags besteht:
- * <ul>
- *  <li> <code>hs-suchformular</code>
- *  <li> <code>hs-waiting</code>
- *  <li> <code>hs-gefundene-kunden</code>
- *  <li> <code>hs-error-message</code>
- * </ul>
- */
 @Component({
     selector: 'hs-suche-kunden',
     templateUrl: './suche-kunden.component.html',
@@ -94,7 +84,7 @@ export class SucheKundenComponent implements OnInit {
             .subscribe();
     }
 
-    private setProps(result: Kunde[] | FindError) {
+    private setProps(result: FindError | Kunde[]) {
         this.waiting = false;
 
         if (result instanceof FindError) {

@@ -37,13 +37,13 @@ import { SuchformularComponent } from './suchformular.component';
     imports: [
         FormsModule,
         HttpClientModule,
+        MatButtonModule,
+        MatInputModule,
+        MatToolbarModule,
         SucheFamilienstandModule,
+        SucheGeschlechtTypeModule,
         SucheInteressenModule,
         SucheNachnameModule,
-        SucheGeschlechtTypeModule,
-        MatToolbarModule,
-        MatInputModule,
-        MatButtonModule,
     ],
 })
 export class SuchformularModule {}

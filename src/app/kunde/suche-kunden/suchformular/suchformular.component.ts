@@ -53,6 +53,7 @@ export class SuchformularComponent {
     private readonly sucheNachnameComponent!: SucheNachnameComponent;
 
     @ViewChild(SucheGeschlechtTypeComponent, { static: true })
+    // eslint-disable-next-line max-len
     private readonly sucheGeschlechtTypeComponent!: SucheGeschlechtTypeComponent;
 
     @ViewChild(SucheFamilienstandComponent, { static: true })

@@ -1,13 +1,13 @@
+/* eslint-disable array-bracket-newline */
 import {
     AfterViewInit,
     ChangeDetectorRef,
     Component,
     Input,
 } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Adresse } from '../../shared/kunde';
-import { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
@@ -27,6 +27,7 @@ export class UpdateAdresseComponent implements OnInit, AfterViewInit {
     @Input()
     currentValue!: Adresse;
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     readonly PLZ_LENGTH = 5;
 
     plz!: FormControl;
@@ -34,7 +35,8 @@ export class UpdateAdresseComponent implements OnInit, AfterViewInit {
     ort!: FormControl;
 
     readonly adresseForm = new FormGroup({});
-    // eslint-disable-next-line no-useless-constructor
+
+    // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {
@@ -60,3 +62,4 @@ export class UpdateAdresseComponent implements OnInit, AfterViewInit {
         this.cd.detectChanges();
     }
 }
+/* eslint-enable array-bracket-newline */

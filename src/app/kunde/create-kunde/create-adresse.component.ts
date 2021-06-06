@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
+// eslint-disable-next-line @typescript-eslint/no-duplicate-imports
 import { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
@@ -23,6 +24,7 @@ export class CreateAdresseComponent implements OnInit, AfterViewInit {
     @Input()
     form!: FormGroup;
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     readonly PLZ_LENGTH = 5;
 
     readonly plz = new FormControl(undefined, [
@@ -34,7 +36,8 @@ export class CreateAdresseComponent implements OnInit, AfterViewInit {
     readonly ort = new FormControl(undefined, [Validators.required]);
 
     readonly adresseForm = new FormGroup({});
-    // eslint-disable-next-line no-useless-constructor
+
+    // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {

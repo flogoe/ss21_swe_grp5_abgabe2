@@ -28,10 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     exports: [CreateGeschlechtTypeComponent],
     imports: [
         CommonModule,
-        ReactiveFormsModule,
         MatFormFieldModule,
-        MatSelectModule,
         MatOptionModule,
+        MatSelectModule,
+        ReactiveFormsModule,
     ],
 })
 export class CreateGeschlechtTypeModule {}

@@ -23,6 +23,6 @@ import { UpdateNewsletterComponent } from './update-newsletter.component';
 @NgModule({
     declarations: [UpdateNewsletterComponent],
     exports: [UpdateNewsletterComponent],
-    imports: [ReactiveFormsModule, MatCheckboxModule],
+    imports: [MatCheckboxModule, ReactiveFormsModule],
 })
 export class UpdateNewsletterModule {}

@@ -30,14 +30,14 @@ import { UpdateStammdatenComponent } from './update-stammdaten.component';
     declarations: [UpdateStammdatenComponent],
     exports: [UpdateStammdatenComponent],
     imports: [
-        ReactiveFormsModule,
-        UpdateFamilienstandModule,
-        UpdateNachnameModule,
-        UpdateGeschlechtTypeModule,
         MatButtonModule,
+        ReactiveFormsModule,
         UpdateAdresseModule,
         UpdateEmailModule,
+        UpdateFamilienstandModule,
         UpdateGeburtsdatumModule,
+        UpdateGeschlechtTypeModule,
+        UpdateNachnameModule,
     ],
 })
 export class UpdateStammdatenModule {}

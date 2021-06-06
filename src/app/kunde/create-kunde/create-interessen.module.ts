@@ -24,6 +24,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
     declarations: [CreateInteressenComponent],
     exports: [CreateInteressenComponent],
-    imports: [ReactiveFormsModule, MatCheckboxModule, MatButtonModule],
+    imports: [MatButtonModule, MatCheckboxModule, ReactiveFormsModule],
 })
 export class CreateInteressenModule {}

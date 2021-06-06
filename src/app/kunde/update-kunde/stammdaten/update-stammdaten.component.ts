@@ -1,3 +1,5 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -18,12 +20,13 @@
 import { Component, Input } from '@angular/core';
 import type { FamilienstandType, GeschlechtType, Kunde } from '../../shared';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { KundeService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { KundeService, UpdateError } from '../../shared';
 
+import { Adresse } from '../../shared/kunde';
 import { FormGroup } from '@angular/forms';
 import { HOME_PATH } from '../../../shared';
 import type { OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import log from 'loglevel';
 
@@ -73,18 +76,23 @@ export class UpdateStammdatenComponent implements OnInit {
             return;
         }
 
-        const { nachname }: { nachname: string } = this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const { nachname }: { nachname: string } = this.form.value;
+
+        const { email }: { email: string } = this.form.value;
+
+        const { adresse }: { adresse: Adresse } = this.form.value;
+
         const { familienstand }: { familienstand: FamilienstandType } =
-            this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            this.form.value;
         const {
             geschlechtType,
         }: { geschlechtType: GeschlechtType | '' | undefined } =
-            this.form.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+            this.form.value;
         const { geburtsdatum } = this.kunde;
         this.kunde.updateStammdaten(
             nachname,
+            email,
+            adresse,
             familienstand,
             geschlechtType,
             geburtsdatum,
@@ -117,7 +125,6 @@ export class UpdateStammdatenComponent implements OnInit {
             case HttpStatusCode.BadRequest: {
                 const { cause } = err;
                 // TODO Aufbereitung der Fehlermeldung: u.a. Anfuehrungszeichen
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 this.errorMsg =
                     cause instanceof HttpErrorResponse
                         ? cause.error
@@ -142,3 +149,6 @@ export class UpdateStammdatenComponent implements OnInit {
         );
     }
 }
+
+/* eslint-enable object-curly-newline */
+/* eslint-enable @typescript-eslint/no-unsafe-assignment */

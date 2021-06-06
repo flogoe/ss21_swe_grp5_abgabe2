@@ -15,18 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { ActivatedRoute, Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { ActivatedRoute, Router } from '@angular/router';
 import { first, tap } from 'rxjs/operators';
 
+// eslint-disable-next-line import/no-unresolved
 import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import { Component } from '@angular/core';
 import { FindError } from './../shared/errors';
 import { HttpStatusCode } from '@angular/common/http';
 import type { Kunde } from '../shared';
-import { KundeService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { KundeService } from '../shared';
 import type { Observable } from 'rxjs';
 import type { OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Title } from '@angular/platform-browser';
 import log from 'loglevel';
 
 /**
@@ -95,7 +96,7 @@ export class DetailsKundeComponent implements OnInit {
         this.isAdmin = this.authService.isAdmin;
     }
 
-    private setProps(result: Kunde | FindError) {
+    private setProps(result: FindError | Kunde) {
         this.waiting = false;
 
         if (result instanceof FindError) {

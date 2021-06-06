@@ -32,9 +32,9 @@ import { UpdateStammdatenModule } from './stammdaten/update-stammdaten.module';
         CommonModule,
         ErrorMessageModule,
         FormsModule,
+        MatToolbarModule,
         UpdateInteressenModule,
         UpdateStammdatenModule,
-        MatToolbarModule,
     ],
     providers: [Title],
 })

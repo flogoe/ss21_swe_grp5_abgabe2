@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-lines,no-null/no-null */
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
@@ -19,18 +20,17 @@
 import { BASE_PATH_REST, KUNDEN_PATH_REST } from '../../shared';
 import type { FamilienstandType, GeschlechtType, KundeServer } from './kunde';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
     HttpClient,
     HttpHeaders,
     HttpParams,
     HttpResponse,
 } from '@angular/common/http';
-import { Kunde, User } from './kunde';
 import { catchError, map } from 'rxjs/operators';
 
 import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Kunde } from './kunde';
 import type { Observable } from 'rxjs';
 import log from 'loglevel';
 import { of } from 'rxjs';
@@ -94,7 +94,7 @@ export class KundeService {
      */
     find(
         suchkriterien: Suchkriterien | undefined = undefined, // eslint-disable-line unicorn/no-useless-undefined
-    ): Observable<Kunde[] | FindError> {
+    ): Observable<FindError | Kunde[]> {
         log.debug('KundeService.find(): suchkriterien=', suchkriterien);
         const params = this.suchkriterienToHttpParams(suchkriterien);
         const url = this.baseUrlKunden;
@@ -124,7 +124,8 @@ export class KundeService {
         // Falls benoetigt, gibt es in Angular dafuer den Service Jsonp.
     }
 
-    private findResultToKundeArray(res: any | FindError): Kunde[] | FindError {
+    // eslint-disable-next-line @typescript-eslint/sort-type-union-intersection-members
+    private findResultToKundeArray(res: any | FindError): FindError | Kunde[] {
         if (res instanceof FindError) {
             return res;
         }
@@ -138,7 +139,7 @@ export class KundeService {
      * Ein Kunde anhand der ID suchen
      * @param id Die ID des gesuchten Kundes
      */
-    findById(id: string | undefined): Observable<Kunde | FindError> {
+    findById(id: string | undefined): Observable<FindError | Kunde> {
         log.debug(`KundeService.findById(): id=${id}`);
 
         if (id === undefined) {
@@ -185,7 +186,7 @@ export class KundeService {
 
     private findByIdResultToKunde(
         result: FindError | HttpResponse<KundeServer>,
-    ): Kunde | FindError {
+    ): FindError | Kunde {
         if (result instanceof FindError) {
             return result;
         }
@@ -412,3 +413,4 @@ export class KundeService {
 }
 /* eslint-enable no-underscore-dangle */
 /* eslint-enable max-lines,no-null/no-null */
+/* eslint-enable @typescript-eslint/no-explicit-any */
