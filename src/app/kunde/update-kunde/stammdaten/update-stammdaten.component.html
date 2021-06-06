@@ -17,10 +17,19 @@
 <form [formGroup]="form" role="form">
   <hs-update-nachname [form]="form" [currentValue]="kunde.nachname">
   </hs-update-nachname>
+  <hs-update-email [form]="form" [currentValue]="kunde.email"></hs-update-email>
+  <hs-update-adresse
+    [form]="form"
+    [currentValue]="kunde.adresse"
+  ></hs-update-adresse>
   <hs-update-familienstand [form]="form" [currentValue]="kunde.familienstand">
   </hs-update-familienstand>
   <hs-update-geschlechtType [form]="form" [currentValue]="kunde.geschlecht">
   </hs-update-geschlechtType>
+  <hs-update-geburtsdatum
+    [form]="form"
+    [currentValue]="kunde.geburtsdatum"
+  ></hs-update-geburtsdatum>
 
   <div class="row">
     <div class="col offset-2 gy-3">

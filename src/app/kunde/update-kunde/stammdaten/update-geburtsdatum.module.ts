@@ -16,28 +16,25 @@
  */
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateAdresseModule } from './update-adresse.module';
-import { UpdateEmailModule } from './update-email.module';
-import { UpdateFamilienstandModule } from './update-familienstand.module';
-import { UpdateGeburtsdatumModule } from './update-geburtsdatum.module';
-import { UpdateGeschlechtTypeModule } from './update-geschlechtType.module';
-import { UpdateNachnameModule } from './update-nachname.module';
-import { UpdateStammdatenComponent } from './update-stammdaten.component';
+import { UpdateGeburtsdatumComponent } from './update-geburtsdatum.component';
 
 @NgModule({
-    declarations: [UpdateStammdatenComponent],
-    exports: [UpdateStammdatenComponent],
+    declarations: [UpdateGeburtsdatumComponent],
+    exports: [UpdateGeburtsdatumComponent],
     imports: [
         ReactiveFormsModule,
-        UpdateFamilienstandModule,
-        UpdateNachnameModule,
-        UpdateGeschlechtTypeModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatInputModule,
         MatButtonModule,
-        UpdateAdresseModule,
-        UpdateEmailModule,
-        UpdateGeburtsdatumModule,
     ],
+    providers: [MatDatepickerModule],
 })
-export class UpdateStammdatenModule {}
+export class UpdateGeburtsdatumModule {}
