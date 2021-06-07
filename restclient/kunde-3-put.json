@@ -1,0 +1,20 @@
+{
+  "nachname": "neuerNachname",
+  "email": "test@acme.com",
+  "kategorie": "KINDLE",
+  "newsletter": "true",
+  "geburtsdatum": 99.9,
+  "umsatz": 500,
+  "homepage": "",
+  "geschlecht": "W",
+  "familienstand": "VH",
+  "interessen": ["S", "L"],
+  "adresse": [{
+    "plz": "76111",
+    "ort": "Örtle"
+  }],
+  "username": "user123"
+
+
+}
+
