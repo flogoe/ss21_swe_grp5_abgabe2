@@ -50,7 +50,6 @@
     "@angular/router": "12.0.2",
     "@angular/service-worker": "12.0.2",
     "@swimlane/ngx-charts": "18.0.1",
-    "bootstrap": "5.0.1",
     "loglevel": "1.7.1",
     "rxjs": "6.6.7",
     "tslib": "2.2.0",
