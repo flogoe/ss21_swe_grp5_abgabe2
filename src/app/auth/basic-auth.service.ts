@@ -24,7 +24,7 @@ import log from 'loglevel';
 
 enum Rolle {
     ROLE_ADMIN = 'admin',
-    ROLE_KUNDE = 'kunde',
+    ROLE_BUCH = 'buch',
     ROLE_MITARBEITER = 'mitarbeiter',
 }
 

@@ -36,15 +36,15 @@ const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path: 'kunden',
+        path: 'buecher',
         // Lazy Loading durch dynamische Imports
         // loadChildren statt component wie bei 'home'
         loadChildren: async () => {
             // eslint-disable-next-line @typescript-eslint/naming-convention
-            const { KundeRoutingModule } = await import(
-                './kunde/kunde-routing.module'
+            const { BuchRoutingModule } = await import(
+                './buch/buch-routing.module'
             );
-            return KundeRoutingModule;
+            return BuchRoutingModule;
         },
     },
 ];

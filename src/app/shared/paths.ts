@@ -30,7 +30,7 @@ export const HOME_PATH = 'home';
 export const BASE_PATH_REST = 'http://localhost:3000/api'; //DevSkim: ignore DS137138 until 2021-10-06
 
 /**
- * Pfad beim REST-Server fuer kunden
+ * Pfad beim REST-Server fuer buecher
  */
-export const KUNDEN_PATH_REST = '';
-// export const KUNDEN_PATH_REST = 'kunden';
+export const BUECHER_PATH_REST = '';
+// export const BUECHER_PATH_REST = 'buecher';

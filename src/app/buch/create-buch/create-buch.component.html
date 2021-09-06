@@ -1,0 +1,33 @@
+<mat-toolbar color="accent">Neues Buch anlegen</mat-toolbar>
+
+<div class="contentWrapper">
+  <form [formGroup]="form" role="form">
+    <div class="row warnRow" *ngIf="showWarning">
+      <span class="warn warnRow">
+        <i class="material-icons">warning</i>
+        <strong>
+          Wenn Sie die Seite jetzt verlassen, verlieren Sie Ihre eingegebenen
+          Daten.
+        </strong>
+      </span>
+    </div>
+
+    <hs-create-nachname [form]="form"></hs-create-nachname>
+    <hs-create-email [form]="form"></hs-create-email>
+    <hs-create-adresse [form]="form"></hs-create-adresse>
+    <hs-create-familienstand [form]="form"></hs-create-familienstand>
+    <hs-create-geschlechtType [form]="form"></hs-create-geschlechtType>
+    <hs-create-geburtsdatum [form]="form"></hs-create-geburtsdatum>
+    <hs-create-interessen [form]="form"></hs-create-interessen>
+    <hs-create-newsletter [form]="form"></hs-create-newsletter>
+
+    <button mat-raised-button color="accent" type="submit" (click)="onSave()" [disabled]="form.invalid">
+      <i class="material-icons">check</i>
+      Jetzt anlegen
+    </button>
+  </form>
+
+  <small>* sind Pflichtfelder</small>
+</div>
+
+<hs-error-message [text]="errorMsg"></hs-error-message>

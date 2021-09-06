@@ -108,8 +108,8 @@ export class JwtService {
         const rolesStr: string = roles.join();
         log.debug(`JwtService.login(): rolesStr=${rolesStr}`);
 
-        // Expiration beim Token: Sekunden seit 1.1.1970 UTC
-        // Cookie: Millisekunden in eigener Zeitzone
+        // Expiration beim Token: Sebuchn seit 1.1.1970 UTC
+        // Cookie: Millisebuchn in eigener Zeitzone
         const expiration =
             decodedToken.exp * JwtService.MILLIS_PER_SECOND +
             JwtService.TIMEZONE_OFFSET_MS;

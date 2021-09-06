@@ -20,7 +20,7 @@ kind: Kustomization
 namespace: acme
 
 configMapGenerator:
-  - name: kundeweb-env
+  - name: buchweb-env
     literals:
       - TZ=Europe/Berlin
 

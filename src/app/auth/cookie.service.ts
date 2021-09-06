@@ -91,7 +91,7 @@ export class CookieService {
     /**
      * @param name Name des Cookies
      * @param value Wert des Cookies
-     * @param expires Ablaufgeburtsdatum in Millisekunden. Default: Session.
+     * @param expires Ablaufgeburtsdatum in Millisebuchn. Default: Session.
      * @param path Pfad des Cookies. Default: /.
      * @param domain Domain des Cookies. Default: aktuelle Domain.
      */

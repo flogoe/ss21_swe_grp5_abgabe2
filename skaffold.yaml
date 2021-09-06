@@ -20,13 +20,13 @@
 apiVersion: skaffold/v2beta13
 kind: Config
 metadata:
-  name: kundeweb
+  name: buchweb
 build:
   tagPolicy:
     envTemplate:
       template: "{{.TAG}}"
   artifacts:
-  - image: docker.io/juergenzimmermann/kunde-web
+    - image: docker.io/juergenzimmermann/buch-web
   local: {}
 deploy:
   kustomize:
@@ -44,5 +44,5 @@ profiles:
           disableValidation: true
     portForward:
       - resourceType: service
-        resourceName: kundeweb
+        resourceName: buchweb
         port: 80
