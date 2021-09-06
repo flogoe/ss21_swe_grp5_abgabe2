@@ -19,6 +19,7 @@ import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import { Component } from '@angular/core';
 import { CookieService } from 'src/app/auth/cookie.service';
 import { HOME_PATH } from '../../shared';
+import { JwtService } from 'src/app/auth/jwt.service';
 import type { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -47,7 +48,7 @@ export class LoginLogoutComponent implements OnInit {
     init!: boolean;
 
     constructor(
-        private readonly authService: BasicAuthService,
+        private readonly authService: JwtService,
         private readonly router: Router,
         private readonly cookieService: CookieService,
     ) {
@@ -71,6 +72,7 @@ export class LoginLogoutComponent implements OnInit {
             this.password,
         );
         this.init = false;
+        console.log('LOGIN RESULT', loginResult);
         return loginResult;
     }
 

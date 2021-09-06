@@ -19,15 +19,24 @@ import { BASE_PATH_REST } from '../shared';
 import { CookieService } from './cookie.service';
 import { HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import log from 'loglevel';
 
 interface LoginResponse {
     token: string;
     roles: string[];
+    access_token: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class JwtService {
+    readonly isLoggedIn$ = new Subject<boolean>();
+
+    // public fuer z.B. nav.component mit der Property isAdmin
+    readonly rollen$ = new Subject<string[]>();
+
+    ROLLE_ADMIN = 'ROLE_ADMIN';
+
     private static readonly MILLIS_PER_SECOND = 1000;
 
     private static readonly SECOND_PER_MINUTE = 60;
@@ -46,7 +55,7 @@ export class JwtService {
         username: string | undefined,
         password: string | undefined,
     ): Promise<string[]> {
-        const loginUri = `${BASE_PATH_REST}/login`;
+        const loginUri = `${BASE_PATH_REST}/auth/login`;
         log.debug(`JwtService.login(): loginUri=${loginUri}`);
 
         // GET-Request durch fetch() statt HttpClient von Angular
@@ -77,26 +86,27 @@ export class JwtService {
 
         const { status } = response;
         log.debug(`JwtService.login(): status=${status}`);
-        if (status !== HttpStatusCode.Ok) {
+        if (status !== HttpStatusCode.Ok && status !== HttpStatusCode.Created) {
             const { statusText } = response;
             return Promise.reject(new Error(statusText));
         }
 
         const json: LoginResponse = await response.json(); // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         log.debug('JwtService.login(): json', json);
-        const { token, roles } = json;
-        const authorization = `Bearer ${token}`;
-        log.debug(`JwtService.login(): authorization=${authorization}`);
+        // const { token, roles } = json;
+        // const authorization = `Bearer ${token}`;
+        // log.debug(`JwtService.login(): authorization=${authorization}`);
 
-        // Array von Strings als 1 String
-        const rolesStr: string = roles.join();
-        log.debug(`JwtService.login(): rolesStr=${rolesStr}`);
-
-        const decodedToken = this.decodeToken(token); // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const decodedToken = this.decodeToken(json.access_token); // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         log.debug('JwtService.login(): decodedToken', decodedToken);
         if (decodedToken.exp === undefined) {
             return Promise.resolve([]);
         }
+
+        // Array von Strings als 1 String
+        const roles = decodedToken.roles;
+        const rolesStr: string = roles.join();
+        log.debug(`JwtService.login(): rolesStr=${rolesStr}`);
 
         // Expiration beim Token: Sekunden seit 1.1.1970 UTC
         // Cookie: Millisekunden in eigener Zeitzone
@@ -105,7 +115,7 @@ export class JwtService {
             JwtService.TIMEZONE_OFFSET_MS;
         log.debug(`JwtService.login(): expiration=${expiration}`);
         this.cookieService.saveAuthorization(
-            authorization,
+            json.access_token,
             rolesStr,
             expiration,
         );
@@ -152,5 +162,48 @@ export class JwtService {
         );
 
         return JSON.parse(decodedStr);
+    }
+
+    /**
+     * @return void
+     */
+    logout() {
+        log.debug('AuthService.logout()');
+        this.cookieService.deleteAuthorization();
+        this.isLoggedIn$.next(false);
+        this.rollen$.next([]);
+    }
+    /**
+     * Statische Abfrage, z.B. beim Start des Browsers, wenn noch kein
+     * Click-Ereignis eingetreten ist.
+     * @return true, falls ein User eingeloggt ist; sonst false.
+     */
+    get isLoggedIn() {
+        return this.cookieService.getAuthorization() !== undefined;
+    }
+
+    /**
+     * @return String fuer JWT oder Basic-Authentifizierung
+     */
+    get authorization() {
+        return this.cookieService.getAuthorization();
+    }
+
+    /**
+     * Statische Abfrage, z.B. beim Start des Browsers, wenn noch kein
+     * Click-Ereignis eingetreten ist oder bei der Anzeige des Suchergebnisses.
+     * @return true, falls ein User in der Rolle "admin" eingeloggt ist;
+     *         sonst false.
+     */
+    get isAdmin() {
+        // z.B. 'admin,mitarbeiter'
+        const rolesStr = this.cookieService.getRoles();
+        if (rolesStr === undefined) {
+            return false;
+        }
+
+        // z.B. ['admin', 'mitarbeiter']
+        const rolesArray = rolesStr.split(',');
+        return rolesArray.includes(this.ROLLE_ADMIN);
     }
 }

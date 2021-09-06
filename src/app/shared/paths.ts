@@ -26,8 +26,8 @@ export const HOME_PATH = 'home';
  * 2) CORS bei Kubernetes, wozu Port-Forwarding fuer den Web Service
  *    erforderlich ist.
  */
-export const BASE_PATH_REST = '/rest';
-// export const BASE_PATH_REST = 'https://localhost:3000/api';
+// export const BASE_PATH_REST = '/rest';
+export const BASE_PATH_REST = 'http://localhost:3000/api'; //DevSkim: ignore DS137138 until 2021-10-06
 
 /**
  * Pfad beim REST-Server fuer kunden

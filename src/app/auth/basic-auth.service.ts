@@ -57,7 +57,7 @@ export class BasicAuthService {
         log.debug(
             `BasicAuthService.login(): username=${username}, password=${password}`,
         );
-        const loginUri = `${BASE_PATH_REST}/auth/rollen`;
+        const loginUri = `${BASE_PATH_REST}/auth/login`;
         log.debug(`BasicAuthService.login(): loginUri=${loginUri}`);
 
         const base64 = window.btoa(`${username}:${password}`);
