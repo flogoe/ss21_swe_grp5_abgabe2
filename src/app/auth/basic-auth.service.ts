@@ -34,7 +34,7 @@ export interface Identity {
     password?: string;
 }
 
-export const ROLLE_ADMIN = 'ROLE_ADMIN';
+export const ROLLE_ADMIN = 'admin';
 
 @Injectable({ providedIn: 'root' })
 export class BasicAuthService {

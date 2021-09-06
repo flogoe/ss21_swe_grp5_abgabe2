@@ -119,7 +119,8 @@ export class JwtService {
             rolesStr,
             expiration,
         );
-
+        this.rollen$.next(roles);
+        this.isLoggedIn$.next(true);
         return Promise.resolve(roles);
     }
     /* eslint-enable max-lines-per-function,max-statements */

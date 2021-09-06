@@ -20,6 +20,7 @@ import { BasicAuthService } from 'src/app/auth/basic-auth.service';
 import { Component } from '@angular/core';
 // eslint-disable-next-line import/no-unresolved
 import { CookieService } from 'src/app/auth/cookie.service';
+import { JwtService } from 'src/app/auth/jwt.service';
 import type { OnInit } from '@angular/core';
 import { ROLLE_ADMIN } from '../../auth/basic-auth.service';
 import { Subject } from 'rxjs';
@@ -40,7 +41,7 @@ export class NavComponent implements OnInit {
     isAdmin = false;
 
     constructor(
-        private readonly authService: BasicAuthService,
+        private readonly authService: JwtService,
         private readonly cookieService: CookieService,
     ) {
         log.debug('NavComponent.constructor()');
@@ -64,6 +65,7 @@ export class NavComponent implements OnInit {
                     {
                         this.isAdmin$.next(rollen.includes(ROLLE_ADMIN));
                         this.isAdmin = rollen.includes(ROLLE_ADMIN);
+                        console.log('is admin?', this.isAdmin, rollen);
                     },
                 ),
             )

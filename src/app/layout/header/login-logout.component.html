@@ -1,6 +1,6 @@
 <button
   mat-raised-button
-  color="accent"
+  color="primary"
   type="submit"
   *ngIf="(isLoggedIn$ | async) || init; else login"
   (click)="onLogout()"
@@ -9,8 +9,8 @@
   <i class="material-icons md-48">chevron_right</i>
 </button>
 
-<ng-template #login
-  ><mat-form-field class="example-full-width">
+<ng-template #login>
+  <mat-form-field class="example-full-width">
     <mat-label>Benutzername</mat-label>
     <input
       matInput
@@ -40,7 +40,7 @@
 
   <button
     mat-raised-button
-    color="accent"
+    color="primary"
     type="submit"
     tabindex="3"
     (click)="onLogin()"
