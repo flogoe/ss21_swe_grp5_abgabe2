@@ -18,13 +18,13 @@
 import { CommonModule } from '@angular/common';
 import { CreateAdresseModule } from './create-adresse.module';
 import { CreateBuchComponent } from './create-buch.component';
-import { CreateEmailModule } from './create-email.module';
 import { CreateFamilienstandModule } from './create-familienstand.module';
 import { CreateGeburtsdatumModule } from './create-geburtsdatum.module';
 import { CreateGeschlechtTypeModule } from './create-geschlechtType.module';
 import { CreateInteressenModule } from './create-interessen.module';
-import { CreateNachnameModule } from './create-nachname.module';
 import { CreateNewsletterModule } from './create-newsletter.module';
+import { CreateTitelModule } from './create-titel.module';
+import { CreateVerlagModule } from './create-verlag.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
@@ -43,14 +43,14 @@ import { Title } from '@angular/platform-browser';
     imports: [
         CommonModule,
         CreateAdresseModule,
-        CreateEmailModule,
+        CreateVerlagModule,
         CreateFamilienstandModule,
         CreateGeburtsdatumModule,
         CreateGeschlechtTypeModule,
         CreateGeschlechtTypeModule,
         CreateInteressenModule,
-        CreateNachnameModule,
-        CreateNachnameModule,
+        CreateTitelModule,
+        CreateTitelModule,
         CreateNewsletterModule,
         ErrorMessageModule,
         HttpClientModule,

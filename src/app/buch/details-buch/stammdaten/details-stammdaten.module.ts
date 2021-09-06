@@ -16,13 +16,13 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { DetailsEmailModule } from './details-email.module';
 import { DetailsFamilienstandModule } from './details-familienstand.module';
 import { DetailsGeburtsdatumModule } from './details-geburtsdatum.module';
 import { DetailsGeschlechtTypeModule } from './details-geschlechtType.module';
-import { DetailsNachnameModule } from './details-nachname.module';
 import { DetailsNewsletterModule } from './details-newsletter.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
+import { DetailsTitelModule } from './details-titel.module';
+import { DetailsVerlagModule } from './details-verlag.module';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -30,11 +30,11 @@ import { NgModule } from '@angular/core';
     exports: [DetailsStammdatenComponent],
     imports: [
         CommonModule,
-        DetailsEmailModule,
+        DetailsVerlagModule,
         DetailsFamilienstandModule,
         DetailsGeburtsdatumModule,
         DetailsGeschlechtTypeModule,
-        DetailsNachnameModule,
+        DetailsTitelModule,
         DetailsNewsletterModule,
     ],
 })

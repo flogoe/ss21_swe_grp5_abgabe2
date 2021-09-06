@@ -23,16 +23,16 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-nachname&gt;, um das Erfassungsformular
+ * Komponente mit dem Tag &lt;hs-create-titel&gt;, um das Erfassungsformular
  * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
     // moduleId: module.id,
-    selector: 'hs-create-nachname',
-    templateUrl: './create-nachname.component.html',
-    styleUrls: ['./create-nachname.component.scss'],
+    selector: 'hs-create-titel',
+    templateUrl: './create-titel.component.html',
+    styleUrls: ['./create-titel.component.scss'],
 })
-export class CreateNachnameComponent implements OnInit {
+export class CreateTitelComponent implements OnInit {
     private static readonly MIN_LENGTH = 2;
 
     @Input()
@@ -43,16 +43,16 @@ export class CreateNachnameComponent implements OnInit {
     //    serverseitig mittels Request/Response
     //    clientseitig bei den Ereignissen keyup, change, blur, ...
     // Ein Endbenutzer bewirkt staendig einen neuen Fehlerstatus
-    readonly nachname = new FormControl(undefined, [
+    readonly titel = new FormControl(undefined, [
         Validators.required,
-        Validators.minLength(CreateNachnameComponent.MIN_LENGTH),
+        Validators.minLength(CreateTitelComponent.MIN_LENGTH),
         Validators.pattern(/^\w/u),
     ]);
-    // readonly nachnameGroup = new FormGroup({ nachname: this.nachname })
+    // readonly titelGroup = new FormGroup({ titel: this.titel })
 
     ngOnInit() {
-        log.debug('CreateNachnameComponent.ngOnInit');
+        log.debug('CreateTitelComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('nachname', this.nachname);
+        this.form.addControl('titel', this.titel);
     }
 }

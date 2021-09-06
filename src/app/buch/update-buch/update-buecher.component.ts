@@ -74,8 +74,8 @@ export class UpdateBuchComponent implements OnInit {
         this.buch = result;
         this.errorMsg = undefined;
 
-        const nachname = `Aktualisieren ${this.buch._id}`;
-        this.titleService.setTitle(nachname);
+        const titel = `Aktualisieren ${this.buch._id}`;
+        this.titleService.setTitle(titel);
     }
 
     private handleError(err: FindError) {

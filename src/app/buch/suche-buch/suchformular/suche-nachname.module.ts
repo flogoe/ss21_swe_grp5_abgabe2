@@ -19,11 +19,11 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
-import { SucheNachnameComponent } from './suche-nachname.component';
+import { SucheTitelComponent } from './suche-titel.component';
 
 @NgModule({
-    declarations: [SucheNachnameComponent],
-    exports: [SucheNachnameComponent],
+    declarations: [SucheTitelComponent],
+    exports: [SucheTitelComponent],
     imports: [FormsModule, MatFormFieldModule, MatInputModule],
 })
-export class SucheNachnameModule {}
+export class SucheTitelModule {}

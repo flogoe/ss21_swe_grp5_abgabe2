@@ -19,20 +19,20 @@ import { Component } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-nachname</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-titel</code>
  */
 @Component({
-    selector: 'hs-suche-nachname',
-    templateUrl: './suche-nachname.component.html',
-    styleUrls: ['./suche-nachname.component.scss'],
+    selector: 'hs-suche-titel',
+    templateUrl: './suche-titel.component.html',
+    styleUrls: ['./suche-titel.component.scss'],
 })
-export class SucheNachnameComponent {
-    nachname = '';
+export class SucheTitelComponent {
+    titel = '';
 
     // title = undefined;
     // title: string | undefined = undefined;
 
     constructor() {
-        log.debug('SucheNachnameComponent.constructor()');
+        log.debug('SucheTitelComponent.constructor()');
     }
 }

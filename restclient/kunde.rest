@@ -44,7 +44,7 @@ GET {{localHTTPS}}/rest/buecher/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
 GET {{localHTTPS}}/rest/buecher/99999999-9999-9999-9999-999999999999
 
 ### Suche mit vorhandenem Titel
-GET {{localHTTPS}}/rest/buecher?nachname=a
+GET {{localHTTPS}}/rest/buecher?titel=a
 
 ### Suche mit vorhandener ISBN-Nummber
 GET {{localHTTPS}}/rest/buecher?isbn=000-0-00000-000-1

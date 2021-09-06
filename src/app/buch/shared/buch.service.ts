@@ -36,7 +36,7 @@ import log from 'loglevel';
 import { of } from 'rxjs';
 
 export interface Suchkriterien {
-    nachname: string;
+    titel: string;
     geschlechtType: GeschlechtType | '';
     familienstand: FamilienstandType | '';
     interessen: { sport: boolean; lesen: boolean; reisen: boolean };
@@ -363,12 +363,12 @@ export class BuchService {
             return httpParams;
         }
 
-        const { nachname, geschlechtType, familienstand, interessen } =
+        const { titel, geschlechtType, familienstand, interessen } =
             suchkriterien;
         const { sport, lesen, reisen } = interessen;
 
-        if (nachname !== '') {
-            httpParams = httpParams.set('nachname', nachname);
+        if (titel !== '') {
+            httpParams = httpParams.set('titel', titel);
         }
         if (familienstand !== '') {
             httpParams = httpParams.set('familienstand', familienstand);

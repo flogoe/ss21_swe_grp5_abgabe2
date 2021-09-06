@@ -11,34 +11,31 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-update-email&gt;, um das Erfassungsformular
+ * Komponente mit dem Tag &lt;hs-update-verlag&gt;, um das Erfassungsformular
  * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
-    selector: 'hs-update-email',
-    templateUrl: './update-email.component.html',
-    styleUrls: ['./update-email.component.scss'],
+    selector: 'hs-update-verlag',
+    templateUrl: './update-verlag.component.html',
+    styleUrls: ['./update-verlag.component.scss'],
 })
-export class UpdateEmailComponent implements OnInit, AfterViewInit {
+export class UpdateVerlagComponent implements OnInit, AfterViewInit {
     @Input()
     form!: FormGroup;
 
     @Input()
     currentValue!: string;
 
-    email!: FormControl;
+    verlag!: FormControl;
 
     // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {
-        log.debug('UpdateEmailComponent.ngOnInit', this.currentValue);
+        log.debug('UpdateVerlagComponent.ngOnInit', this.currentValue);
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.email = new FormControl(this.currentValue, [
-            Validators.required,
-            Validators.email,
-        ]);
-        this.form.addControl('email', this.email);
+        this.verlag = new FormControl(this.currentValue, [Validators.required]);
+        this.form.addControl('verlag', this.verlag);
     }
 
     ngAfterViewInit() {

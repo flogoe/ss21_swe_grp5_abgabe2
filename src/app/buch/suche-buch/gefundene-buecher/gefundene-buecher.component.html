@@ -32,7 +32,7 @@
         <tr>
           <th>Nr.</th>
           <th>ID</th>
-          <th>Nachname</th>
+          <th>Titel</th>
           <th>GeschlechtType</th>
           <th>Interessen</th>
           <th>
@@ -50,7 +50,7 @@
         <tr *ngFor="let b of buecher; index as i" [@easeOut]="'in'">
           <td (click)="onClick(b)">{{ i + 1 }}</td>
           <td (click)="onClick(b)">{{ b._id }}</td>
-          <td (click)="onClick(b)">{{ b.nachname }}</td>
+          <td (click)="onClick(b)">{{ b.titel }}</td>
           <td>
             <span [ngSwitch]="b.geschlecht">
               <span *ngSwitchCase="'M'">Männlich</span>

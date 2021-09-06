@@ -23,36 +23,36 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-nachname</code>
+ * Komponente f&uuml;r das Tag <code>hs-update-titel</code>
  */
 @Component({
-    selector: 'hs-update-nachname',
-    templateUrl: './update-nachname.component.html',
-    styleUrls: ['./update-nachname.component.scss'],
+    selector: 'hs-update-titel',
+    templateUrl: './update-titel.component.html',
+    styleUrls: ['./update-titel.component.scss'],
 })
-export class UpdateNachnameComponent implements OnInit {
+export class UpdateTitelComponent implements OnInit {
     private static readonly MIN_LENGTH = 2;
 
-    // <hs-update-nachname [form]="form" [currentValue]="...">
+    // <hs-update-titel [form]="form" [currentValue]="...">
     @Input()
     form!: FormGroup;
 
     @Input()
     currentValue!: string;
 
-    nachname!: FormControl;
+    titel!: FormControl;
 
     ngOnInit() {
         log.debug(
-            'UpdateNachnameComponent.ngOnInit(): currentValue=',
+            'UpdateTitelComponent.ngOnInit(): currentValue=',
             this.currentValue,
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.nachname = new FormControl(this.currentValue, [
+        this.titel = new FormControl(this.currentValue, [
             Validators.required,
-            Validators.minLength(UpdateNachnameComponent.MIN_LENGTH),
+            Validators.minLength(UpdateTitelComponent.MIN_LENGTH),
             Validators.pattern(/^\w/u),
         ]);
-        this.form.addControl('nachname', this.nachname);
+        this.form.addControl('titel', this.titel);
     }
 }

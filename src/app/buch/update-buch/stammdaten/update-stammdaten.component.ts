@@ -76,9 +76,9 @@ export class UpdateStammdatenComponent implements OnInit {
             return;
         }
 
-        const { nachname }: { nachname: string } = this.form.value;
+        const { titel }: { titel: string } = this.form.value;
 
-        const { email }: { email: string } = this.form.value;
+        const { verlag }: { verlag: string } = this.form.value;
 
         const { adresse }: { adresse: Adresse } = this.form.value;
 
@@ -90,8 +90,8 @@ export class UpdateStammdatenComponent implements OnInit {
             this.form.value;
         const { geburtsdatum } = this.buch;
         this.buch.updateStammdaten(
-            nachname,
-            email,
+            titel,
+            verlag,
             adresse,
             familienstand,
             geschlechtType,

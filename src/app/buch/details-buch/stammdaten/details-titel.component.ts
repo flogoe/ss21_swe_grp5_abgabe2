@@ -21,18 +21,18 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-nachname</code>
+ * Komponente f&uuml;r das Tag <code>hs-details-titel</code>
  */
 @Component({
-    selector: 'hs-details-nachname',
-    templateUrl: './details-nachname.component.html',
-    styleUrls: ['./details-nachname.component.scss'],
+    selector: 'hs-details-titel',
+    templateUrl: './details-titel.component.html',
+    styleUrls: ['./details-titel.component.scss'],
 })
-export class DetailsNachnameComponent implements OnInit {
+export class DetailsTitelComponent implements OnInit {
     @Input()
-    nachname!: string;
+    titel!: string;
 
     ngOnInit() {
-        log.debug(`DetailsNachnameComponent.nachname=${this.nachname}`);
+        log.debug(`DetailsTitelComponent.titel=${this.titel}`);
     }
 }

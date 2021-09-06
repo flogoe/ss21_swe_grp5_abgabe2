@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,13 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CommonModule } from '@angular/common';
-import { DetailsNachnameComponent } from './details-nachname.component';
-import { NgModule } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-@NgModule({
-    declarations: [DetailsNachnameComponent],
-    exports: [DetailsNachnameComponent],
-    imports: [CommonModule],
+import type { OnInit } from '@angular/core';
+import log from 'loglevel';
+
+/**
+ * Komponente f&uuml;r das Tag <code>hs-details-verlag</code>
+ */
+@Component({
+    selector: 'hs-details-verlag',
+    templateUrl: './details-verlag.component.html',
+    styleUrls: ['./details-verlag.component.scss'],
 })
-export class DetailsNachnameModule {}
+export class DetailsVerlagComponent implements OnInit {
+    @Input()
+    verlag!: string;
+
+    ngOnInit() {
+        log.debug(`DetailsVerlagComponent.verlag=${this.verlag}`);
+    }
+}

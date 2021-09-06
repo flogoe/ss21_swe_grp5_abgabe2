@@ -1,11 +1,20 @@
 <div class="navWrapper">
-  <div class="listItem" routerLink="/buecher/suche" routerLinkActive="active" aria-label="Suche Buecher">
+  <div
+    class="listItem"
+    routerLink="/buecher/suche"
+    routerLinkActive="active"
+    aria-label="Suche Buecher"
+  >
     <i class="material-icons">search</i>
     <span class="ms-1">Suche</span>
   </div>
 
   <div *ngIf="isAdmin">
-    <div class="listItem" routerLink="/buecher/create" aria-label="Neues Buech anlegen">
+    <div
+      class="listItem"
+      routerLink="/buecher/create"
+      aria-label="Neues Buech anlegen"
+    >
       <i class="material-icons">add</i>
       <span>Neues Buch</span>
     </div>

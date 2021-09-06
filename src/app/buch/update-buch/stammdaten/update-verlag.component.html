@@ -1,0 +1,20 @@
+<h3>Verlag</h3>
+<mat-form-field [formGroup]="form">
+  <mat-label>Verlag</mat-label>
+  <input
+    matInput
+    id="verlagInput"
+    name="verlag"
+    formControlName="verlag"
+    [class.is-invalid]="verlag.invalid && verlag.touched"
+    [class.is-valid]="verlag.valid && verlag.touched"
+  />
+</mat-form-field>
+<div *ngIf="verlag.invalid && verlag.touched" class="invalid-feedback">
+  <mat-error *ngIf="verlag.errors && verlag.errors.required">
+    Ein Verlag muss eingegeben werden.
+  </mat-error>
+  <mat-error *ngIf="verlag.hasError('verlag') && !verlag.hasError('required')">
+    Ein Verlag muss im richtigen Format eingegeben werden.
+  </mat-error>
+</div>

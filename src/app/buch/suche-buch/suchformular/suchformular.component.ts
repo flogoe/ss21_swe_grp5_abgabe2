@@ -21,7 +21,7 @@ import { Subject } from 'rxjs';
 import { SucheFamilienstandComponent } from './suche-familienstand.component';
 import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
 import { SucheInteressenComponent } from './suche-interessen.component';
-import { SucheNachnameComponent } from './suche-nachname.component';
+import { SucheTitelComponent } from './suche-titel.component';
 import type { Suchkriterien } from '../../shared';
 import { fadeIn } from '../../../shared';
 import log from 'loglevel';
@@ -45,12 +45,12 @@ export class SuchformularComponent {
     @Output()
     readonly suchkriterien$ = new Subject<Suchkriterien>();
 
-    // DI der Child-Komponente, um auf deren Attribut (hier: "nachname") zuzugreifen
-    // @Output in SucheNachnameComponent wuerde Subject<> erfordern
+    // DI der Child-Komponente, um auf deren Attribut (hier: "titel") zuzugreifen
+    // @Output in SucheTitelComponent wuerde Subject<> erfordern
     // https://angular.io/guide/component-interaction#parent-calls-an-viewchild
     // query results available in ngOnInit
-    @ViewChild(SucheNachnameComponent, { static: true })
-    private readonly sucheNachnameComponent!: SucheNachnameComponent;
+    @ViewChild(SucheTitelComponent, { static: true })
+    private readonly sucheTitelComponent!: SucheTitelComponent;
 
     @ViewChild(SucheGeschlechtTypeComponent, { static: true })
     // eslint-disable-next-line max-len
@@ -74,7 +74,7 @@ export class SuchformularComponent {
      *         zu konsumieren.
      */
     onSubmit() {
-        const { nachname } = this.sucheNachnameComponent;
+        const { titel } = this.sucheTitelComponent;
         const { geschlechtType } = this.sucheGeschlechtTypeComponent;
         const { familienstand } = this.sucheFamilienstandComponent;
         const { sport } = this.sucheInteressenComponent;
@@ -82,11 +82,11 @@ export class SuchformularComponent {
         const { reisen } = this.sucheInteressenComponent;
 
         log.debug(
-            `SuchformularComponent.onFind(): nachname=${nachname}, geschlechtType=${geschlechtType}, familienstand=${familienstand}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
+            `SuchformularComponent.onFind(): titel=${titel}, geschlechtType=${geschlechtType}, familienstand=${familienstand}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
         );
 
         this.suchkriterien$.next({
-            nachname,
+            titel,
             geschlechtType,
             familienstand,
             interessen: { sport, lesen, reisen },

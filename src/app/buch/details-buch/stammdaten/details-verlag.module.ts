@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,24 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DetailsVerlagComponent } from './details-verlag.component';
+import { NgModule } from '@angular/core';
 
-import type { OnInit } from '@angular/core';
-import log from 'loglevel';
-
-/**
- * Komponente f&uuml;r das Tag <code>hs-details-email</code>
- */
-@Component({
-    selector: 'hs-details-email',
-    templateUrl: './details-email.component.html',
-    styleUrls: ['./details-email.component.scss'],
+@NgModule({
+    declarations: [DetailsVerlagComponent],
+    exports: [DetailsVerlagComponent],
+    imports: [CommonModule],
 })
-export class DetailsEmailComponent implements OnInit {
-    @Input()
-    email!: string;
-
-    ngOnInit() {
-        log.debug(`DetailsEmailComponent.email=${this.email}`);
-    }
-}
+export class DetailsVerlagModule {}

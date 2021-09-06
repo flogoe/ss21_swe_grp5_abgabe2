@@ -16,15 +16,15 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { CreateNachnameComponent } from './create-nachname.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateTitelComponent } from './update-titel.component';
 
 @NgModule({
-    declarations: [CreateNachnameComponent],
-    exports: [CreateNachnameComponent],
+    declarations: [UpdateTitelComponent],
+    exports: [UpdateTitelComponent],
     imports: [
         CommonModule,
         MatFormFieldModule,
@@ -32,4 +32,4 @@ import { ReactiveFormsModule } from '@angular/forms';
         ReactiveFormsModule,
     ],
 })
-export class CreateNachnameModule {}
+export class UpdateTitelModule {}

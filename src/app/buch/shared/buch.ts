@@ -34,8 +34,8 @@ export const ISBN_REGEX =
  */
 export interface BuchShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
-    nachname: string | undefined;
-    email: string;
+    titel: string | undefined;
+    verlag: string;
     // eslint-disable-next-line no-use-before-define
     adresse: Adresse;
     geschlecht?: GeschlechtType | '';
@@ -108,8 +108,8 @@ export class Buch {
     // eslint-disable-next-line max-params
     private constructor(
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
-        public nachname: string,
-        public email: string,
+        public titel: string,
+        public verlag: string,
         public adresse: Adresse,
         public familienstand: FamilienstandType,
         public geschlecht: GeschlechtType | '' | undefined,
@@ -152,8 +152,8 @@ export class Buch {
         }
 
         const {
-            nachname,
-            email,
+            titel,
+            verlag,
             adresse,
             familienstand,
             geschlecht,
@@ -163,8 +163,8 @@ export class Buch {
         } = buchServer;
         const buch = new Buch(
             id,
-            nachname ?? 'unbekannt',
-            email,
+            titel ?? 'unbekannt',
+            verlag,
             adresse,
             familienstand,
             geschlecht,
@@ -196,7 +196,7 @@ export class Buch {
         }
 
         const user: User = {
-            username: buchForm.nachname?.toLocaleLowerCase() ?? 'neuerUser',
+            username: buchForm.titel?.toLocaleLowerCase() ?? 'neuerUser',
             password: 'p',
         };
 
@@ -204,8 +204,8 @@ export class Buch {
 
         const buch = new Buch(
             buchForm._id,
-            buchForm.nachname ?? 'unbekannt',
-            buchForm.email,
+            buchForm.titel ?? 'unbekannt',
+            buchForm.verlag,
             buchForm.adresse,
             buchForm.familienstand,
             buchForm.geschlecht,
@@ -234,14 +234,14 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob im Nachname der angegebene Teilstring enthalten ist. Dabei
+     * Abfrage, ob im Titel der angegebene Teilstring enthalten ist. Dabei
      * wird nicht auf Gross-/Kleinschreibung geachtet.
-     * @param nachname Zu &uuml;berpr&uuml;fender Teilstring
-     * @return true, falls der Teilstring im Nachname enthalten ist. Sonst
+     * @param titel Zu &uuml;berpr&uuml;fender Teilstring
+     * @return true, falls der Teilstring im Titel enthalten ist. Sonst
      *         false.
      */
-    containsNachname(nachname: string) {
-        return this.nachname.toLowerCase().includes(nachname.toLowerCase());
+    containsTitel(titel: string) {
+        return this.titel.toLowerCase().includes(titel.toLowerCase());
     }
 
     /**
@@ -255,21 +255,21 @@ export class Buch {
 
     /**
      * Aktualisierung der Stammdaten des Buch-Objekts.
-     * @param nachname Der neue Nachname
+     * @param titel Der neue Titel
      * @param familienstand Der neue Familienstand
      * @param geschlecht Das neue Geschlecht
      */
     // eslint-disable-next-line max-params
     updateStammdaten(
-        nachname: string,
-        email: string,
+        titel: string,
+        verlag: string,
         adresse: Adresse,
         familienstand: FamilienstandType,
         geschlecht: GeschlechtType | '' | undefined,
         geburtsdatum: Date | undefined,
     ) {
-        this.nachname = nachname;
-        (this.email = email),
+        this.titel = titel;
+        (this.verlag = verlag),
             (this.adresse = adresse),
             (this.familienstand = familienstand);
         this.geschlecht = geschlecht;
@@ -325,8 +325,8 @@ export class Buch {
         log.debug(`toJson(): geburtsdatum=${geburtsdatum}`);
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
-            nachname: this.nachname,
-            email: this.email,
+            titel: this.titel,
+            verlag: this.verlag,
             adresse: this.adresse,
             familienstand: this.familienstand,
             geschlecht: this.geschlecht,

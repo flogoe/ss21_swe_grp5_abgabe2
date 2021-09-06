@@ -19,12 +19,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateAdresseModule } from './update-adresse.module';
-import { UpdateEmailModule } from './update-email.module';
 import { UpdateFamilienstandModule } from './update-familienstand.module';
 import { UpdateGeburtsdatumModule } from './update-geburtsdatum.module';
 import { UpdateGeschlechtTypeModule } from './update-geschlechtType.module';
-import { UpdateNachnameModule } from './update-nachname.module';
 import { UpdateStammdatenComponent } from './update-stammdaten.component';
+import { UpdateTitelModule } from './update-titel.module';
+import { UpdateVerlagModule } from './update-verlag.module';
 
 @NgModule({
     declarations: [UpdateStammdatenComponent],
@@ -33,11 +33,11 @@ import { UpdateStammdatenComponent } from './update-stammdaten.component';
         MatButtonModule,
         ReactiveFormsModule,
         UpdateAdresseModule,
-        UpdateEmailModule,
+        UpdateVerlagModule,
         UpdateFamilienstandModule,
         UpdateGeburtsdatumModule,
         UpdateGeschlechtTypeModule,
-        UpdateNachnameModule,
+        UpdateTitelModule,
     ],
 })
 export class UpdateStammdatenModule {}
