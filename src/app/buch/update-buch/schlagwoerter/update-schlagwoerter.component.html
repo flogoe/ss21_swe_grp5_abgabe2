@@ -1,17 +1,31 @@
 <form [formGroup]="form" role="form">
   <h3>Schlagwörter</h3>
-  <mat-checkbox color="primary" id="javascriptInput" formControlName="javascript">
+  <mat-checkbox
+    color="primary"
+    id="javascriptInput"
+    formControlName="javascript"
+  >
     JavaScript
   </mat-checkbox>
 
-  <mat-checkbox color="primary" id="typescriptInput" formControlName="typescript">
+  <mat-checkbox
+    color="primary"
+    id="typescriptInput"
+    formControlName="typescript"
+  >
     TypeScript
   </mat-checkbox>
 
   <div class="row gy-3">
     <div class="col">
-      <button mat-raised-button color="primary" type="submit" class="btn btn-primary" (click)="onUpdate()"
-        [disabled]="form.pristine || form.invalid">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="btn btn-primary"
+        (click)="onUpdate()"
+        [disabled]="form.pristine || form.invalid"
+      >
         <i class="material-icons">check</i>
         <span class="ms-1">Schlagwörter aktualisieren</span>
       </button>
