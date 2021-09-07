@@ -59,19 +59,20 @@ export class UpdateBuchComponent implements OnInit {
         this.buchService
             .findById(id)
             .pipe(
-                tap(result => this.setProps(result)),
+                tap(result => this.setProps(result, id)),
                 first(),
             )
             .subscribe();
     }
 
-    private setProps(result: FindError | Buch) {
+    private setProps(result: FindError | Buch, id: string | undefined) {
         if (result instanceof FindError) {
             this.handleError(result);
             return;
         }
 
         this.buch = result;
+        this.buch._id = id;
         this.errorMsg = undefined;
 
         const titel = `Aktualisieren ${this.buch._id}`;
