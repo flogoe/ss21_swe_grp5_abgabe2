@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import type { ArtType, BuchServer, FamilienstandType } from './buch';
 import { BASE_PATH_REST, BUECHER_PATH_REST } from '../../shared';
-import type { BuchServer, FamilienstandType, ArtType } from './buch';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 import {
     HttpClient,
@@ -39,7 +39,7 @@ export interface Suchkriterien {
     titel: string;
     artType: ArtType | '';
     familienstand: FamilienstandType | '';
-    interessen: { sport: boolean; lesen: boolean; reisen: boolean };
+    schlagwoerter: { sport: boolean; lesen: boolean; reisen: boolean };
 }
 
 // Methoden der Klasse HttpClient
@@ -209,7 +209,7 @@ export class BuchService {
      */
     save(buch: Buch): Observable<SaveError | string> {
         log.debug('BuchService.save(): buch=', buch);
-        buch.geburtsdatum = new Date();
+        buch.erscheinungsdatum = new Date();
 
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
@@ -363,8 +363,8 @@ export class BuchService {
             return httpParams;
         }
 
-        const { titel, artType, familienstand, interessen } = suchkriterien;
-        const { sport, lesen, reisen } = interessen;
+        const { titel, artType, familienstand, schlagwoerter } = suchkriterien;
+        const { sport, lesen, reisen } = schlagwoerter;
 
         if (titel !== '') {
             httpParams = httpParams.set('titel', titel);
@@ -377,15 +377,15 @@ export class BuchService {
         }
         if (sport) {
             // httpParams = httpParams.set('sport', 'true');
-            httpParams = httpParams.set('interessen', 'S');
+            httpParams = httpParams.set('schlagwoerter', 'S');
         }
         if (lesen) {
             // httpParams = httpParams.set('lesen', 'true');
-            httpParams = httpParams.set('interessen', 'L');
+            httpParams = httpParams.set('schlagwoerter', 'L');
         }
         if (reisen) {
             // httpParams = httpParams.set('reisen', 'true');
-            httpParams = httpParams.set('interessen', 'R');
+            httpParams = httpParams.set('schlagwoerter', 'R');
         }
         return httpParams;
     }

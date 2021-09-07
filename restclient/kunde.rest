@@ -49,7 +49,7 @@ GET {{localHTTPS}}/rest/buecher?titel=a
 ### Suche mit vorhandener ISBN-Nummber
 GET {{localHTTPS}}/rest/buecher?isbn=000-0-00000-000-1
 
-### Suche mit vorhandenen Interessenn
+### Suche mit vorhandenen Schlagwoertern
 GET {{localHTTPS}}/rest/buecher?javascript=true&typescript=true
 
 ### Suche mit gueltiger Buchart

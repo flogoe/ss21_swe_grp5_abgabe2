@@ -1,0 +1,26 @@
+<form [formGroup]="form" role="form">
+  <h3>Schlagwoerter</h3>
+  <mat-checkbox id="sportInput" formControlName="sport"> Sport </mat-checkbox>
+
+  <mat-checkbox id="lesenInput" formControlName="lesen"> Lesen </mat-checkbox>
+
+  <mat-checkbox id="reisenInput" formControlName="reisen">
+    Reisen
+  </mat-checkbox>
+
+  <div class="row gy-3">
+    <div class="col">
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        class="btn btn-primary"
+        (click)="onUpdate()"
+        [disabled]="form.pristine || form.invalid"
+      >
+        <i class="material-icons">check</i>
+        <span class="ms-1">Schlagwoerter aktualisieren</span>
+      </button>
+    </div>
+  </div>
+</form>

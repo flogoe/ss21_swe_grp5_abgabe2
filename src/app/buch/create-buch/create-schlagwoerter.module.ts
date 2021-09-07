@@ -15,29 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { CreateSchlagwoerterComponent } from './create-schlagwoerter.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateAdresseModule } from './update-adresse.module';
-import { UpdateArtTypeModule } from './update-artType.module';
-import { UpdateErscheinungsdatumModule } from './update-erscheinungsdatum.module';
-import { UpdateFamilienstandModule } from './update-familienstand.module';
-import { UpdateStammdatenComponent } from './update-stammdaten.component';
-import { UpdateTitelModule } from './update-titel.module';
-import { UpdateVerlagModule } from './update-verlag.module';
 
 @NgModule({
-    declarations: [UpdateStammdatenComponent],
-    exports: [UpdateStammdatenComponent],
-    imports: [
-        MatButtonModule,
-        ReactiveFormsModule,
-        UpdateAdresseModule,
-        UpdateVerlagModule,
-        UpdateFamilienstandModule,
-        UpdateErscheinungsdatumModule,
-        UpdateArtTypeModule,
-        UpdateTitelModule,
-    ],
+    declarations: [CreateSchlagwoerterComponent],
+    exports: [CreateSchlagwoerterComponent],
+    imports: [MatButtonModule, MatCheckboxModule, ReactiveFormsModule],
 })
-export class UpdateStammdatenModule {}
+export class CreateSchlagwoerterModule {}

@@ -2,13 +2,13 @@
   "titel": "Test",
   "verlag": "test@acme.com",
   "kategorie": "KINDLE",
-  "newsletter": "true",
-  "geburtsdatum": 31.08.1979,
+  "lieferbar": "true",
+  "erscheinungsdatum": 31.08.1979,
   "umsatz": 500,
   "homepage": "",
   "art": "invalid",
   "familienstand": "ttt",
-  "interessen": ["F", "W"],
+  "schlagwoerter": ["F", "W"],
   "adresse": [{
     "plz": "76111",
     "ort": "Örtle"

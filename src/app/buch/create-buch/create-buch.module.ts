@@ -19,11 +19,11 @@ import { CommonModule } from '@angular/common';
 import { CreateAdresseModule } from './create-adresse.module';
 import { CreateArtTypeModule } from './create-artType.module';
 import { CreateBuchComponent } from './create-buch.component';
+import { CreateErscheinungsdatumModule } from './create-erscheinungsdatum.module';
 import { CreateFamilienstandModule } from './create-familienstand.module';
-import { CreateGeburtsdatumModule } from './create-geburtsdatum.module';
-import { CreateInteressenModule } from './create-interessen.module';
-import { CreateNewsletterModule } from './create-newsletter.module';
+import { CreateLieferbarModule } from './create-lieferbar.module';
 import { CreateRatingModule } from './create-rating.module';
+import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
 import { CreateTitelModule } from './create-titel.module';
 import { CreateVerlagModule } from './create-verlag.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
@@ -46,13 +46,13 @@ import { Title } from '@angular/platform-browser';
         CreateAdresseModule,
         CreateVerlagModule,
         CreateFamilienstandModule,
-        CreateGeburtsdatumModule,
+        CreateErscheinungsdatumModule,
         CreateArtTypeModule,
-        CreateInteressenModule,
+        CreateSchlagwoerterModule,
         CreateRatingModule,
         CreateTitelModule,
         CreateTitelModule,
-        CreateNewsletterModule,
+        CreateLieferbarModule,
         ErrorMessageModule,
         HttpClientModule,
         MatButtonModule,

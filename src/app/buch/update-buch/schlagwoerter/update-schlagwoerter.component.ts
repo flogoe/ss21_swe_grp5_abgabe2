@@ -1,5 +1,3 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -17,13 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import type { ArtType, Buch, FamilienstandType } from '../../shared';
 import { BuchService, UpdateError } from '../../shared';
 import { Component, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
-import { Adresse } from '../../shared/buch';
-import { FormGroup } from '@angular/forms';
+import type { Buch } from '../../shared';
 import { HOME_PATH } from '../../../shared';
 import type { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -31,19 +28,24 @@ import { first } from 'rxjs/operators';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-stammdaten</code>
+ * Komponente f&uuml;r das Tag <code>hs-schlagwoerter</code>
  */
 @Component({
-    selector: 'hs-update-stammdaten',
-    templateUrl: './update-stammdaten.component.html',
-    styleUrls: ['./update-stammdaten.component.scss'],
+    selector: 'hs-update-schlagwoerter',
+    templateUrl: './update-schlagwoerter.component.html',
 })
-export class UpdateStammdatenComponent implements OnInit {
-    // <hs-update-stammdaten [buch]="...">
+export class UpdateSchlagwoerterComponent implements OnInit {
+    // <hs-update-schlagwoerter [buch]="...">
     @Input()
     buch!: Buch;
 
-    readonly form = new FormGroup({});
+    form!: FormGroup;
+
+    sport!: FormControl;
+
+    lesen!: FormControl;
+
+    reisen!: FormControl;
 
     errorMsg: string | undefined = undefined;
 
@@ -51,19 +53,34 @@ export class UpdateStammdatenComponent implements OnInit {
         private readonly buchService: BuchService,
         private readonly router: Router,
     ) {
-        log.debug('UpdateStammdatenComponent.constructor()');
+        log.debug('UpdateSchlagwoerterComponent.constructor()');
     }
 
     /**
      * Das Formular als Gruppe von Controls initialisieren und mit den
-     * Stammdaten des zu &auml;ndernden Buchs vorbelegen.
+     * Schlagwoertern des zu &auml;ndernden Buchs vorbelegen.
      */
     ngOnInit() {
-        log.debug('UpdateStammdatenComponent.ngOnInit(): buch=', this.buch);
+        log.debug('buch=', this.buch);
+
+        // Definition und Vorbelegung der Eingabedaten (hier: Checkbox)
+        const hasSport = this.buch.hasInteresse('S');
+        this.sport = new FormControl(hasSport);
+        const hasLesen = this.buch.hasInteresse('L');
+        this.lesen = new FormControl(hasLesen);
+        const hasReisen = this.buch.hasInteresse('R');
+        this.reisen = new FormControl(hasReisen);
+
+        this.form = new FormGroup({
+            // siehe ngFormControl innerhalb von @Component({template: `...`})
+            sport: this.sport,
+            lesen: this.lesen,
+            reisen: this.reisen,
+        });
     }
 
     /**
-     * Die aktuellen Stammdaten f&uuml;r das angezeigte Buch-Objekt
+     * Die aktuellen Schlagwoerter f&uuml;r das angezeigte Buch-Objekt
      * zur&uuml;ckschreiben.
      * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
      *         zu konsumieren.
@@ -71,30 +88,16 @@ export class UpdateStammdatenComponent implements OnInit {
     onUpdate() {
         if (this.form.pristine) {
             log.debug(
-                'UpdateStammdatenComponent.onUpdate(): keine Aenderungen',
+                'UpdateSchlagwoerterComponent.onUpdate(): keine Aenderungen',
             );
             return;
         }
 
-        const { titel }: { titel: string } = this.form.value;
+        const sport: boolean = this.sport.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const lesen: boolean = this.lesen.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const reisen: boolean = this.reisen.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
 
-        const { verlag }: { verlag: string } = this.form.value;
-
-        const { adresse }: { adresse: Adresse } = this.form.value;
-
-        const { familienstand }: { familienstand: FamilienstandType } =
-            this.form.value;
-        const { artType }: { artType: ArtType | '' | undefined } =
-            this.form.value;
-        const { erscheinungsdatum } = this.buch;
-        this.buch.updateStammdaten(
-            titel,
-            verlag,
-            adresse,
-            familienstand,
-            artType,
-            erscheinungsdatum,
-        );
+        this.buch.updateSchlagwoerter(sport, lesen, reisen);
         log.debug('buch=', this.buch);
 
         const next = async (result: Buch | UpdateError) => {
@@ -116,13 +119,14 @@ export class UpdateStammdatenComponent implements OnInit {
     private handleError(err: UpdateError) {
         const { statuscode } = err;
         log.debug(
-            `UpdateStammdatenComponent.handleError(): statuscode=${statuscode}`,
+            `UpdateSchlagwoerterComponent.handleError(): statuscode=${statuscode}`,
         );
 
         switch (statuscode) {
             case HttpStatusCode.BadRequest: {
                 const { cause } = err;
                 // TODO Aufbereitung der Fehlermeldung: u.a. Anfuehrungszeichen
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 this.errorMsg =
                     cause instanceof HttpErrorResponse
                         ? cause.error
@@ -143,10 +147,7 @@ export class UpdateStammdatenComponent implements OnInit {
         }
 
         log.debug(
-            `UpdateStammdatenComponent.handleError(): errorMsg=${this.errorMsg}`,
+            `UpdateSchlagwoerterComponent.handleError(): errorMsg=${this.errorMsg}`,
         );
     }
 }
-
-/* eslint-enable object-curly-newline */
-/* eslint-enable @typescript-eslint/no-unsafe-assignment */

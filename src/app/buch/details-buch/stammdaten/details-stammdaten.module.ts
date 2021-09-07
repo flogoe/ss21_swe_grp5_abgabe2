@@ -16,10 +16,10 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { DetailsFamilienstandModule } from './details-familienstand.module';
-import { DetailsGeburtsdatumModule } from './details-geburtsdatum.module';
 import { DetailsArtTypeModule } from './details-artType.module';
-import { DetailsNewsletterModule } from './details-newsletter.module';
+import { DetailsErscheinungsdatumModule } from './details-erscheinungsdatum.module';
+import { DetailsFamilienstandModule } from './details-familienstand.module';
+import { DetailsLieferbarModule } from './details-lieferbar.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
 import { DetailsTitelModule } from './details-titel.module';
 import { DetailsVerlagModule } from './details-verlag.module';
@@ -32,10 +32,10 @@ import { NgModule } from '@angular/core';
         CommonModule,
         DetailsVerlagModule,
         DetailsFamilienstandModule,
-        DetailsGeburtsdatumModule,
+        DetailsErscheinungsdatumModule,
         DetailsArtTypeModule,
         DetailsTitelModule,
-        DetailsNewsletterModule,
+        DetailsLieferbarModule,
     ],
 })
 export class DetailsStammdatenModule {}

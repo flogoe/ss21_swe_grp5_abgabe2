@@ -22,7 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UpdateBuchComponent } from './update-buecher.component';
-import { UpdateInteressenModule } from './interessen/update-interessen.module';
+import { UpdateSchlagwoerterModule } from './schlagwoerter/update-schlagwoerter.module';
 import { UpdateStammdatenModule } from './stammdaten/update-stammdaten.module';
 
 @NgModule({
@@ -33,7 +33,7 @@ import { UpdateStammdatenModule } from './stammdaten/update-stammdaten.module';
         ErrorMessageModule,
         FormsModule,
         MatToolbarModule,
-        UpdateInteressenModule,
+        UpdateSchlagwoerterModule,
         UpdateStammdatenModule,
     ],
     providers: [Title],

@@ -18,9 +18,9 @@
 import { Component, Output, ViewChild } from '@angular/core';
 
 import { Subject } from 'rxjs';
-import { SucheFamilienstandComponent } from './suche-familienstand.component';
 import { SucheArtTypeComponent } from './suche-artType.component';
-import { SucheInteressenComponent } from './suche-interessen.component';
+import { SucheFamilienstandComponent } from './suche-familienstand.component';
+import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
 import { SucheTitelComponent } from './suche-titel.component';
 import type { Suchkriterien } from '../../shared';
 import { fadeIn } from '../../../shared';
@@ -59,8 +59,8 @@ export class SuchformularComponent {
     @ViewChild(SucheFamilienstandComponent, { static: true })
     private readonly sucheFamilienstandComponent!: SucheFamilienstandComponent;
 
-    @ViewChild(SucheInteressenComponent, { static: true })
-    private readonly sucheInteressenComponent!: SucheInteressenComponent;
+    @ViewChild(SucheSchlagwoerterComponent, { static: true })
+    private readonly sucheSchlagwoerterComponent!: SucheSchlagwoerterComponent;
 
     // DI: Constructor Injection (React hat uebrigens keine DI)
     // Empfehlung: Konstruktor nur fuer DI
@@ -77,9 +77,9 @@ export class SuchformularComponent {
         const { titel } = this.sucheTitelComponent;
         const { artType } = this.sucheArtTypeComponent;
         const { familienstand } = this.sucheFamilienstandComponent;
-        const { sport } = this.sucheInteressenComponent;
-        const { lesen } = this.sucheInteressenComponent;
-        const { reisen } = this.sucheInteressenComponent;
+        const { sport } = this.sucheSchlagwoerterComponent;
+        const { lesen } = this.sucheSchlagwoerterComponent;
+        const { reisen } = this.sucheSchlagwoerterComponent;
 
         log.debug(
             `SuchformularComponent.onFind(): titel=${titel}, artType=${artType}, familienstand=${familienstand}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
@@ -89,7 +89,7 @@ export class SuchformularComponent {
             titel,
             artType,
             familienstand,
-            interessen: { sport, lesen, reisen },
+            schlagwoerter: { sport, lesen, reisen },
         });
 
         // Inspektion der Komponente mit dem Tag-Namen "app" im Debugger

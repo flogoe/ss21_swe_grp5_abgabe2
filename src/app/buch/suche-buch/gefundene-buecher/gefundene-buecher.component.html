@@ -34,7 +34,7 @@
           <th>ID</th>
           <th>Titel</th>
           <th>ArtType</th>
-          <th>Interessen</th>
+          <th>Schlagwoerter</th>
           <th>
             <span class="visually-hidden">Spalte f&uuml;r Details</span>
           </th>
@@ -60,7 +60,7 @@
             </span>
           </td>
           <td (click)="onClick(b)">
-            <span *ngFor="let sw of b.interessen">
+            <span *ngFor="let sw of b.schlagwoerter">
               <span [ngSwitch]="sw">
                 <span *ngSwitchCase="'S'"> Sport<br /> </span>
                 <span *ngSwitchCase="'L'"> Lesen </span>

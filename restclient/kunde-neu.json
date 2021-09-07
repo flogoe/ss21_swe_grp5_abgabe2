@@ -2,13 +2,13 @@
   "titel": "Test",
   "verlag": "test@acme.com",
   "kategorie": "KINDLE",
-  "newsletter": "true",
-  "geburtsdatum": 99.9,
+  "lieferbar": "true",
+  "erscheinungsdatum": 99.9,
   "umsatz": 500,
   "homepage": "",
   "art": "W",
   "familienstand": "VH",
-  "interessen": ["S", "L"],
+  "schlagwoerter": ["S", "L"],
   "adresse": [
     {
       "plz": "76111",

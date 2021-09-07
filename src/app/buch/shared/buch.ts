@@ -40,8 +40,8 @@ export interface BuchShared {
     adresse: Adresse;
     art?: ArtType | '';
     familienstand: FamilienstandType;
-    geburtsdatum?: string;
-    newsletter?: boolean;
+    erscheinungsdatum?: string;
+    lieferbar?: boolean;
     version?: number;
     // eslint-disable-next-line no-use-before-define
     user?: User;
@@ -71,7 +71,7 @@ interface Link {
  * </ul>
  */
 export interface BuchServer extends BuchShared {
-    interessen?: string[];
+    schlagwoerter?: string[];
     // eslint-disable-next-line @typescript-eslint/naming-convention
     _links?: {
         self: Link;
@@ -102,7 +102,7 @@ export interface BuchForm extends BuchShared {
 export class Buch {
     private static readonly SPACE = 2;
 
-    geburtsdatum: Date | undefined;
+    erscheinungsdatum: Date | undefined;
 
     // wird aufgerufen von fromServer() oder von fromForm()
     // eslint-disable-next-line max-params
@@ -113,15 +113,17 @@ export class Buch {
         public adresse: Adresse,
         public familienstand: FamilienstandType,
         public art: ArtType | '' | undefined,
-        geburtsdatum: string | undefined,
-        public newsletter: boolean | undefined,
-        public interessen: string[],
+        erscheinungsdatum: string | undefined,
+        public lieferbar: boolean | undefined,
+        public schlagwoerter: string[],
         public version: number | undefined,
         public user?: User | undefined,
     ) {
-        // TODO Parsing, ob der Geburtsdatum-String valide ist
-        this.geburtsdatum =
-            geburtsdatum === undefined ? new Date() : new Date(geburtsdatum);
+        // TODO Parsing, ob der Erscheinungsdatum-String valide ist
+        this.erscheinungsdatum =
+            erscheinungsdatum === undefined
+                ? new Date()
+                : new Date(erscheinungsdatum);
         log.debug('Buch(): this=', this);
     }
 
@@ -157,9 +159,9 @@ export class Buch {
             adresse,
             familienstand,
             art,
-            geburtsdatum,
-            newsletter,
-            interessen,
+            erscheinungsdatum,
+            lieferbar,
+            schlagwoerter,
         } = buchServer;
         const buch = new Buch(
             id,
@@ -168,9 +170,9 @@ export class Buch {
             adresse,
             familienstand,
             art,
-            geburtsdatum,
-            newsletter,
-            interessen ?? [],
+            erscheinungsdatum,
+            lieferbar,
+            schlagwoerter ?? [],
             version,
         );
         log.debug('Buch.fromServer(): buch=', buch);
@@ -184,15 +186,15 @@ export class Buch {
      */
     static fromForm(buchForm: BuchForm) {
         log.debug('Buch.fromForm(): buchForm=', buchForm);
-        const interessen: string[] = [];
+        const schlagwoerter: string[] = [];
         if (buchForm.sport === true) {
-            interessen.push('S');
+            schlagwoerter.push('S');
         }
         if (buchForm.lesen === true) {
-            interessen.push('L');
+            schlagwoerter.push('L');
         }
         if (buchForm.reisen === true) {
-            interessen.push('R');
+            schlagwoerter.push('R');
         }
 
         const user: User = {
@@ -209,9 +211,9 @@ export class Buch {
             buchForm.adresse,
             buchForm.familienstand,
             buchForm.art,
-            buchForm.geburtsdatum,
-            buchForm.newsletter,
-            interessen,
+            buchForm.erscheinungsdatum,
+            buchForm.lieferbar,
+            schlagwoerter,
             buchForm.version,
             user,
         );
@@ -221,16 +223,16 @@ export class Buch {
 
     // Property in TypeScript wie in C#
     // https://www.typescriptlang.org/docs/handbook/classes.html#accessors
-    get geburtsdatumFormatted() {
+    get erscheinungsdatumFormatted() {
         // z.B. 7. Mai 2020
         const formatter = new Intl.DateTimeFormat('de', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
         });
-        return this.geburtsdatum === undefined
+        return this.erscheinungsdatum === undefined
             ? ''
-            : formatter.format(this.geburtsdatum);
+            : formatter.format(this.erscheinungsdatum);
     }
 
     /**
@@ -266,23 +268,23 @@ export class Buch {
         adresse: Adresse,
         familienstand: FamilienstandType,
         art: ArtType | '' | undefined,
-        geburtsdatum: Date | undefined,
+        erscheinungsdatum: Date | undefined,
     ) {
         this.titel = titel;
         (this.verlag = verlag),
             (this.adresse = adresse),
             (this.familienstand = familienstand);
         this.art = art;
-        this.geburtsdatum =
-            geburtsdatum === undefined ? new Date() : geburtsdatum;
+        this.erscheinungsdatum =
+            erscheinungsdatum === undefined ? new Date() : erscheinungsdatum;
     }
 
     /**
      * Abfrage, ob es zum Buch auch Schlagw&ouml;rter gibt.
      * @return true, falls es mindestens ein Interesse gibt. Sonst false.
      */
-    hasInteressen() {
-        return this.interessen.length > 0;
+    hasSchlagwoerter() {
+        return this.schlagwoerter.length > 0;
     }
 
     /**
@@ -291,16 +293,16 @@ export class Buch {
      * @return true, falls es das Interesse gibt. Sonst false.
      */
     hasInteresse(interesse: string) {
-        return this.interessen.includes(interesse);
+        return this.schlagwoerter.includes(interesse);
     }
 
     /**
-     * Aktualisierung der Interessen des Buch-Objekts.
+     * Aktualisierung der Schlagwoerter des Buch-Objekts.
      * @param javascript ist das Interesse JAVASCRIPT gesetzt
      * @param typescript ist das Interesse TYPESCRIPT gesetzt
      */
-    updateInteressen(sport: boolean, lesen: boolean, reisen: boolean) {
-        this.resetInteressen();
+    updateSchlagwoerter(sport: boolean, lesen: boolean, reisen: boolean) {
+        this.resetSchlagwoerter();
         if (sport) {
             this.addInteresse('S');
         }
@@ -318,11 +320,11 @@ export class Buch {
      * @return Das JSON-Objekt f&uuml;r den RESTful Web Service
      */
     toJSON(): BuchServer {
-        const geburtsdatum =
-            this.geburtsdatum === undefined
+        const erscheinungsdatum =
+            this.erscheinungsdatum === undefined
                 ? undefined
-                : this.geburtsdatum.toISOString().split('T')[0];
-        log.debug(`toJson(): geburtsdatum=${geburtsdatum}`);
+                : this.erscheinungsdatum.toISOString().split('T')[0];
+        log.debug(`toJson(): erscheinungsdatum=${erscheinungsdatum}`);
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             titel: this.titel,
@@ -330,9 +332,9 @@ export class Buch {
             adresse: this.adresse,
             familienstand: this.familienstand,
             art: this.art,
-            geburtsdatum,
-            newsletter: this.newsletter,
-            interessen: this.interessen,
+            erscheinungsdatum,
+            lieferbar: this.lieferbar,
+            schlagwoerter: this.schlagwoerter,
             user: this.user,
         };
     }
@@ -342,12 +344,12 @@ export class Buch {
         return JSON.stringify(this, null, Buch.SPACE);
     }
 
-    private resetInteressen() {
-        this.interessen = [];
+    private resetSchlagwoerter() {
+        this.schlagwoerter = [];
     }
 
     private addInteresse(interesse: string) {
-        this.interessen.push(interesse);
+        this.schlagwoerter.push(interesse);
     }
 }
 /* eslint-enable max-lines */

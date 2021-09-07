@@ -1,5 +1,5 @@
 <!--
-    Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+    Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,16 +14,18 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-
-<div *ngIf="buch">
-  <hs-details-titel [titel]="buch.titel"></hs-details-titel>
-  <hs-details-verlag [verlag]="buch.verlag"></hs-details-verlag>
-  <hs-details-familienstand
-    [familienstand]="buch.familienstand"
-  ></hs-details-familienstand>
-  <hs-details-artType [artType]="buch.art"></hs-details-artType>
-  <hs-details-erscheinungsdatum
-    [formatted]="buch.erscheinungsdatumFormatted"
-  ></hs-details-erscheinungsdatum>
-  <hs-details-lieferbar [lieferbar]="buch.lieferbar"></hs-details-lieferbar>
+<div class="row mt-2">
+  <label class="col col-1"> Schlagwoerter </label>
+  <div class="row" *ngFor="let interesse of values">
+    <div class="col col-11">
+      <div class="checkbox">
+        <input type="checkbox" checked disabled class="checkbox" />
+        <label class="ms-2" [ngSwitch]="interesse">
+          <span *ngSwitchCase="'S'">Sport</span>
+          <span *ngSwitchCase="'L'">Lesen</span>
+          <span *ngSwitchCase="'R'">Reisen</span>
+        </label>
+      </div>
+    </div>
+  </div>
 </div>
