@@ -39,7 +39,7 @@ export interface Suchkriterien {
     titel: string;
     artType: ArtType | '';
     rating: number;
-    schlagwoerter: { sport: boolean; lesen: boolean; reisen: boolean };
+    schlagwoerter: { javascript: boolean; typescript: boolean };
 }
 
 // Methoden der Klasse HttpClient
@@ -129,7 +129,9 @@ export class BuchService {
         if (res instanceof FindError) {
             return res;
         }
-        const result = res._embedded.buchList as BuchServer[];
+        const result = res._embedded.buecher as BuchServer[];
+        log.debug('BuchService.mapFindResult(): result=', res);
+
         const buecher = result.map(buch => Buch.fromServer(buch));
         log.debug('BuchService.mapFindResult(): buecher=', buecher);
         return buecher;
@@ -364,7 +366,7 @@ export class BuchService {
         }
 
         const { titel, artType, rating, schlagwoerter } = suchkriterien;
-        const { sport, lesen, reisen } = schlagwoerter;
+        const { javascript, typescript } = schlagwoerter;
 
         if (titel !== '') {
             httpParams = httpParams.set('titel', titel);
@@ -375,18 +377,15 @@ export class BuchService {
         if (artType !== '') {
             httpParams = httpParams.set('art', artType);
         }
-        if (sport) {
+        if (javascript) {
             // httpParams = httpParams.set('sport', 'true');
-            httpParams = httpParams.set('schlagwoerter', 'S');
+            httpParams = httpParams.set('schlagwoerter', 'JAVASCRIPT');
         }
-        if (lesen) {
+        if (typescript) {
             // httpParams = httpParams.set('lesen', 'true');
-            httpParams = httpParams.set('schlagwoerter', 'L');
+            httpParams = httpParams.set('schlagwoerter', 'TYPESCRIPT');
         }
-        if (reisen) {
-            // httpParams = httpParams.set('reisen', 'true');
-            httpParams = httpParams.set('schlagwoerter', 'R');
-        }
+
         return httpParams;
     }
 

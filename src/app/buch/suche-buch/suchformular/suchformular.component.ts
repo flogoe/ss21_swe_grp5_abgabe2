@@ -77,19 +77,18 @@ export class SuchformularComponent {
         const { titel } = this.sucheTitelComponent;
         const { artType } = this.sucheArtTypeComponent;
         const { rating } = this.sucheRatingComponent;
-        const { sport } = this.sucheSchlagwoerterComponent;
-        const { lesen } = this.sucheSchlagwoerterComponent;
-        const { reisen } = this.sucheSchlagwoerterComponent;
+        const { javascript } = this.sucheSchlagwoerterComponent;
+        const { typescript } = this.sucheSchlagwoerterComponent;
 
         log.debug(
-            `SuchformularComponent.onFind(): titel=${titel}, artType=${artType}, rating=${rating}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
+            `SuchformularComponent.onFind(): titel=${titel}, artType=${artType}, rating=${rating}, javascript=${javascript}, typescript=${typescript}, reisen$={reisen}`,
         );
 
         this.suchkriterien$.next({
             titel,
             artType,
             rating,
-            schlagwoerter: { sport, lesen, reisen },
+            schlagwoerter: { javascript, typescript },
         });
 
         // Inspektion der Komponente mit dem Tag-Namen "app" im Debugger

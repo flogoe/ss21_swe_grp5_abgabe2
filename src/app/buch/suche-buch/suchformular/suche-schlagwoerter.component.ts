@@ -27,11 +27,9 @@ import log from 'loglevel';
     styleUrls: ['./suche-schlagwoerter.component.scss'],
 })
 export class SucheSchlagwoerterComponent {
-    sport = false;
+    javascript = false;
 
-    lesen = false;
-
-    reisen = false;
+    typescript = false;
 
     constructor() {
         log.debug('SucheSchlagwoerterComponent.constructor()');

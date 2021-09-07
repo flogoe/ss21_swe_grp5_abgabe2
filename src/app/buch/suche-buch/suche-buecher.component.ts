@@ -102,7 +102,7 @@ export class SucheBuecherComponent implements OnInit {
             titel: '',
             artType: '',
             rating: 0,
-            schlagwoerter: { sport: false, lesen: false, reisen: false },
+            schlagwoerter: { javascript: false, typescript: false },
         };
         this.buecher = [];
 
