@@ -4,8 +4,14 @@
 </div>
 <mat-form-field [formGroup]="form">
   <mat-label>ISBN</mat-label>
-  <input matInput id="isbnInput" name="isbn" formControlName="isbn" [class.is-invalid]="isbn.invalid && isbn.touched"
-    [class.is-valid]="isbn.valid && isbn.touched" />
+  <input
+    matInput
+    id="isbnInput"
+    name="isbn"
+    formControlName="isbn"
+    [class.is-invalid]="isbn.invalid && isbn.touched"
+    [class.is-valid]="isbn.valid && isbn.touched"
+  />
 </mat-form-field>
 <div *ngIf="isbn.invalid && isbn.touched" class="invalid-feedback">
   <mat-error *ngIf="isbn.errors && isbn.errors.required">
