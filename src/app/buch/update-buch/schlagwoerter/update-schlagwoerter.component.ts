@@ -41,11 +41,9 @@ export class UpdateSchlagwoerterComponent implements OnInit {
 
     form!: FormGroup;
 
-    sport!: FormControl;
+    javascript!: FormControl;
 
-    lesen!: FormControl;
-
-    reisen!: FormControl;
+    typescript!: FormControl;
 
     errorMsg: string | undefined = undefined;
 
@@ -64,18 +62,15 @@ export class UpdateSchlagwoerterComponent implements OnInit {
         log.debug('buch=', this.buch);
 
         // Definition und Vorbelegung der Eingabedaten (hier: Checkbox)
-        const hasSport = this.buch.hasInteresse('S');
-        this.sport = new FormControl(hasSport);
-        const hasLesen = this.buch.hasInteresse('L');
-        this.lesen = new FormControl(hasLesen);
-        const hasReisen = this.buch.hasInteresse('R');
-        this.reisen = new FormControl(hasReisen);
+        const hasJavaScript = this.buch.hasSchlagwort('JAVASCRIPT');
+        this.javascript = new FormControl(hasJavaScript);
+        const hasTypeScript = this.buch.hasSchlagwort('TYPESCRIPT');
+        this.typescript = new FormControl(hasTypeScript);
 
         this.form = new FormGroup({
             // siehe ngFormControl innerhalb von @Component({template: `...`})
-            sport: this.sport,
-            lesen: this.lesen,
-            reisen: this.reisen,
+            javascript: this.javascript,
+            typescript: this.typescript,
         });
     }
 
@@ -93,11 +88,10 @@ export class UpdateSchlagwoerterComponent implements OnInit {
             return;
         }
 
-        const sport: boolean = this.sport.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        const lesen: boolean = this.lesen.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-        const reisen: boolean = this.reisen.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const javascript: boolean = this.javascript.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        const typescript: boolean = this.typescript.value; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
 
-        this.buch.updateSchlagwoerter(sport, lesen, reisen);
+        this.buch.updateSchlagwoerter(javascript, typescript);
         log.debug('buch=', this.buch);
 
         const next = async (result: Buch | UpdateError) => {

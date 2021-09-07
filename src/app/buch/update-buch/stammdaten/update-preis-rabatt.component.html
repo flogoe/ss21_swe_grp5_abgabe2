@@ -2,10 +2,10 @@
 <div [formGroup]="preisrabattForm" class="preisrabattWrapper">
   <div class="preisrabattRow" id="preis">
     <mat-form-field>
-      <mat-label>Plz</mat-label>
+      <mat-label>Preis</mat-label>
       <input
         matInput
-        id="plzInput"
+        id="preisInput"
         name="preis"
         formControlName="preis"
         [class.is-invalid]="preis.invalid && preis.touched"
@@ -14,10 +14,10 @@
     </mat-form-field>
     <div *ngIf="preis.invalid && preis.touched" class="invalid-feedback">
       <mat-error *ngIf="preis.errors && preis.errors.required">
-        Ein Plz muss eingegeben werden.
+        Ein Preis muss eingegeben werden.
       </mat-error>
       <mat-error *ngIf="preis.hasError('preis') && !preis.hasError('required')">
-        Ein Plz muss im richtigen Format eingegeben werden.
+        Ein Preis muss im richtigen Format eingegeben werden.
       </mat-error>
       <mat-error
         *ngIf="
@@ -32,10 +32,10 @@
 
   <div class="preisrabattRow" id="rabatt">
     <mat-form-field>
-      <mat-label>Ort</mat-label>
+      <mat-label>Rabatt</mat-label>
       <input
         matInput
-        id="ortInput"
+        id="rabattInput"
         name="rabatt"
         formControlName="rabatt"
         [class.is-invalid]="rabatt.invalid && rabatt.touched"
@@ -44,12 +44,12 @@
     </mat-form-field>
     <div *ngIf="rabatt.invalid && rabatt.touched" class="invalid-feedback">
       <mat-error *ngIf="rabatt.errors && rabatt.errors.required">
-        Ein Ort muss eingegeben werden.
+        Ein Rabatt muss eingegeben werden.
       </mat-error>
       <mat-error
         *ngIf="rabatt.hasError('rabatt') && !rabatt.hasError('required')"
       >
-        Ein Ort muss im richtigen Format eingegeben werden.
+        Ein Rabatt muss im richtigen Format eingegeben werden.
       </mat-error>
     </div>
   </div>

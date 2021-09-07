@@ -276,36 +276,33 @@ export class Buch {
 
     /**
      * Abfrage, ob es zum Buch auch Schlagw&ouml;rter gibt.
-     * @return true, falls es mindestens ein Interesse gibt. Sonst false.
+     * @return true, falls es mindestens ein Schlagwort gibt. Sonst false.
      */
     hasSchlagwoerter() {
         return this.schlagwoerter.length > 0;
     }
 
     /**
-     * Abfrage, ob es zum Buch das angegebene Interesse gibt.
-     * @param interesse das zu &uuml;berpr&uuml;fende Interesse
-     * @return true, falls es das Interesse gibt. Sonst false.
+     * Abfrage, ob es zum Buch das angegebene Schlagwort gibt.
+     * @param schlagwort das zu &uuml;berpr&uuml;fende Schlagwort
+     * @return true, falls es das Schlagwort gibt. Sonst false.
      */
-    hasInteresse(interesse: string) {
-        return this.schlagwoerter.includes(interesse);
+    hasSchlagwort(schlagwort: string) {
+        return this.schlagwoerter.includes(schlagwort);
     }
 
     /**
      * Aktualisierung der Schlagwoerter des Buch-Objekts.
-     * @param javascript ist das Interesse JAVASCRIPT gesetzt
-     * @param typescript ist das Interesse TYPESCRIPT gesetzt
+     * @param javascript ist das Schlagwort JAVASCRIPT gesetzt
+     * @param typescript ist das Schlagwort TYPESCRIPT gesetzt
      */
-    updateSchlagwoerter(sport: boolean, lesen: boolean, reisen: boolean) {
+    updateSchlagwoerter(javascript: boolean, typescript: boolean) {
         this.resetSchlagwoerter();
-        if (sport) {
-            this.addInteresse('S');
+        if (javascript) {
+            this.addSchlagwort('JAVASCRIPT');
         }
-        if (lesen) {
-            this.addInteresse('L');
-        }
-        if (reisen) {
-            this.addInteresse('R');
+        if (typescript) {
+            this.addSchlagwort('TYPESCRIPT');
         }
     }
 
@@ -344,8 +341,8 @@ export class Buch {
         this.schlagwoerter = [];
     }
 
-    private addInteresse(interesse: string) {
-        this.schlagwoerter.push(interesse);
+    private addSchlagwort(schlagwort: string) {
+        this.schlagwoerter.push(schlagwort);
     }
 }
 /* eslint-enable max-lines */
