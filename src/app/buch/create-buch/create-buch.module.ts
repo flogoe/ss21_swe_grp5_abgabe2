@@ -20,6 +20,7 @@ import { CreateArtTypeModule } from './create-artType.module';
 import { CreateBuchComponent } from './create-buch.component';
 import { CreateErscheinungsdatumModule } from './create-erscheinungsdatum.module';
 import { CreateHomepageModule } from './create-homepage.module';
+import { CreateIsbnModule } from './create-isbn.module';
 import { CreateLieferbarModule } from './create-lieferbar.module';
 import { CreatePreisRabattModule } from './create-preis-rabatt.module';
 import { CreateRatingModule } from './create-rating.module';
@@ -51,6 +52,7 @@ import { Title } from '@angular/platform-browser';
         CreateRatingModule,
         CreateTitelModule,
         CreateHomepageModule,
+        CreateIsbnModule,
         CreateLieferbarModule,
         ErrorMessageModule,
         HttpClientModule,

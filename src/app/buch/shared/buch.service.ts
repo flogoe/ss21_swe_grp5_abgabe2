@@ -211,7 +211,7 @@ export class BuchService {
      */
     save(buch: Buch): Observable<SaveError | string> {
         log.debug('BuchService.save(): buch=', buch);
-        buch.erscheinungsdatum = new Date();
+        buch.datum = new Date();
 
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({

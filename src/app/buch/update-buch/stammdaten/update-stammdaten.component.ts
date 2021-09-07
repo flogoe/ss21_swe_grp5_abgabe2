@@ -84,14 +84,8 @@ export class UpdateStammdatenComponent implements OnInit {
 
         const { artType }: { artType: ArtType | '' | undefined } =
             this.form.value;
-        const { erscheinungsdatum } = this.buch;
-        this.buch.updateStammdaten(
-            titel,
-            verlag,
-            preisrabatt,
-            artType,
-            erscheinungsdatum,
-        );
+        const { datum } = this.buch;
+        this.buch.updateStammdaten(titel, verlag, preisrabatt, artType, datum);
         log.debug('buch=', this.buch);
 
         const next = async (result: Buch | UpdateError) => {

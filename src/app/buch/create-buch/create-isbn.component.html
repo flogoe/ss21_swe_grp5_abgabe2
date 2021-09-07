@@ -1,0 +1,17 @@
+<h3>ISBN-Nummer des Buches</h3>
+<div class="example-isbn">
+  <i>Beispiel: 9789295055025</i>
+</div>
+<mat-form-field [formGroup]="form">
+  <mat-label>ISBN</mat-label>
+  <input matInput id="isbnInput" name="isbn" formControlName="isbn" [class.is-invalid]="isbn.invalid && isbn.touched"
+    [class.is-valid]="isbn.valid && isbn.touched" />
+</mat-form-field>
+<div *ngIf="isbn.invalid && isbn.touched" class="invalid-feedback">
+  <mat-error *ngIf="isbn.errors && isbn.errors.required">
+    Ein Isbn muss eingegeben werden.
+  </mat-error>
+  <mat-error *ngIf="isbn.hasError('isbn') && !isbn.hasError('required')">
+    Ein Isbn muss im richtigen Format eingegeben werden.
+  </mat-error>
+</div>

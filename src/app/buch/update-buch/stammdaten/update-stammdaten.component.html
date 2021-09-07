@@ -16,34 +16,19 @@
 -->
 <form [formGroup]="form" role="form">
   <hs-update-titel [form]="form" [currentValue]="buch.titel"> </hs-update-titel>
-  <hs-update-verlag
-    [form]="form"
-    [currentValue]="buch.verlag"
-  ></hs-update-verlag>
-  <hs-update-preisrabatt
-    [form]="form"
-    [currentValue]="{ preis: buch.preis, rabatt: buch.rabatt }"
-  >
+  <hs-update-verlag [form]="form" [currentValue]="buch.verlag"></hs-update-verlag>
+  <hs-update-preisrabatt [form]="form" [currentValue]="{ preis: buch.preis, rabatt: buch.rabatt }">
   </hs-update-preisrabatt>
 
   <hs-update-artType [form]="form" [currentValue]="buch.art">
   </hs-update-artType>
-  <hs-update-erscheinungsdatum
-    [form]="form"
-    [currentValue]="buch.erscheinungsdatum"
-  ></hs-update-erscheinungsdatum>
+  <hs-update-erscheinungsdatum [form]="form" [currentValue]="buch.datum"></hs-update-erscheinungsdatum>
 
   <div class="row">
     <div class="col offset-2 gy-3">
       <!-- form.pristine ist das Gegenteil von form.dirty -->
-      <button
-        mat-raised-button
-        color="accent"
-        type="submit"
-        class="btn btn-primary"
-        (click)="onUpdate()"
-        [disabled]="form.pristine || form.invalid"
-      >
+      <button mat-raised-button color="accent" type="submit" class="btn btn-primary" (click)="onUpdate()"
+        [disabled]="form.pristine || form.invalid">
         <i class="material-icons">check</i>
         Stammdaten aktualisieren
       </button>

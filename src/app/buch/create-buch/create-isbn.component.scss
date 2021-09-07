@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  margin-bottom: 25px;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  max-width: 300px !important;
+}
+
+.example-isbn {
+  margin-bottom: 10px;
+}
+
+i {
+  color: #6e6e6e;
+}

@@ -34,12 +34,13 @@ export interface BuchShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     titel: string | undefined;
     verlag: string;
+    isbn: string;
     rating: number;
     // eslint-disable-next-line no-use-before-define
     preis: number;
     rabatt: number;
     art?: ArtType | '';
-    erscheinungsdatum?: string;
+    datum?: string;
     lieferbar?: boolean;
     version?: number;
     // eslint-disable-next-line no-use-before-define
@@ -100,7 +101,7 @@ export interface BuchForm extends BuchShared {
 export class Buch {
     private static readonly SPACE = 2;
 
-    erscheinungsdatum: Date | undefined;
+    datum: Date | undefined;
 
     // wird aufgerufen von fromServer() oder von fromForm()
     // eslint-disable-next-line max-params
@@ -108,20 +109,18 @@ export class Buch {
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
         public titel: string,
         public verlag: string,
+        public isbn: string,
         public preis: number,
         public rabatt: number,
         public rating: number,
         public art: ArtType | '' | undefined,
-        erscheinungsdatum: string | undefined,
+        datum: string | undefined,
         public lieferbar: boolean | undefined,
         public schlagwoerter: string[],
         public version: number | undefined, // public user?: User | undefined,
     ) {
-        // TODO Parsing, ob der Erscheinungsdatum-String valide ist
-        this.erscheinungsdatum =
-            erscheinungsdatum === undefined
-                ? new Date()
-                : new Date(erscheinungsdatum);
+        // TODO Parsing, ob der Datum-String valide ist
+        this.datum = datum === undefined ? new Date() : new Date(datum);
         log.debug('Buch(): this=', this);
     }
 
@@ -154,11 +153,12 @@ export class Buch {
         const {
             titel,
             verlag,
+            isbn,
             preis,
             rabatt,
             rating,
             art,
-            erscheinungsdatum,
+            datum,
             lieferbar,
             schlagwoerter,
         } = buchServer;
@@ -166,11 +166,12 @@ export class Buch {
             id,
             titel ?? 'unbekannt',
             verlag,
+            isbn,
             preis,
             rabatt,
             rating,
             art,
-            erscheinungsdatum,
+            datum,
             lieferbar,
             schlagwoerter ?? [],
             version,
@@ -205,11 +206,12 @@ export class Buch {
             buchForm._id,
             buchForm.titel ?? 'unbekannt',
             buchForm.verlag,
+            buchForm.isbn,
             buchForm.preisrabatt.preis,
             buchForm.preisrabatt.rabatt,
             buchForm.rating,
             buchForm.art,
-            buchForm.erscheinungsdatum,
+            buchForm.datum,
             buchForm.lieferbar,
             schlagwoerter,
             buchForm.version,
@@ -220,16 +222,14 @@ export class Buch {
 
     // Property in TypeScript wie in C#
     // https://www.typescriptlang.org/docs/handbook/classes.html#accessors
-    get erscheinungsdatumFormatted() {
+    get datumFormatted() {
         // z.B. 7. Mai 2020
         const formatter = new Intl.DateTimeFormat('de', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
         });
-        return this.erscheinungsdatum === undefined
-            ? ''
-            : formatter.format(this.erscheinungsdatum);
+        return this.datum === undefined ? '' : formatter.format(this.datum);
     }
 
     /**
@@ -264,15 +264,14 @@ export class Buch {
         verlag: string,
         preisrabatt: PreisRabatt,
         art: ArtType | '' | undefined,
-        erscheinungsdatum: Date | undefined,
+        datum: Date | undefined,
     ) {
         this.titel = titel;
         (this.verlag = verlag),
             (this.preis = preisrabatt.preis),
             (this.rabatt = preisrabatt.rabatt),
             (this.art = art);
-        this.erscheinungsdatum =
-            erscheinungsdatum === undefined ? new Date() : erscheinungsdatum;
+        this.datum = datum === undefined ? new Date() : datum;
     }
 
     /**
@@ -316,20 +315,21 @@ export class Buch {
      * @return Das JSON-Objekt f&uuml;r den RESTful Web Service
      */
     toJSON(): BuchServer {
-        const erscheinungsdatum =
-            this.erscheinungsdatum === undefined
+        const datum =
+            this.datum === undefined
                 ? undefined
-                : this.erscheinungsdatum.toISOString().split('T')[0];
-        log.debug(`toJson(): erscheinungsdatum=${erscheinungsdatum}`);
+                : this.datum.toISOString().split('T')[0];
+        log.debug(`toJson(): datum=${datum}`);
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             titel: this.titel,
             verlag: this.verlag,
+            isbn: this.isbn,
             preis: this.preis,
             rabatt: this.rabatt,
             rating: this.rating,
             art: this.art,
-            erscheinungsdatum,
+            datum,
             lieferbar: this.lieferbar,
             schlagwoerter: this.schlagwoerter,
         };
