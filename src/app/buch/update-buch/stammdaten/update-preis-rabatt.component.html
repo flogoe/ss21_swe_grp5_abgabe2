@@ -3,8 +3,15 @@
   <div class="preisrabattRow" id="preis">
     <mat-form-field>
       <mat-label>Preis</mat-label>
-      <input matInput id="preisInput" name="preis" formControlName="preis" type="number"
-        [class.is-invalid]="preis.invalid && preis.touched" [class.is-valid]="preis.valid && preis.touched" />
+      <input
+        matInput
+        id="preisInput"
+        name="preis"
+        formControlName="preis"
+        type="number"
+        [class.is-invalid]="preis.invalid && preis.touched"
+        [class.is-valid]="preis.valid && preis.touched"
+      />
     </mat-form-field>
     <div *ngIf="preis.invalid && preis.touched" class="invalid-feedback">
       <mat-error *ngIf="preis.errors && preis.errors.required">
@@ -13,10 +20,12 @@
       <mat-error *ngIf="preis.hasError('preis') && !preis.hasError('required')">
         Ein Preis muss im richtigen Format eingegeben werden.
       </mat-error>
-      <mat-error *ngIf="
+      <mat-error
+        *ngIf="
           (preis.hasError('minlength') && !preis.hasError('required')) ||
           (preis.hasError('maxlength') && !preis.hasError('required'))
-        ">
+        "
+      >
         Eine Postleitzahl muss aus genau 5 Zahlen bestehen.
       </mat-error>
     </div>
@@ -25,14 +34,23 @@
   <div class="preisrabattRow" id="rabatt">
     <mat-form-field>
       <mat-label>Rabatt</mat-label>
-      <input matInput id="rabattInput" name="rabatt" type="number" formControlName="rabatt"
-        [class.is-invalid]="rabatt.invalid && rabatt.touched" [class.is-valid]="rabatt.valid && rabatt.touched" />
+      <input
+        matInput
+        id="rabattInput"
+        name="rabatt"
+        type="number"
+        formControlName="rabatt"
+        [class.is-invalid]="rabatt.invalid && rabatt.touched"
+        [class.is-valid]="rabatt.valid && rabatt.touched"
+      />
     </mat-form-field>
     <div *ngIf="rabatt.invalid && rabatt.touched" class="invalid-feedback">
       <mat-error *ngIf="rabatt.errors && rabatt.errors.required">
         Ein Rabatt muss eingegeben werden.
       </mat-error>
-      <mat-error *ngIf="rabatt.hasError('rabatt') && !rabatt.hasError('required')">
+      <mat-error
+        *ngIf="rabatt.hasError('rabatt') && !rabatt.hasError('required')"
+      >
         Ein Rabatt muss im richtigen Format eingegeben werden.
       </mat-error>
     </div>

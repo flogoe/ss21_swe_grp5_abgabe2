@@ -177,6 +177,7 @@ export class BuchService {
                     // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     catchError((err: unknown, _$) => {
                         const errResponse = err as HttpErrorResponse;
+                        log.debug(`BuchService.findById(): ERROR=${err}`);
                         return of(this.buildFindError(errResponse));
                     }),
 
@@ -268,7 +269,12 @@ export class BuchService {
     update(buch: Buch): Observable<Buch | UpdateError> {
         log.debug('BuchService.update(): buch=', buch);
 
-        const { version, _id } = buch; // eslint-disable-line @typescript-eslint/naming-convention
+        let { version, _id } = buch; // eslint-disable-line @typescript-eslint/naming-convention
+
+        if (version === undefined) {
+            version = 1;
+        }
+
         if (version === undefined) {
             const msg = `Keine Versionsnummer fuer das Buch ${_id}`;
             log.debug(msg);
