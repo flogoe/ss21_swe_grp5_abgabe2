@@ -18,9 +18,7 @@
 import { CommonModule } from '@angular/common';
 import { CreateRatingComponent } from './create-rating.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,10 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         MatFormFieldModule,
-        MatOptionModule,
-        MatSelectModule,
         MatSliderModule,
-        MatIconModule,
+        MatInputModule,
         ReactiveFormsModule,
     ],
 })

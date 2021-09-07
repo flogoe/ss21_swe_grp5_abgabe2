@@ -36,7 +36,8 @@ export interface BuchShared {
     verlag: string;
     rating: number;
     // eslint-disable-next-line no-use-before-define
-    preisrabatt: PreisRabatt;
+    preis: number;
+    rabatt: number;
     art?: ArtType | '';
     erscheinungsdatum?: string;
     lieferbar?: boolean;
@@ -88,9 +89,8 @@ export interface BuchServer extends BuchShared {
  * </ul>
  */
 export interface BuchForm extends BuchShared {
-    sport?: boolean;
-    lesen?: boolean;
-    reisen?: boolean;
+    javascript?: boolean;
+    typescript?: boolean;
 }
 
 /**
@@ -108,14 +108,14 @@ export class Buch {
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
         public titel: string,
         public verlag: string,
-        public preisrabatt: PreisRabatt,
+        public preis: number,
+        public rabatt: number,
         public rating: number,
         public art: ArtType | '' | undefined,
         erscheinungsdatum: string | undefined,
         public lieferbar: boolean | undefined,
         public schlagwoerter: string[],
-        public version: number | undefined,
-        public user?: User | undefined,
+        public version: number | undefined, // public user?: User | undefined,
     ) {
         // TODO Parsing, ob der Erscheinungsdatum-String valide ist
         this.erscheinungsdatum =
@@ -154,7 +154,8 @@ export class Buch {
         const {
             titel,
             verlag,
-            preisrabatt,
+            preis,
+            rabatt,
             rating,
             art,
             erscheinungsdatum,
@@ -165,7 +166,8 @@ export class Buch {
             id,
             titel ?? 'unbekannt',
             verlag,
-            preisrabatt,
+            preis,
+            rabatt,
             rating,
             art,
             erscheinungsdatum,
@@ -182,17 +184,14 @@ export class Buch {
      * @param buch JSON-Objekt mit Daten vom Formular
      * @return Das initialisierte Buch-Objekt
      */
-    static fromForm(buchForm: BuchForm) {
+    static fromForm(buchForm: BuchForm | any) {
         log.debug('Buch.fromForm(): buchForm=', buchForm);
         const schlagwoerter: string[] = [];
-        if (buchForm.sport === true) {
-            schlagwoerter.push('S');
+        if (buchForm.javascript === true) {
+            schlagwoerter.push('JAVASCRIPT');
         }
-        if (buchForm.lesen === true) {
-            schlagwoerter.push('L');
-        }
-        if (buchForm.reisen === true) {
-            schlagwoerter.push('R');
+        if (buchForm.typescript === true) {
+            schlagwoerter.push('TYPESCRIPT');
         }
 
         const user: User = {
@@ -206,14 +205,14 @@ export class Buch {
             buchForm._id,
             buchForm.titel ?? 'unbekannt',
             buchForm.verlag,
-            buchForm.preisrabatt,
+            buchForm.preisrabatt.preis,
+            buchForm.preisrabatt.rabatt,
             buchForm.rating,
             buchForm.art,
             buchForm.erscheinungsdatum,
             buchForm.lieferbar,
             schlagwoerter,
             buchForm.version,
-            user,
         );
         log.debug('Buch.fromForm(): buch=', buch);
         return buch;
@@ -269,7 +268,8 @@ export class Buch {
     ) {
         this.titel = titel;
         (this.verlag = verlag),
-            (this.preisrabatt = preisrabatt),
+            (this.preis = preisrabatt.preis),
+            (this.rabatt = preisrabatt.rabatt),
             (this.art = art);
         this.erscheinungsdatum =
             erscheinungsdatum === undefined ? new Date() : erscheinungsdatum;
@@ -325,13 +325,13 @@ export class Buch {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             titel: this.titel,
             verlag: this.verlag,
+            preis: this.preis,
+            rabatt: this.rabatt,
             rating: this.rating,
-            preisrabatt: this.preisrabatt,
             art: this.art,
             erscheinungsdatum,
             lieferbar: this.lieferbar,
             schlagwoerter: this.schlagwoerter,
-            user: this.user,
         };
     }
 

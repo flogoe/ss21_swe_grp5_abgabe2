@@ -1,14 +1,6 @@
 <div class="rating-wrapper" [formGroup]="form">
   <h3>Bewertung: {{ ratingValue }}</h3>
-
-  <mat-slider
-    color="primary"
-    min="0"
-    max="5"
-    step="0.5"
-    thumbLabel="thumbLabel"
-    [value]="ratingValue"
-    (input)="updateRating($event)"
-  >
+  <mat-slider color="primary" min="0" max="5" step="0.5" thumbLabel="thumbLabel" [value]="ratingValue"
+    (input)="updateRating($event)">
   </mat-slider>
 </div>

@@ -46,11 +46,10 @@ export class CreateRatingComponent implements OnInit {
         log.debug('CreateRatingComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
         this.form.addControl('rating', this.rating);
-        this.cd.markForCheck();
-        this.cd.detectChanges();
     }
 
     updateRating(event: any) {
         this.ratingValue = event.value;
+        this.rating.setValue(event.value);
     }
 }

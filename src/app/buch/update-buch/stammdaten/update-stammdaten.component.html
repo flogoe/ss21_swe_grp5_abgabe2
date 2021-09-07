@@ -22,8 +22,9 @@
   ></hs-update-verlag>
   <hs-update-preisrabatt
     [form]="form"
-    [currentValue]="buch.preisrabatt"
-  ></hs-update-preisrabatt>
+    [currentValue]="{ preis: buch.preis, rabatt: buch.rabatt }"
+  >
+  </hs-update-preisrabatt>
 
   <hs-update-artType [form]="form" [currentValue]="buch.art">
   </hs-update-artType>

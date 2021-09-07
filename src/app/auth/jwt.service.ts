@@ -95,7 +95,7 @@ export class JwtService {
         log.debug('JwtService.login(): json', json);
         // const { token, roles } = json;
         const authorization = `Bearer ${json.access_token}`;
-        // log.debug(`JwtService.login(): authorization=${authorization}`);
+        log.debug(`JwtService.login(): authorization=${authorization}`);
 
         const decodedToken = this.decodeToken(json.access_token); // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         log.debug('JwtService.login(): decodedToken', decodedToken);
