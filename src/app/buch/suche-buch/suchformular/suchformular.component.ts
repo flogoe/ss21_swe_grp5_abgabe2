@@ -19,7 +19,7 @@ import { Component, Output, ViewChild } from '@angular/core';
 
 import { Subject } from 'rxjs';
 import { SucheFamilienstandComponent } from './suche-familienstand.component';
-import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
+import { SucheArtTypeComponent } from './suche-artType.component';
 import { SucheInteressenComponent } from './suche-interessen.component';
 import { SucheTitelComponent } from './suche-titel.component';
 import type { Suchkriterien } from '../../shared';
@@ -52,9 +52,9 @@ export class SuchformularComponent {
     @ViewChild(SucheTitelComponent, { static: true })
     private readonly sucheTitelComponent!: SucheTitelComponent;
 
-    @ViewChild(SucheGeschlechtTypeComponent, { static: true })
+    @ViewChild(SucheArtTypeComponent, { static: true })
     // eslint-disable-next-line max-len
-    private readonly sucheGeschlechtTypeComponent!: SucheGeschlechtTypeComponent;
+    private readonly sucheArtTypeComponent!: SucheArtTypeComponent;
 
     @ViewChild(SucheFamilienstandComponent, { static: true })
     private readonly sucheFamilienstandComponent!: SucheFamilienstandComponent;
@@ -75,19 +75,19 @@ export class SuchformularComponent {
      */
     onSubmit() {
         const { titel } = this.sucheTitelComponent;
-        const { geschlechtType } = this.sucheGeschlechtTypeComponent;
+        const { artType } = this.sucheArtTypeComponent;
         const { familienstand } = this.sucheFamilienstandComponent;
         const { sport } = this.sucheInteressenComponent;
         const { lesen } = this.sucheInteressenComponent;
         const { reisen } = this.sucheInteressenComponent;
 
         log.debug(
-            `SuchformularComponent.onFind(): titel=${titel}, geschlechtType=${geschlechtType}, familienstand=${familienstand}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
+            `SuchformularComponent.onFind(): titel=${titel}, artType=${artType}, familienstand=${familienstand}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
         );
 
         this.suchkriterien$.next({
             titel,
-            geschlechtType,
+            artType,
             familienstand,
             interessen: { sport, lesen, reisen },
         });

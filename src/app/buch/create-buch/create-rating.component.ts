@@ -15,40 +15,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
-import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
-import type { GeschlechtType } from '../../shared/buch';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-geschlechtType</code>
+ * Komponente mit dem Tag &lt;hs-create-rating&gt;, um das Erfassungsformular
+ * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'hs-update-geschlechtType',
-    templateUrl: './update-geschlechtType.component.html',
-    styleUrls: ['./update-geschlechtType.component.scss'],
+    selector: 'hs-create-rating',
+    templateUrl: './create-rating.component.html',
+    styleUrls: ['./create-rating.component.scss'],
 })
-export class UpdateGeschlechtTypeComponent implements OnInit {
-    // <hs-update-geschlechtType [form]="form" [currentValue]="...">
+export class CreateRatingComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    @Input()
-    currentValue: GeschlechtType | '' | undefined;
+    readonly rating = new FormControl(undefined, Validators.required);
 
-    geschlechtType!: FormControl;
+    ratingValue = 2.5;
+    // eslint-disable-next-line no-empty-function
+    constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {
-        log.debug(
-            'UpdateGeschlechtTypeComponent.ngOnInit(): currentValue=',
-            this.currentValue,
-        );
+        log.debug('CreateRatingComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.geschlechtType = new FormControl(this.currentValue);
-        this.form.addControl('geschlechtType', this.geschlechtType);
+        this.form.addControl('rating', this.rating);
+        this.cd.markForCheck();
+        this.cd.detectChanges();
+    }
+
+    updateRating(event: any) {
+        this.ratingValue = event.value;
     }
 }

@@ -17,26 +17,38 @@
 
 import { Component, Input } from '@angular/core';
 
-import type { GeschlechtType } from '../../shared/buch';
+import type { ArtType } from '../../shared/buch';
+import { FormControl } from '@angular/forms';
+import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-geschlechtType</code>
+ * Komponente f&uuml;r das Tag <code>hs-update-artType</code>
  */
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'hs-details-geschlechtType',
-    templateUrl: './details-geschlechtType.component.html',
-    styleUrls: ['./details-geschlechtType.component.scss'],
+    selector: 'hs-update-artType',
+    templateUrl: './update-artType.component.html',
+    styleUrls: ['./update-artType.component.scss'],
 })
-export class DetailsGeschlechtTypeComponent implements OnInit {
+export class UpdateArtTypeComponent implements OnInit {
+    // <hs-update-artType [form]="form" [currentValue]="...">
     @Input()
-    geschlechtType: GeschlechtType | '' | undefined;
+    form!: FormGroup;
+
+    @Input()
+    currentValue: ArtType | '' | undefined;
+
+    artType!: FormControl;
 
     ngOnInit() {
         log.debug(
-            `DetailsGeschlechtTypeComponent.geschlechtType=${this.geschlechtType}`,
+            'UpdateArtTypeComponent.ngOnInit(): currentValue=',
+            this.currentValue,
         );
+        // siehe formControlName innerhalb @Component({templateUrl: ...})
+        this.artType = new FormControl(this.currentValue);
+        this.form.addControl('artType', this.artType);
     }
 }

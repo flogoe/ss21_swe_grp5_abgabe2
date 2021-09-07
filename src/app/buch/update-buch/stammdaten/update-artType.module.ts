@@ -15,23 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
-import { SucheGeschlechtTypeComponent } from './suche-geschlechtType.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateArtTypeComponent } from './update-artType.component';
 
 @NgModule({
-    declarations: [SucheGeschlechtTypeComponent],
-    exports: [SucheGeschlechtTypeComponent],
+    declarations: [UpdateArtTypeComponent],
+    exports: [UpdateArtTypeComponent],
     imports: [
-        FormsModule,
         MatFormFieldModule,
-        MatInputModule,
         MatOptionModule,
         MatSelectModule,
+        ReactiveFormsModule,
     ],
 })
-export class SucheGeschlechtTypeModule {}
+export class UpdateArtTypeModule {}

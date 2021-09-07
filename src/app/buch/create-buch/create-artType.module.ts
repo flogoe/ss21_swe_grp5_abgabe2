@@ -15,29 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { CreateArtTypeComponent } from './create-artType.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateAdresseModule } from './update-adresse.module';
-import { UpdateArtTypeModule } from './update-artType.module';
-import { UpdateFamilienstandModule } from './update-familienstand.module';
-import { UpdateGeburtsdatumModule } from './update-geburtsdatum.module';
-import { UpdateStammdatenComponent } from './update-stammdaten.component';
-import { UpdateTitelModule } from './update-titel.module';
-import { UpdateVerlagModule } from './update-verlag.module';
 
 @NgModule({
-    declarations: [UpdateStammdatenComponent],
-    exports: [UpdateStammdatenComponent],
+    declarations: [CreateArtTypeComponent],
+    exports: [CreateArtTypeComponent],
     imports: [
-        MatButtonModule,
+        CommonModule,
+        MatFormFieldModule,
+        MatOptionModule,
+        MatSelectModule,
         ReactiveFormsModule,
-        UpdateAdresseModule,
-        UpdateVerlagModule,
-        UpdateFamilienstandModule,
-        UpdateGeburtsdatumModule,
-        UpdateArtTypeModule,
-        UpdateTitelModule,
     ],
 })
-export class UpdateStammdatenModule {}
+export class CreateArtTypeModule {}

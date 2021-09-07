@@ -15,21 +15,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { CommonModule } from '@angular/common';
+import { CreateRatingComponent } from './create-rating.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateGeschlechtTypeComponent } from './update-geschlechtType.component';
 
 @NgModule({
-    declarations: [UpdateGeschlechtTypeComponent],
-    exports: [UpdateGeschlechtTypeComponent],
+    declarations: [CreateRatingComponent],
+    exports: [CreateRatingComponent],
     imports: [
+        CommonModule,
         MatFormFieldModule,
         MatOptionModule,
         MatSelectModule,
+        MatSliderModule,
+        MatIconModule,
         ReactiveFormsModule,
     ],
 })
-export class UpdateGeschlechtTypeModule {}
+export class CreateRatingModule {}

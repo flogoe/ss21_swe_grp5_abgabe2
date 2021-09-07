@@ -21,7 +21,7 @@
 
 import log from 'loglevel';
 
-export type GeschlechtType = 'D' | 'M' | 'W';
+export type ArtType = 'D' | 'M' | 'W';
 
 export type FamilienstandType = 'G' | 'L' | 'VH' | 'VW';
 
@@ -38,7 +38,7 @@ export interface BuchShared {
     verlag: string;
     // eslint-disable-next-line no-use-before-define
     adresse: Adresse;
-    geschlecht?: GeschlechtType | '';
+    art?: ArtType | '';
     familienstand: FamilienstandType;
     geburtsdatum?: string;
     newsletter?: boolean;
@@ -112,7 +112,7 @@ export class Buch {
         public verlag: string,
         public adresse: Adresse,
         public familienstand: FamilienstandType,
-        public geschlecht: GeschlechtType | '' | undefined,
+        public art: ArtType | '' | undefined,
         geburtsdatum: string | undefined,
         public newsletter: boolean | undefined,
         public interessen: string[],
@@ -156,7 +156,7 @@ export class Buch {
             verlag,
             adresse,
             familienstand,
-            geschlecht,
+            art,
             geburtsdatum,
             newsletter,
             interessen,
@@ -167,7 +167,7 @@ export class Buch {
             verlag,
             adresse,
             familienstand,
-            geschlecht,
+            art,
             geburtsdatum,
             newsletter,
             interessen ?? [],
@@ -208,7 +208,7 @@ export class Buch {
             buchForm.verlag,
             buchForm.adresse,
             buchForm.familienstand,
-            buchForm.geschlecht,
+            buchForm.art,
             buchForm.geburtsdatum,
             buchForm.newsletter,
             interessen,
@@ -245,19 +245,19 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob der Buch dem angegebenen Geschlecht zugeordnet ist.
-     * @param geschlechtType das Geschlecht
-     * @return true, falls der Buch dem Geschlecht zugeordnet ist. Sonst false.
+     * Abfrage, ob der Buch dem angegebenen Art zugeordnet ist.
+     * @param artType das Art
+     * @return true, falls der Buch dem Art zugeordnet ist. Sonst false.
      */
-    hasGeschlechtType(geschlechtType: string) {
-        return this.geschlecht === geschlechtType;
+    hasArtType(artType: string) {
+        return this.art === artType;
     }
 
     /**
      * Aktualisierung der Stammdaten des Buch-Objekts.
      * @param titel Der neue Titel
      * @param familienstand Der neue Familienstand
-     * @param geschlecht Das neue Geschlecht
+     * @param art Das neue Art
      */
     // eslint-disable-next-line max-params
     updateStammdaten(
@@ -265,14 +265,14 @@ export class Buch {
         verlag: string,
         adresse: Adresse,
         familienstand: FamilienstandType,
-        geschlecht: GeschlechtType | '' | undefined,
+        art: ArtType | '' | undefined,
         geburtsdatum: Date | undefined,
     ) {
         this.titel = titel;
         (this.verlag = verlag),
             (this.adresse = adresse),
             (this.familienstand = familienstand);
-        this.geschlecht = geschlecht;
+        this.art = art;
         this.geburtsdatum =
             geburtsdatum === undefined ? new Date() : geburtsdatum;
     }
@@ -329,7 +329,7 @@ export class Buch {
             verlag: this.verlag,
             adresse: this.adresse,
             familienstand: this.familienstand,
-            geschlecht: this.geschlecht,
+            art: this.art,
             geburtsdatum,
             newsletter: this.newsletter,
             interessen: this.interessen,

@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import type { Buch, FamilienstandType, GeschlechtType } from '../../shared';
+import type { ArtType, Buch, FamilienstandType } from '../../shared';
 import { BuchService, UpdateError } from '../../shared';
 import { Component, Input } from '@angular/core';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
@@ -84,9 +84,7 @@ export class UpdateStammdatenComponent implements OnInit {
 
         const { familienstand }: { familienstand: FamilienstandType } =
             this.form.value;
-        const {
-            geschlechtType,
-        }: { geschlechtType: GeschlechtType | '' | undefined } =
+        const { artType }: { artType: ArtType | '' | undefined } =
             this.form.value;
         const { geburtsdatum } = this.buch;
         this.buch.updateStammdaten(
@@ -94,7 +92,7 @@ export class UpdateStammdatenComponent implements OnInit {
             verlag,
             adresse,
             familienstand,
-            geschlechtType,
+            artType,
             geburtsdatum,
         );
         log.debug('buch=', this.buch);

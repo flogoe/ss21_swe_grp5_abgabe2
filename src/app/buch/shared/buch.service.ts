@@ -18,7 +18,7 @@
  */
 
 import { BASE_PATH_REST, BUECHER_PATH_REST } from '../../shared';
-import type { BuchServer, FamilienstandType, GeschlechtType } from './buch';
+import type { BuchServer, FamilienstandType, ArtType } from './buch';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 import {
     HttpClient,
@@ -37,7 +37,7 @@ import { of } from 'rxjs';
 
 export interface Suchkriterien {
     titel: string;
-    geschlechtType: GeschlechtType | '';
+    artType: ArtType | '';
     familienstand: FamilienstandType | '';
     interessen: { sport: boolean; lesen: boolean; reisen: boolean };
 }
@@ -363,8 +363,7 @@ export class BuchService {
             return httpParams;
         }
 
-        const { titel, geschlechtType, familienstand, interessen } =
-            suchkriterien;
+        const { titel, artType, familienstand, interessen } = suchkriterien;
         const { sport, lesen, reisen } = interessen;
 
         if (titel !== '') {
@@ -373,8 +372,8 @@ export class BuchService {
         if (familienstand !== '') {
             httpParams = httpParams.set('familienstand', familienstand);
         }
-        if (geschlechtType !== '') {
-            httpParams = httpParams.set('geschlecht', geschlechtType);
+        if (artType !== '') {
+            httpParams = httpParams.set('art', artType);
         }
         if (sport) {
             // httpParams = httpParams.set('sport', 'true');

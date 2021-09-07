@@ -15,12 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-export {
-    Buch,
-    FamilienstandType,
-    BuchForm,
-    ISBN_REGEX,
-    GeschlechtType,
-} from './buch';
+export { Buch, FamilienstandType, BuchForm, ISBN_REGEX, ArtType } from './buch';
 export { BuchService, Suchkriterien } from './buch.service';
 export { FindError, RemoveError, SaveError, UpdateError } from './errors';

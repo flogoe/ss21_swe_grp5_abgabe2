@@ -16,22 +16,22 @@
  */
 
 import { Component } from '@angular/core';
-import type { GeschlechtType } from '../../shared/buch';
+import type { ArtType } from '../../shared/buch';
 import log from 'loglevel';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-geschlechtType</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-artType</code>
  */
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'hs-suche-geschlechtType',
-    templateUrl: './suche-geschlechtType.component.html',
-    styleUrls: ['./suche-geschlechtType.component.scss'],
+    selector: 'hs-suche-artType',
+    templateUrl: './suche-artType.component.html',
+    styleUrls: ['./suche-artType.component.scss'],
 })
-export class SucheGeschlechtTypeComponent {
-    geschlechtType: GeschlechtType | '' = '';
+export class SucheArtTypeComponent {
+    artType: ArtType | '' = '';
 
     constructor() {
-        log.debug('SucheGeschlechtTypeComponent.constructor()');
+        log.debug('SucheArtTypeComponent.constructor()');
     }
 }

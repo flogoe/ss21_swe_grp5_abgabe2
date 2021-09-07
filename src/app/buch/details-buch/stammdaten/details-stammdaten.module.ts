@@ -18,7 +18,7 @@
 import { CommonModule } from '@angular/common';
 import { DetailsFamilienstandModule } from './details-familienstand.module';
 import { DetailsGeburtsdatumModule } from './details-geburtsdatum.module';
-import { DetailsGeschlechtTypeModule } from './details-geschlechtType.module';
+import { DetailsArtTypeModule } from './details-artType.module';
 import { DetailsNewsletterModule } from './details-newsletter.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
 import { DetailsTitelModule } from './details-titel.module';
@@ -33,7 +33,7 @@ import { NgModule } from '@angular/core';
         DetailsVerlagModule,
         DetailsFamilienstandModule,
         DetailsGeburtsdatumModule,
-        DetailsGeschlechtTypeModule,
+        DetailsArtTypeModule,
         DetailsTitelModule,
         DetailsNewsletterModule,
     ],

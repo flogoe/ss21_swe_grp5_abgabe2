@@ -23,28 +23,28 @@ import type { OnInit } from '@angular/core';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-geschlechtType&gt;, um das Erfassungsformular
+ * Komponente mit dem Tag &lt;hs-create-artType&gt;, um das Erfassungsformular
  * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'hs-create-geschlechtType',
-    templateUrl: './create-geschlechtType.component.html',
-    styleUrls: ['./create-geschlechtType.component.scss'],
+    selector: 'hs-create-artType',
+    templateUrl: './create-artType.component.html',
+    styleUrls: ['./create-artType.component.scss'],
 })
-export class CreateGeschlechtTypeComponent implements OnInit {
+export class CreateArtTypeComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly geschlecht = new FormControl(undefined, Validators.required);
+    readonly art = new FormControl(undefined, Validators.required);
 
     // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {
-        log.debug('CreateGeschlechtTypeComponent.ngOnInit');
+        log.debug('CreateArtTypeComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('geschlecht', this.geschlecht);
+        this.form.addControl('art', this.art);
         this.cd.markForCheck();
         this.cd.detectChanges();
     }

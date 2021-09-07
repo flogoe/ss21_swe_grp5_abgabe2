@@ -1,0 +1,15 @@
+<h3>Buchart</h3>
+<mat-form-field [formGroup]="form">
+  <mat-label>Art auswählen</mat-label>
+  <mat-select
+    matNativeControl
+    required
+    formControlName="art"
+    [class.is-invalid]="art.invalid && art.touched"
+    [class.is-valid]="art.valid && art.touched"
+    name="art"
+  >
+    <mat-option value="D">Druckausgabe</mat-option>
+    <mat-option value="K">Kindle</mat-option>
+  </mat-select>
+</mat-form-field>

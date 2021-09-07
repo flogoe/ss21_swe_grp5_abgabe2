@@ -1,14 +1,14 @@
-<h3>Geschlecht</h3>
+<h3>Art</h3>
 <mat-form-field [formGroup]="form">
-  <mat-label>Geschlecht auswählen</mat-label>
+  <mat-label>Art auswählen</mat-label>
   <mat-select
     matNativeControl
     required
-    formControlName="geschlechtType"
+    formControlName="artType"
     required
-    [class.is-invalid]="geschlechtType.invalid && geschlechtType.touched"
-    [class.is-valid]="geschlechtType.valid && geschlechtType.touched"
-    name="geschlecht"
+    [class.is-invalid]="artType.invalid && artType.touched"
+    [class.is-valid]="artType.valid && artType.touched"
+    name="art"
   >
     <mat-option value="M">Männlich</mat-option>
     <mat-option value="W">Weiblich</mat-option>

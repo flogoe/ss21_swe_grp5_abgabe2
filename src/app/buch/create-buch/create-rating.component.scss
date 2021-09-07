@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  margin-bottom: 25px;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  max-width: 300px !important;
+}
+
+.rating-wrapper {
+  max-width: 300px;
+
+  mat-slider {
+    width: 100%;
+  }
+}
