@@ -19,7 +19,7 @@ import { Component, Output, ViewChild } from '@angular/core';
 
 import { Subject } from 'rxjs';
 import { SucheArtTypeComponent } from './suche-artType.component';
-import { SucheFamilienstandComponent } from './suche-familienstand.component';
+import { SucheRatingComponent } from './suche-rating.component';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
 import { SucheTitelComponent } from './suche-titel.component';
 import type { Suchkriterien } from '../../shared';
@@ -56,8 +56,8 @@ export class SuchformularComponent {
     // eslint-disable-next-line max-len
     private readonly sucheArtTypeComponent!: SucheArtTypeComponent;
 
-    @ViewChild(SucheFamilienstandComponent, { static: true })
-    private readonly sucheFamilienstandComponent!: SucheFamilienstandComponent;
+    @ViewChild(SucheRatingComponent, { static: true })
+    private readonly sucheRatingComponent!: SucheRatingComponent;
 
     @ViewChild(SucheSchlagwoerterComponent, { static: true })
     private readonly sucheSchlagwoerterComponent!: SucheSchlagwoerterComponent;
@@ -76,19 +76,19 @@ export class SuchformularComponent {
     onSubmit() {
         const { titel } = this.sucheTitelComponent;
         const { artType } = this.sucheArtTypeComponent;
-        const { familienstand } = this.sucheFamilienstandComponent;
+        const { rating } = this.sucheRatingComponent;
         const { sport } = this.sucheSchlagwoerterComponent;
         const { lesen } = this.sucheSchlagwoerterComponent;
         const { reisen } = this.sucheSchlagwoerterComponent;
 
         log.debug(
-            `SuchformularComponent.onFind(): titel=${titel}, artType=${artType}, familienstand=${familienstand}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
+            `SuchformularComponent.onFind(): titel=${titel}, artType=${artType}, rating=${rating}, sport=${sport}, lesen=${lesen}, reisen$={reisen}`,
         );
 
         this.suchkriterien$.next({
             titel,
             artType,
-            familienstand,
+            rating,
             schlagwoerter: { sport, lesen, reisen },
         });
 

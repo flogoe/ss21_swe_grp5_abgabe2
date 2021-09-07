@@ -21,13 +21,13 @@
     <hs-create-erscheinungsdatum [form]="form"></hs-create-erscheinungsdatum>
     <hs-create-schlagwoerter [form]="form"></hs-create-schlagwoerter>
     <hs-create-lieferbar [form]="form"></hs-create-lieferbar>
-
+    <!-- form.invalid -->
     <button
       mat-raised-button
-      color="accent"
+      color="primary"
       type="submit"
       (click)="onSave()"
-      [disabled]="form.invalid"
+      [disabled]="false"
     >
       <i class="material-icons">check</i>
       Jetzt anlegen

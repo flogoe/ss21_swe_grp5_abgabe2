@@ -32,19 +32,16 @@ export class CreateSchlagwoerterComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly sport = new FormControl(false);
+    readonly javascript = new FormControl(false);
 
-    readonly lesen = new FormControl(false);
-
-    readonly reisen = new FormControl(false);
+    readonly typescript = new FormControl(false);
 
     /**
      * Das Formular als Gruppe von Controls initialisieren und mit den
      * Schlagwoertern des zu &auml;ndernden Buchs vorbelegen.
      */
     ngOnInit() {
-        this.form.addControl('sport', this.sport);
-        this.form.addControl('lesen', this.lesen);
-        this.form.addControl('reisen', this.reisen);
+        this.form.addControl('JAVASCRIPT', this.javascript);
+        this.form.addControl('TYPESCRIPT', this.typescript);
     }
 }

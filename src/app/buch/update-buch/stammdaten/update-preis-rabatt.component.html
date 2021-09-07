@@ -1,28 +1,28 @@
 <h3>PreisRabatt</h3>
 <div [formGroup]="preisrabattForm" class="preisrabattWrapper">
-  <div class="preisrabattRow" id="plz">
+  <div class="preisrabattRow" id="preis">
     <mat-form-field>
       <mat-label>Plz</mat-label>
       <input
         matInput
         id="plzInput"
-        name="plz"
-        formControlName="plz"
-        [class.is-invalid]="plz.invalid && plz.touched"
-        [class.is-valid]="plz.valid && plz.touched"
+        name="preis"
+        formControlName="preis"
+        [class.is-invalid]="preis.invalid && preis.touched"
+        [class.is-valid]="preis.valid && preis.touched"
       />
     </mat-form-field>
-    <div *ngIf="plz.invalid && plz.touched" class="invalid-feedback">
-      <mat-error *ngIf="plz.errors && plz.errors.required">
+    <div *ngIf="preis.invalid && preis.touched" class="invalid-feedback">
+      <mat-error *ngIf="preis.errors && preis.errors.required">
         Ein Plz muss eingegeben werden.
       </mat-error>
-      <mat-error *ngIf="plz.hasError('plz') && !plz.hasError('required')">
+      <mat-error *ngIf="preis.hasError('preis') && !preis.hasError('required')">
         Ein Plz muss im richtigen Format eingegeben werden.
       </mat-error>
       <mat-error
         *ngIf="
-          (plz.hasError('minlength') && !plz.hasError('required')) ||
-          (plz.hasError('maxlength') && !plz.hasError('required'))
+          (preis.hasError('minlength') && !preis.hasError('required')) ||
+          (preis.hasError('maxlength') && !preis.hasError('required'))
         "
       >
         Eine Postleitzahl muss aus genau 5 Zahlen bestehen.
@@ -30,23 +30,25 @@
     </div>
   </div>
 
-  <div class="preisrabattRow" id="ort">
+  <div class="preisrabattRow" id="rabatt">
     <mat-form-field>
       <mat-label>Ort</mat-label>
       <input
         matInput
         id="ortInput"
-        name="ort"
-        formControlName="ort"
-        [class.is-invalid]="ort.invalid && ort.touched"
-        [class.is-valid]="ort.valid && ort.touched"
+        name="rabatt"
+        formControlName="rabatt"
+        [class.is-invalid]="rabatt.invalid && rabatt.touched"
+        [class.is-valid]="rabatt.valid && rabatt.touched"
       />
     </mat-form-field>
-    <div *ngIf="ort.invalid && ort.touched" class="invalid-feedback">
-      <mat-error *ngIf="ort.errors && ort.errors.required">
+    <div *ngIf="rabatt.invalid && rabatt.touched" class="invalid-feedback">
+      <mat-error *ngIf="rabatt.errors && rabatt.errors.required">
         Ein Ort muss eingegeben werden.
       </mat-error>
-      <mat-error *ngIf="ort.hasError('ort') && !ort.hasError('required')">
+      <mat-error
+        *ngIf="rabatt.hasError('rabatt') && !rabatt.hasError('required')"
+      >
         Ein Ort muss im richtigen Format eingegeben werden.
       </mat-error>
     </div>

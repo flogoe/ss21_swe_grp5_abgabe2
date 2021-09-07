@@ -101,7 +101,7 @@ export class SucheBuecherComponent implements OnInit {
         this.suchkriterien = {
             titel: '',
             artType: '',
-            familienstand: '',
+            rating: 0,
             schlagwoerter: { sport: false, lesen: false, reisen: false },
         };
         this.buecher = [];

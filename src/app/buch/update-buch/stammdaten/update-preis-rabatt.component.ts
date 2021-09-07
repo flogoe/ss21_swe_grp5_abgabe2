@@ -30,9 +30,9 @@ export class UpdatePreisRabattComponent implements OnInit, AfterViewInit {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     readonly PLZ_LENGTH = 5;
 
-    plz!: FormControl;
+    preis!: FormControl;
 
-    ort!: FormControl;
+    rabatt!: FormControl;
 
     readonly preisrabattForm = new FormGroup({});
 
@@ -43,17 +43,15 @@ export class UpdatePreisRabattComponent implements OnInit, AfterViewInit {
         log.debug('UpdatePreisRabattComponent.ngOnInit', this.currentValue);
         // siehe formControlName innerhalb @Component({templateUrl: ...})
 
-        this.plz = new FormControl(this.currentValue.plz, [
+        this.preis = new FormControl(this.currentValue.preis, [
             Validators.required,
-            Validators.minLength(this.PLZ_LENGTH),
-            Validators.maxLength(this.PLZ_LENGTH),
         ]);
 
-        this.ort = new FormControl(this.currentValue.ort, [
+        this.rabatt = new FormControl(this.currentValue.rabatt, [
             Validators.required,
         ]);
-        this.preisrabattForm.addControl('plz', this.plz);
-        this.preisrabattForm.addControl('ort', this.ort);
+        this.preisrabattForm.addControl('preis', this.preis);
+        this.preisrabattForm.addControl('rabatt', this.rabatt);
         this.form.addControl('preisrabatt', this.preisrabattForm);
     }
 

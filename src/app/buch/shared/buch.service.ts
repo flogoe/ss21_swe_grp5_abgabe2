@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import type { ArtType, BuchServer, FamilienstandType } from './buch';
+import type { ArtType, BuchServer } from './buch';
 import { BASE_PATH_REST, BUECHER_PATH_REST } from '../../shared';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 import {
@@ -38,7 +38,7 @@ import { of } from 'rxjs';
 export interface Suchkriterien {
     titel: string;
     artType: ArtType | '';
-    familienstand: FamilienstandType | '';
+    rating: number;
     schlagwoerter: { sport: boolean; lesen: boolean; reisen: boolean };
 }
 
@@ -71,7 +71,7 @@ export class BuchService {
      * @return void
      */
     constructor(private readonly httpClient: HttpClient) {
-        this.baseUrlBuecher = `${BASE_PATH_REST}/${BUECHER_PATH_REST}`;
+        this.baseUrlBuecher = `${BASE_PATH_REST}/${BUECHER_PATH_REST}buecher`;
         log.debug(
             `BuchService.constructor(): baseUrlBuecher=${this.baseUrlBuecher}`,
         );
@@ -363,14 +363,14 @@ export class BuchService {
             return httpParams;
         }
 
-        const { titel, artType, familienstand, schlagwoerter } = suchkriterien;
+        const { titel, artType, rating, schlagwoerter } = suchkriterien;
         const { sport, lesen, reisen } = schlagwoerter;
 
         if (titel !== '') {
             httpParams = httpParams.set('titel', titel);
         }
-        if (familienstand !== '') {
-            httpParams = httpParams.set('familienstand', familienstand);
+        if (rating) {
+            httpParams = httpParams.set('rating', rating);
         }
         if (artType !== '') {
             httpParams = httpParams.set('art', artType);

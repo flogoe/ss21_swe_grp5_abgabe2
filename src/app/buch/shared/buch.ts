@@ -21,9 +21,7 @@
 
 import log from 'loglevel';
 
-export type ArtType = 'D' | 'M' | 'W';
-
-export type FamilienstandType = 'G' | 'L' | 'VH' | 'VW';
+export type ArtType = 'DRUCKAUSGABE' | 'KINDLE';
 
 export const ISBN_REGEX =
     /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
@@ -36,10 +34,10 @@ export interface BuchShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     titel: string | undefined;
     verlag: string;
+    rating: number;
     // eslint-disable-next-line no-use-before-define
     preisrabatt: PreisRabatt;
     art?: ArtType | '';
-    familienstand: FamilienstandType;
     erscheinungsdatum?: string;
     lieferbar?: boolean;
     version?: number;
@@ -48,8 +46,8 @@ export interface BuchShared {
 }
 
 export interface PreisRabatt {
-    plz: string;
-    ort: string;
+    preis: number;
+    rabatt: number;
 }
 
 export interface User {
@@ -111,7 +109,7 @@ export class Buch {
         public titel: string,
         public verlag: string,
         public preisrabatt: PreisRabatt,
-        public familienstand: FamilienstandType,
+        public rating: number,
         public art: ArtType | '' | undefined,
         erscheinungsdatum: string | undefined,
         public lieferbar: boolean | undefined,
@@ -157,7 +155,7 @@ export class Buch {
             titel,
             verlag,
             preisrabatt,
-            familienstand,
+            rating,
             art,
             erscheinungsdatum,
             lieferbar,
@@ -168,7 +166,7 @@ export class Buch {
             titel ?? 'unbekannt',
             verlag,
             preisrabatt,
-            familienstand,
+            rating,
             art,
             erscheinungsdatum,
             lieferbar,
@@ -209,7 +207,7 @@ export class Buch {
             buchForm.titel ?? 'unbekannt',
             buchForm.verlag,
             buchForm.preisrabatt,
-            buchForm.familienstand,
+            buchForm.rating,
             buchForm.art,
             buchForm.erscheinungsdatum,
             buchForm.lieferbar,
@@ -266,15 +264,13 @@ export class Buch {
         titel: string,
         verlag: string,
         preisrabatt: PreisRabatt,
-        familienstand: FamilienstandType,
         art: ArtType | '' | undefined,
         erscheinungsdatum: Date | undefined,
     ) {
         this.titel = titel;
         (this.verlag = verlag),
             (this.preisrabatt = preisrabatt),
-            (this.familienstand = familienstand);
-        this.art = art;
+            (this.art = art);
         this.erscheinungsdatum =
             erscheinungsdatum === undefined ? new Date() : erscheinungsdatum;
     }
@@ -329,8 +325,8 @@ export class Buch {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             titel: this.titel,
             verlag: this.verlag,
+            rating: this.rating,
             preisrabatt: this.preisrabatt,
-            familienstand: this.familienstand,
             art: this.art,
             erscheinungsdatum,
             lieferbar: this.lieferbar,

@@ -18,7 +18,6 @@
 import { CommonModule } from '@angular/common';
 import { DetailsArtTypeModule } from './details-artType.module';
 import { DetailsErscheinungsdatumModule } from './details-erscheinungsdatum.module';
-import { DetailsFamilienstandModule } from './details-familienstand.module';
 import { DetailsLieferbarModule } from './details-lieferbar.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
 import { DetailsTitelModule } from './details-titel.module';
@@ -31,7 +30,6 @@ import { NgModule } from '@angular/core';
     imports: [
         CommonModule,
         DetailsVerlagModule,
-        DetailsFamilienstandModule,
         DetailsErscheinungsdatumModule,
         DetailsArtTypeModule,
         DetailsTitelModule,

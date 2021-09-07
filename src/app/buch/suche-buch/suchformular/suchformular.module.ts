@@ -22,7 +22,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { SucheArtTypeModule } from './suche-artType.module';
-import { SucheFamilienstandModule } from './suche-familienstand.module';
 import { SucheSchlagwoerterModule } from './suche-schlagwoerter.module';
 import { SucheTitelModule } from './suche-titel.module';
 import { SuchformularComponent } from './suchformular.component';
@@ -40,7 +39,6 @@ import { SuchformularComponent } from './suchformular.component';
         MatButtonModule,
         MatInputModule,
         MatToolbarModule,
-        SucheFamilienstandModule,
         SucheArtTypeModule,
         SucheSchlagwoerterModule,
         SucheTitelModule,

@@ -18,6 +18,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SucheBuecherComponent } from './suche-buecher.component';
+import { SucheRatingModule } from './suchformular/suche-rating.module';
 import { SuchergebnisModule } from './suchergebnis/suchergebnis.module';
 import { SuchformularModule } from './suchformular/suchformular.module';
 import { Title } from '@angular/platform-browser';
@@ -34,6 +35,7 @@ import { WaitingModule } from '../../shared/waiting.module';
         CommonModule,
         SuchergebnisModule,
         SuchformularModule,
+        SucheRatingModule,
         WaitingModule,
     ],
     providers: [Title],

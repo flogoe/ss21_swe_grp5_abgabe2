@@ -15,14 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CreateFamilienstandComponent } from './create-familienstand.component';
-import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SucheRatingComponent } from './suche-rating.component';
 
 @NgModule({
-    declarations: [CreateFamilienstandComponent],
-    exports: [CreateFamilienstandComponent],
-    imports: [MatRadioModule, ReactiveFormsModule],
+    declarations: [SucheRatingComponent],
+    exports: [SucheRatingComponent],
+    imports: [FormsModule],
 })
-export class CreateFamilienstandModule {}
+export class SucheRatingModule {}
