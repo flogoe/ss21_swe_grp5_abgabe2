@@ -22,10 +22,10 @@ import { BuchService, UpdateError } from '../../shared';
 import { Component, Input } from '@angular/core';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
-import { Adresse } from '../../shared/buch';
 import { FormGroup } from '@angular/forms';
 import { HOME_PATH } from '../../../shared';
 import type { OnInit } from '@angular/core';
+import { PreisRabatt } from '../../shared/buch';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import log from 'loglevel';
@@ -80,7 +80,7 @@ export class UpdateStammdatenComponent implements OnInit {
 
         const { verlag }: { verlag: string } = this.form.value;
 
-        const { adresse }: { adresse: Adresse } = this.form.value;
+        const { preisrabatt }: { preisrabatt: PreisRabatt } = this.form.value;
 
         const { familienstand }: { familienstand: FamilienstandType } =
             this.form.value;
@@ -90,7 +90,7 @@ export class UpdateStammdatenComponent implements OnInit {
         this.buch.updateStammdaten(
             titel,
             verlag,
-            adresse,
+            preisrabatt,
             familienstand,
             artType,
             erscheinungsdatum,

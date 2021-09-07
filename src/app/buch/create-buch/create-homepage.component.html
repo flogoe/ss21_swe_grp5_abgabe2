@@ -1,0 +1,14 @@
+<h3>Zugehörige Homepage</h3>
+<mat-form-field [formGroup]="form">
+  <mat-label>Homepage</mat-label>
+  <input matInput id="homepageInput" name="homepage" formControlName="homepage"
+    [class.is-invalid]="homepage.invalid && homepage.touched" [class.is-valid]="homepage.valid && homepage.touched" />
+</mat-form-field>
+<div *ngIf="homepage.invalid && homepage.touched" class="invalid-feedback">
+  <mat-error *ngIf="homepage.errors && homepage.errors.required">
+    Ein Homepage muss eingegeben werden.
+  </mat-error>
+  <mat-error *ngIf="homepage.hasError('homepage') && !homepage.hasError('required')">
+    Ein Homepage muss im richtigen Format eingegeben werden.
+  </mat-error>
+</div>

@@ -7,25 +7,25 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Adresse } from '../../shared/buch';
 import type { OnInit } from '@angular/core';
+import { PreisRabatt } from '../../shared/buch';
 import log from 'loglevel';
 
 /**
- * Komponente mit dem Tag &lt;hs-update-adresse&gt;, um das Erfassungsformular
+ * Komponente mit dem Tag &lt;hs-update-preisrabatt&gt;, um das Erfassungsformular
  * f&uuml;r ein neues Buch zu realisieren.
  */
 @Component({
-    selector: 'hs-update-adresse',
-    templateUrl: './update-adresse.component.html',
-    styleUrls: ['./update-adresse.component.scss'],
+    selector: 'hs-update-preisrabatt',
+    templateUrl: './update-preis-rabatt.component.html',
+    styleUrls: ['./update-preis-rabatt.component.scss'],
 })
-export class UpdateAdresseComponent implements OnInit, AfterViewInit {
+export class UpdatePreisRabattComponent implements OnInit, AfterViewInit {
     @Input()
     form!: FormGroup;
 
     @Input()
-    currentValue!: Adresse;
+    currentValue!: PreisRabatt;
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
     readonly PLZ_LENGTH = 5;
@@ -34,13 +34,13 @@ export class UpdateAdresseComponent implements OnInit, AfterViewInit {
 
     ort!: FormControl;
 
-    readonly adresseForm = new FormGroup({});
+    readonly preisrabattForm = new FormGroup({});
 
     // eslint-disable-next-line no-empty-function
     constructor(private readonly cd: ChangeDetectorRef) {}
 
     ngOnInit() {
-        log.debug('UpdateAdresseComponent.ngOnInit', this.currentValue);
+        log.debug('UpdatePreisRabattComponent.ngOnInit', this.currentValue);
         // siehe formControlName innerhalb @Component({templateUrl: ...})
 
         this.plz = new FormControl(this.currentValue.plz, [
@@ -52,9 +52,9 @@ export class UpdateAdresseComponent implements OnInit, AfterViewInit {
         this.ort = new FormControl(this.currentValue.ort, [
             Validators.required,
         ]);
-        this.adresseForm.addControl('plz', this.plz);
-        this.adresseForm.addControl('ort', this.ort);
-        this.form.addControl('adresse', this.adresseForm);
+        this.preisrabattForm.addControl('plz', this.plz);
+        this.preisrabattForm.addControl('ort', this.ort);
+        this.form.addControl('preisrabatt', this.preisrabattForm);
     }
 
     ngAfterViewInit() {

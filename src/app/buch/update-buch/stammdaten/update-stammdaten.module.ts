@@ -18,10 +18,10 @@
 import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateAdresseModule } from './update-adresse.module';
 import { UpdateArtTypeModule } from './update-artType.module';
 import { UpdateErscheinungsdatumModule } from './update-erscheinungsdatum.module';
 import { UpdateFamilienstandModule } from './update-familienstand.module';
+import { UpdatePreisRabattModule } from './update-preis-rabatt.module';
 import { UpdateStammdatenComponent } from './update-stammdaten.component';
 import { UpdateTitelModule } from './update-titel.module';
 import { UpdateVerlagModule } from './update-verlag.module';
@@ -32,7 +32,7 @@ import { UpdateVerlagModule } from './update-verlag.module';
     imports: [
         MatButtonModule,
         ReactiveFormsModule,
-        UpdateAdresseModule,
+        UpdatePreisRabattModule,
         UpdateVerlagModule,
         UpdateFamilienstandModule,
         UpdateErscheinungsdatumModule,

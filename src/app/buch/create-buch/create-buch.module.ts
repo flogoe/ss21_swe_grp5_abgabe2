@@ -16,12 +16,13 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { CreateAdresseModule } from './create-adresse.module';
 import { CreateArtTypeModule } from './create-artType.module';
 import { CreateBuchComponent } from './create-buch.component';
 import { CreateErscheinungsdatumModule } from './create-erscheinungsdatum.module';
 import { CreateFamilienstandModule } from './create-familienstand.module';
+import { CreateHomepageModule } from './create-homepage.module';
 import { CreateLieferbarModule } from './create-lieferbar.module';
+import { CreatePreisRabattModule } from './create-preis-rabatt.module';
 import { CreateRatingModule } from './create-rating.module';
 import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
 import { CreateTitelModule } from './create-titel.module';
@@ -43,7 +44,7 @@ import { Title } from '@angular/platform-browser';
     exports: [CreateBuchComponent],
     imports: [
         CommonModule,
-        CreateAdresseModule,
+        CreatePreisRabattModule,
         CreateVerlagModule,
         CreateFamilienstandModule,
         CreateErscheinungsdatumModule,
@@ -51,7 +52,7 @@ import { Title } from '@angular/platform-browser';
         CreateSchlagwoerterModule,
         CreateRatingModule,
         CreateTitelModule,
-        CreateTitelModule,
+        CreateHomepageModule,
         CreateLieferbarModule,
         ErrorMessageModule,
         HttpClientModule,

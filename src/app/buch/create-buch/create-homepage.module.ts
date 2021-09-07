@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { CreateAdresseComponent } from './create-adresse.component';
+import { CreateHomepageComponent } from './create-homepage.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,8 +9,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [CreateAdresseComponent],
-    exports: [CreateAdresseComponent],
+    declarations: [CreateHomepageComponent],
+    exports: [CreateHomepageComponent],
     imports: [
         CommonModule,
         MatButtonModule,
@@ -22,4 +22,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
     providers: [MatDatepickerModule],
 })
-export class CreateAdresseModule {}
+export class CreateHomepageModule {}

@@ -37,7 +37,7 @@ export interface BuchShared {
     titel: string | undefined;
     verlag: string;
     // eslint-disable-next-line no-use-before-define
-    adresse: Adresse;
+    preisrabatt: PreisRabatt;
     art?: ArtType | '';
     familienstand: FamilienstandType;
     erscheinungsdatum?: string;
@@ -47,7 +47,7 @@ export interface BuchShared {
     user?: User;
 }
 
-export interface Adresse {
+export interface PreisRabatt {
     plz: string;
     ort: string;
 }
@@ -110,7 +110,7 @@ export class Buch {
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
         public titel: string,
         public verlag: string,
-        public adresse: Adresse,
+        public preisrabatt: PreisRabatt,
         public familienstand: FamilienstandType,
         public art: ArtType | '' | undefined,
         erscheinungsdatum: string | undefined,
@@ -156,7 +156,7 @@ export class Buch {
         const {
             titel,
             verlag,
-            adresse,
+            preisrabatt,
             familienstand,
             art,
             erscheinungsdatum,
@@ -167,7 +167,7 @@ export class Buch {
             id,
             titel ?? 'unbekannt',
             verlag,
-            adresse,
+            preisrabatt,
             familienstand,
             art,
             erscheinungsdatum,
@@ -208,7 +208,7 @@ export class Buch {
             buchForm._id,
             buchForm.titel ?? 'unbekannt',
             buchForm.verlag,
-            buchForm.adresse,
+            buchForm.preisrabatt,
             buchForm.familienstand,
             buchForm.art,
             buchForm.erscheinungsdatum,
@@ -265,14 +265,14 @@ export class Buch {
     updateStammdaten(
         titel: string,
         verlag: string,
-        adresse: Adresse,
+        preisrabatt: PreisRabatt,
         familienstand: FamilienstandType,
         art: ArtType | '' | undefined,
         erscheinungsdatum: Date | undefined,
     ) {
         this.titel = titel;
         (this.verlag = verlag),
-            (this.adresse = adresse),
+            (this.preisrabatt = preisrabatt),
             (this.familienstand = familienstand);
         this.art = art;
         this.erscheinungsdatum =
@@ -329,7 +329,7 @@ export class Buch {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             titel: this.titel,
             verlag: this.verlag,
-            adresse: this.adresse,
+            preisrabatt: this.preisrabatt,
             familienstand: this.familienstand,
             art: this.art,
             erscheinungsdatum,

@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  margin-bottom: 25px;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  max-width: 300px !important;
+}

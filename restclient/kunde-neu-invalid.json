@@ -9,7 +9,7 @@
   "art": "invalid",
   "familienstand": "ttt",
   "schlagwoerter": ["F", "W"],
-  "adresse": [{
+  "preisrabatt": [{
     "plz": "76111",
     "ort": "Örtle"
   }],
