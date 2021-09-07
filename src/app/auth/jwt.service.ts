@@ -94,7 +94,7 @@ export class JwtService {
         const json: LoginResponse = await response.json(); // eslint-disable-line @typescript-eslint/no-unsafe-assignment
         log.debug('JwtService.login(): json', json);
         // const { token, roles } = json;
-        // const authorization = `Bearer ${token}`;
+        const authorization = `Bearer ${json.access_token}`;
         // log.debug(`JwtService.login(): authorization=${authorization}`);
 
         const decodedToken = this.decodeToken(json.access_token); // eslint-disable-line @typescript-eslint/no-unsafe-assignment
@@ -115,7 +115,7 @@ export class JwtService {
             JwtService.TIMEZONE_OFFSET_MS;
         log.debug(`JwtService.login(): expiration=${expiration}`);
         this.cookieService.saveAuthorization(
-            json.access_token,
+            authorization,
             rolesStr,
             expiration,
         );
