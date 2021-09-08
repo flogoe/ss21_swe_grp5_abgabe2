@@ -65,7 +65,6 @@ export class NavComponent implements OnInit {
                     {
                         this.isAdmin$.next(rollen.includes(ROLLE_ADMIN));
                         this.isAdmin = rollen.includes(ROLLE_ADMIN);
-                        console.log('is admin?', this.isAdmin, rollen);
                     },
                 ),
             )
@@ -73,7 +72,6 @@ export class NavComponent implements OnInit {
             .subscribe();
 
         const rolesArray = this.cookieService.getRoles()?.split(',');
-        console.log('ROLES ARRAY PUSH', rolesArray);
         this.authService.rollen$.next(rolesArray);
     }
 }

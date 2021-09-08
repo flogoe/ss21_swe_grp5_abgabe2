@@ -200,8 +200,6 @@ export class Buch {
             password: 'p',
         };
 
-        console.log('gibt es user?', user);
-
         const buch = new Buch(
             buchForm._id,
             buchForm.titel ?? 'unbekannt',

@@ -66,7 +66,6 @@ export class UpdateBuchComponent implements OnInit {
     }
 
     private setProps(result: FindError | Buch, id: string | undefined) {
-        console.log('FEEEEHLER', result);
         if (result instanceof FindError) {
             this.handleError(result);
             return;

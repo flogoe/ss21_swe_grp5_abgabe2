@@ -72,7 +72,6 @@ export class LoginLogoutComponent implements OnInit {
             this.password,
         );
         this.init = false;
-        console.log('LOGIN RESULT', loginResult);
         return loginResult;
     }
 

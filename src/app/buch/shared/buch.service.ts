@@ -221,8 +221,6 @@ export class BuchService {
         });
         /* eslint-enable @typescript-eslint/naming-convention */
 
-        console.log('FINAL SEND BUCH:', buch.toJSON());
-
         return this.httpClient
             .post(this.baseUrlBuecher, buch.toJSON(), {
                 headers,
@@ -272,7 +270,7 @@ export class BuchService {
         let { version, _id } = buch; // eslint-disable-line @typescript-eslint/naming-convention
 
         if (version === undefined) {
-            version = 1;
+            version = 0;
         }
 
         if (version === undefined) {
@@ -286,7 +284,7 @@ export class BuchService {
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             Accept: 'text/plain',
-            'If-Match': `"${version}"`,
+            'If-Match': '0',
         });
         /* eslint-enable @typescript-eslint/naming-convention */
         log.debug('BuchService.update(): headers=', headers);
